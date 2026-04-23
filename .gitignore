@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Phase 02+ artefact staging (mirror to HF dataset, not git)
+artifacts/ablation_*/
+artifacts/smoke/*.tmp.json
+
+# Secrets (belt-and-braces; no secret should be committed)
+.env
+.env.*
+*.pem
+*.key
+
+# Ad-hoc scratch
+scratch/
+tmp/

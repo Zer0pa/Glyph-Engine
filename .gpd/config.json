@@ -1,0 +1,17 @@
+{
+  "autonomy": "high",
+  "research_mode": "package-boundary-falsification",
+  "parallelization": true,
+  "commit_docs": true,
+  "model_profile": "engineering-review",
+  "execution": {
+    "review_cadence": "gate_change_only",
+    "reporting": "blockers_only",
+    "completion_contract": "package_boundary_earned_or_rejected"
+  },
+  "workflow": {
+    "research": true,
+    "plan_checker": true,
+    "verifier": true
+  }
+}

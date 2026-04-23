@@ -1,0 +1,14 @@
+# Decisions
+
+| Date | Phase | Decision | Rationale | Rollback Trigger | Status |
+|---|---|---|---|---|---|
+| 2026-04-23 | 00 | Keep `gnosis-glyph-engine` as hold/extraction target. | No consumer, interface, smoke path, or ablation proves a package boundary yet. | `package_boundary_earned` passes. | Active |
+| 2026-04-23 | 00 | Do not create package metadata before code extraction. | A package shell would imply a false repo boundary. | Phase 02 copies a constrained source slice and smoke passes. | Active |
+| 2026-04-23 | 00 | Borrow commodity vision/search infrastructure. | OSS already owns generic image, metric, ANN, viewer, OCR, and annotation layers. | A specific owned method beats baselines on evidence. | Active |
+| 2026-04-24 | 01 | First admitted consumer is `gnosis-morph-bench` (D-01). | Its `BenchmarkManifest.route_features` schema requires per-item feature vectors that no repo currently produces; its staged package is the only sibling whose smoke path is blocked by the gap. | A second consumer displaces it, or morph-bench re-internalises descriptor production. | Active |
+| 2026-04-24 | 01 | Frozen interface is `Descriptor` / `LearnedDescriptor` + `manifest_builder` only (D-02). | Minimum required to feed morph-bench; rejects framework/registry/ANN layers per `BUILD_VS_BORROW_CANON.md`. | Morph-bench schema change beyond `dict[str, tuple[float, ...]]` feature surface. | Active |
+| 2026-04-24 | 01 | Smoke fixture is a 12-glyph synthetic generator, 3 families × 4 variants, seeded (D-03). | Smallest fixture that makes NMI-vs-null non-degenerate and contains zero rights or corpus coupling. | Stability-variance analysis in Phase 02 forces a larger fixture. | Active |
+| 2026-04-24 | 01 | Ablation runs 5 arms with a numeric pass rule (D-04). | `package_boundary_earned` gate 4 requires borrowed-baseline ablation; threshold makes the gate falsifiable. | Morph-bench evaluator API changes such that `sigma` or `mean_jaccard` lose semantics. | Active |
+| 2026-04-24 | 01 | Phase 02 extraction of the two owned arms is blocked on retrieving `scripts/indus/stroke_native_encoding.py` and `scripts/indus/phase3_common.py` (D-06). | Source files are absent from the portfolio snapshot; honest surfacing rather than fabrication of code. | Owner retrieves files or grants access to a live-monorepo clone on the pod. | Active |
+| 2026-04-24 | 01 | No `pyproject.toml`, no `src/` tree, no tests in Phase 01 (D-07). | Preserves the Phase 00 "no package metadata before extraction" decision. | Phase 02 begins real extraction. | Active |
+| 2026-04-24 | 01 | GitHub repo `Zer0pa/Glyph-Engine` is the canonical remote for the scaffold (private). Hugging Face dataset `Zer0pa/glyph-engine-artefacts` is the artefact failover surface. | Mac-loss resilience per owner directive; code authority via GitHub, heavy artefacts via HF. | Public promotion is authorised (requires `package_boundary_earned` PASSED and license text). | Active |

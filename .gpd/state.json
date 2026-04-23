@@ -1,0 +1,48 @@
+{
+  "_version": 1,
+  "_synced_at": "2026-04-24T00:00:00+00:00",
+  "workstream": "gnosis-glyph-engine",
+  "authority_metric": "package_boundary_earned",
+  "authority_status": "UNTESTED",
+  "current_phase": "02",
+  "current_phase_name": "Minimal Extraction Smoke",
+  "status": "BLOCKED_ON_OWNED_ARM_SOURCE_RETRIEVAL",
+  "progress": 40,
+  "resume": ".gpd/phases/01-consumer-and-interface-freeze/01-SUMMARY.md",
+  "blockers": [
+    "D-06: owned-arm source files (scripts/indus/stroke_native_encoding.py, scripts/indus/phase3_common.py) absent from portfolio snapshot"
+  ],
+  "next_actions": [
+    "retrieve owned-arm source files from live monorepo",
+    "provision RunPod workspace at /workspace/gnosis-glyph-engine/",
+    "author Phase 02 PLAN once D-06 clears",
+    "extract src/gnosis_glyph_engine/ tree per frozen destination map"
+  ],
+  "completed_phases": [
+    {
+      "phase": "00",
+      "name": "Hold-Surface Bootstrap",
+      "completed": "2026-04-23",
+      "verdict": "PASS"
+    },
+    {
+      "phase": "01",
+      "name": "Consumer And Interface Freeze",
+      "completed": "2026-04-24",
+      "verdict": "PASS",
+      "frozen": {
+        "consumer": "gnosis-morph-bench",
+        "interface": "Descriptor / LearnedDescriptor protocols + manifest_builder helper",
+        "fixture": "12-glyph synthetic, 3 families x 4 variants, 64x64 binary, seed=42",
+        "ablation_arms": [
+          "baseline_orb",
+          "baseline_hu_regionprops",
+          "baseline_hog",
+          "owned_stroke_compass",
+          "owned_topology"
+        ],
+        "pass_rule": "one owned arm beats best baseline by >= 0.5 on morph-bench sigma AND ties/beats on mean_jaccard(leave_fraction_out=0.25, repeats=6, seed=42)"
+      }
+    }
+  ]
+}
