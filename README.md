@@ -65,6 +65,8 @@ commercial product.
 
 | Need | File |
 |---|---|
+| **Review team entry point (interim status)** | `AGENT_STATUS_REPORT_2026-04-24.md` |
+| Auditor fast path + reproduce block | `AUDITOR_PLAYBOOK.md` |
 | Sovereign hold/extraction brief | `SOVEREIGN_PRD.md` |
 | Candidate source families + extraction ledger | `SOURCE_BOUNDARY.md` |
 | Phase 01 frozen decisions | `.gpd/phases/01-consumer-and-interface-freeze/01-DECISIONS.md` |
