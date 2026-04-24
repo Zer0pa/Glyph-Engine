@@ -97,7 +97,15 @@ recorded here once complete).
 
 ## Follow-Ups
 
-- Append the post-02c HF SHA once `artifacts/robustness/` is mirrored.
-- If cross-lane `HF_CUSTODY_REGISTER.md` consolidation is scoped by the
-  Zer0pa roadmap team, surface this file as the Glyph-Engine canonical
-  row source.
+- [x] Append the post-02c HF SHA once `artifacts/robustness/` is mirrored.
+- [ ] If cross-lane `HF_CUSTODY_REGISTER.md` consolidation is scoped by
+      the Zer0pa roadmap team, surface this file as the Glyph-Engine
+      canonical row source.
+
+### HF-01 post-02c state (verified 2026-04-24)
+
+| Field | Value |
+|---|---|
+| Latest commit SHA | `76fa5fff552eb47af120ca795e8a7ed5f1eb330c` |
+| Siblings added since pre-02c SHA | `artifacts/robustness/robustness_report.json`, README.md refreshed |
+| Verification | `HfApi().dataset_info("Zer0pa/glyph-engine-artefacts")` via production token, 2026-04-24 |
