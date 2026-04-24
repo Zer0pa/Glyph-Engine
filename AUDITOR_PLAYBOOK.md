@@ -1,27 +1,84 @@
 # Auditor Playbook
 
+Last updated: 2026-04-24 (Phase 02a complete).
+
 ## Goal
 
-Verify that this scaffold is not overclaiming a glyph-engine package.
+Verify that this scaffold is not overclaiming a `gnosis-glyph-engine`
+package. Authority metric `package_boundary_earned` is currently
+`UNTESTED`: gates 1–3 have PASSED, gate 4 is BLOCKED on D-06 and unrun.
 
 ## Fast Path
 
 1. Read the authority block in `README.md`.
-2. Read `SOVEREIGN_PRD.md`.
-3. Read `SOURCE_BOUNDARY.md`.
-4. Confirm `code/README.md` says no code is extracted.
-5. Check `.gpd/STATE.md` for the current phase.
+2. Read `SOVEREIGN_PRD.md` for the extraction gate.
+3. Read `SOURCE_BOUNDARY.md` including the **Phase 02a Extraction Ledger**
+   (every file newly authored; zero monorepo copies) and the empty **Phase
+   02b Extraction Ledger** (will populate when D-06 clears).
+4. Read `.gpd/STATE.md` for current phase + blockers.
+5. Read `.gpd/phases/01-consumer-and-interface-freeze/01-DECISIONS.md` for
+   the frozen consumer, interface, fixture, and ablation rule.
+6. Read `.gpd/phases/02-minimal-extraction-smoke/02-01-VERIFICATION.md` for
+   the measured metric matrix and the gate-by-gate PASS/BLOCKED record.
+7. Confirm `artifacts/ablation/ablation_report.json` is present and its
+   `owned_arms_status` = `BLOCKED_ON_D-06`.
+8. Confirm `code/README.md` reflects `BORROWED_ARMS_EXTRACTED`.
 
 ## Claim Replay Map
 
 | Claim | Evidence path | Verifiable? | Caveat |
 |---|---|---|---|
-| Candidate source families are identified | `SOURCE_BOUNDARY.md` | yes | source code remains in parent repo |
-| No public package boundary is proven | `SOVEREIGN_PRD.md`, `code/README.md` | yes | future work may change this |
-| Public promotion is blocked | `README.md`, `RELEASING.md` | yes | license and evidence gates open |
+| Candidate source families are identified | `SOURCE_BOUNDARY.md` | yes | two Indus files absent from snapshot (D-06) |
+| First admitted consumer is `gnosis-morph-bench` | `.gpd/phases/01-consumer-and-interface-freeze/01-DECISIONS.md` D-01 + `workstreams/gnosis-morph-bench/05_repo_scaffold/src/gnosis_morph_bench/schema.py` | yes | consumer lives in sibling workstream, not this repo |
+| Interface is minimal (`Descriptor` + `LearnedDescriptor` + `manifest_builder`) | `src/gnosis_glyph_engine/protocols.py`, `src/gnosis_glyph_engine/manifest_builder.py` | yes | signatures match Phase 01 D-02 verbatim |
+| Scaffold is monorepo-free | `pyproject.toml`, `pip install -e .[dev]` on Python 3.13 + `pytest` pass on RunPod | yes | reproduce via `/workspace/gnosis-glyph-engine/` on pod |
+| Three borrowed baselines produce valid metrics | `artifacts/ablation/ablation_report.json`, `artifacts/ablation/per_arm/*` | yes | one fixture, seed=42, not a generalisation claim |
+| `baseline_orb` saturates the 12-glyph fixture | `artifacts/ablation/ablation_report.json::arms[0]` | yes | NMI=1.0, mean_jaccard=1.0 — recorded as Phase 03 risk (D-02a-06) |
+| Owned arms are not yet run | `src/gnosis_glyph_engine/owned/__init__.py` (raises `SourceRetrievalPending`) | yes | D-06 blocker stated in every relevant surface |
+| No public package boundary is proven | `SOVEREIGN_PRD.md`, `README.md` current-authority table | yes | gate 4 still `UNTESTED` |
+| Public promotion is blocked | `README.md`, `RELEASING.md`, GitHub visibility `INTERNAL` | yes | license still `OWNER_DEFERRED` |
+
+## Reproduce The Evidence
+
+On any Python 3.13 host with internet access:
+
+```bash
+git clone https://github.com/Zer0pa/Glyph-Engine.git
+cd Glyph-Engine
+python3.13 -m venv .venv && source .venv/bin/activate
+# morph-bench is a sibling workstream. Point to your local path or reach
+# out for an internal clone; see .gpd/CONVENTIONS.md.
+pip install -e /path/to/gnosis-morph-bench
+pip install -e .[dev]
+pytest -q                         # expect: 16 passed
+python -m gnosis_glyph_engine.scripts.run_ablation
+# writes artifacts/ablation/ablation_report.json
+```
+
+A successful run will match the metrics in
+`.gpd/phases/02-minimal-extraction-smoke/02-01-VERIFICATION.md` to 6
+decimal places for `seed=42`, `n_clusters=3`, `null_repeats=32`.
 
 ## Fail Conditions
 
-- README claims an installable package.
-- Docs claim descriptor superiority.
-- Domain results from Indus or cuneiform are presented as glyph-engine proof.
+- README or docs claim a **public** installable library or cross-domain
+  superiority.
+- Docs claim owned-descriptor superiority (gate 4 is UNTESTED until
+  Phase 02b and Phase 03 run).
+- Domain results from Indus or cuneiform are presented as glyph-engine
+  proof.
+- `pyproject.toml` carries a canonical non-`OWNER_DEFERRED` licence
+  without Phase 03 having declared PASS.
+- `SOURCE_BOUNDARY.md` path-rewrite ledger contains rows for code the
+  scaffold cannot produce on replay.
+- Phase 02b results are presented without the fixture-saturation risk
+  (D-02a-06) being carried forward.
+
+## Known Limitations Worth Checking
+
+- Single seed (42), single fixture (12 synthetic glyphs). No
+  cross-corpus generalisation claim is valid yet.
+- morph-bench sibling must be available at install time; there is no
+  vendored copy.
+- `opencv-python-headless` is used (no GUI backend); reproducibility on
+  a full `opencv-python` install has not been re-verified.
