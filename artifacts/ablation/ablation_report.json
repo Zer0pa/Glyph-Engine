@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "phase": "02a",
+  "phase_name": "Borrowed-Baseline Sanity Path",
+  "generated_at": "2026-04-24T03:31:09.743446+00:00",
+  "gnosis_glyph_engine_version": "0.1.0a1",
+  "seed": 42,
+  "n_clusters": 3,
+  "null_repeats": 32,
+  "fixture": {
+    "generator": "gnosis_glyph_engine.fixtures.synthesize_twelve_glyphs",
+    "n_items": 12,
+    "families": [
+      "A",
+      "B",
+      "C"
+    ]
+  },
+  "arms": [
+    {
+      "arm": "baseline_orb",
+      "dim": 32,
+      "nmi": 1.0,
+      "sigma": 6.399654,
+      "null_mean": 0.212272,
+      "null_std": 0.123089,
+      "silhouette": 0.267592,
+      "mean_jaccard": 1.0,
+      "min_jaccard": 1.0,
+      "max_jaccard": 1.0,
+      "replay_all_identical": true,
+      "reference_freeze_sha256": "7729559a5b052623e47a995459b15a0fe44fb871e75b9e255d4417b362195dbd",
+      "manifest_path": "artifacts/ablation/per_arm/baseline_orb.manifest.json",
+      "smoke_report_path": "artifacts/ablation/per_arm/baseline_orb.smoke_report.json"
+    },
+    {
+      "arm": "baseline_hog",
+      "dim": 32,
+      "nmi": 0.568183,
+      "sigma": 3.773654,
+      "null_mean": 0.213204,
+      "null_std": 0.094068,
+      "silhouette": 0.022096,
+      "mean_jaccard": 0.399821,
+      "min_jaccard": 0.294118,
+      "max_jaccard": 0.692308,
+      "replay_all_identical": true,
+      "reference_freeze_sha256": "7729559a5b052623e47a995459b15a0fe44fb871e75b9e255d4417b362195dbd",
+      "manifest_path": "artifacts/ablation/per_arm/baseline_hog.manifest.json",
+      "smoke_report_path": "artifacts/ablation/per_arm/baseline_hog.smoke_report.json"
+    },
+    {
+      "arm": "baseline_hu_regionprops",
+      "dim": 12,
+      "nmi": 0.49571,
+      "sigma": 3.39922,
+      "null_mean": 0.191037,
+      "null_std": 0.08963,
+      "silhouette": 0.40835,
+      "mean_jaccard": 0.832621,
+      "min_jaccard": 0.611111,
+      "max_jaccard": 1.0,
+      "replay_all_identical": true,
+      "reference_freeze_sha256": "7729559a5b052623e47a995459b15a0fe44fb871e75b9e255d4417b362195dbd",
+      "manifest_path": "artifacts/ablation/per_arm/baseline_hu_regionprops.manifest.json",
+      "smoke_report_path": "artifacts/ablation/per_arm/baseline_hu_regionprops.smoke_report.json"
+    }
+  ],
+  "owned_arms_status": "BLOCKED_ON_D-06",
+  "owned_arms_blocker": "scripts/indus/stroke_native_encoding.py and scripts/indus/phase3_common.py not present in portfolio snapshot; see .gpd/phases/01-consumer-and-interface-freeze/01-DECISIONS.md D-06.",
+  "pass_rule": "Phase 02a does not evaluate the Phase 01 D-04 numeric pass rule. The rule compares owned arms to the best baseline and is applied in Phase 03 after Phase 02b runs."
+}

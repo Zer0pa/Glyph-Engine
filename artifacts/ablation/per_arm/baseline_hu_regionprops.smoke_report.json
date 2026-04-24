@@ -1,0 +1,42 @@
+{
+  "best_route": "baseline_hu_regionprops",
+  "route_results": [
+    {
+      "route_name": "baseline_hu_regionprops",
+      "reference_key": "family",
+      "n_items": 12,
+      "dim": 12,
+      "n_clusters": 3,
+      "nmi": 0.49571,
+      "sigma": 3.39922,
+      "null_mean": 0.191037,
+      "null_std": 0.08963,
+      "silhouette": 0.40835,
+      "labels_by_item": {
+        "A-0": 2,
+        "A-1": 0,
+        "A-2": 0,
+        "A-3": 0,
+        "B-0": 0,
+        "B-1": 1,
+        "B-2": 1,
+        "B-3": 0,
+        "C-0": 1,
+        "C-1": 1,
+        "C-2": 1,
+        "C-3": 1
+      }
+    }
+  ],
+  "reference_freeze_sha256": "7729559a5b052623e47a995459b15a0fe44fb871e75b9e255d4417b362195dbd",
+  "replay_all_identical": true,
+  "leave_fraction_out": {
+    "mode": "leave_fraction_out",
+    "route_name": "baseline_hu_regionprops",
+    "fraction": 0.25,
+    "repeats": 6,
+    "mean_jaccard": 0.832621,
+    "min_jaccard": 0.611111,
+    "max_jaccard": 1.0
+  }
+}

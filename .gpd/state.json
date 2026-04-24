@@ -1,22 +1,28 @@
 {
   "_version": 1,
-  "_synced_at": "2026-04-24T00:00:00+00:00",
+  "_synced_at": "2026-04-24T03:31:09+00:00",
   "workstream": "gnosis-glyph-engine",
   "authority_metric": "package_boundary_earned",
   "authority_status": "UNTESTED",
-  "current_phase": "02",
-  "current_phase_name": "Minimal Extraction Smoke",
-  "status": "BLOCKED_ON_OWNED_ARM_SOURCE_RETRIEVAL",
-  "progress": 40,
-  "resume": ".gpd/phases/01-consumer-and-interface-freeze/01-SUMMARY.md",
+  "authority_gate_status": {
+    "gate_1_admitted_consumer": "PASSED",
+    "gate_2_monorepo_free_execution": "PASSED",
+    "gate_3_tiny_smoke_from_repo_custody": "PASSED",
+    "gate_4_owned_layer_beats_borrowed": "UNTESTED"
+  },
+  "current_phase": "02b",
+  "current_phase_name": "Owned-Arm Ablation",
+  "status": "BLOCKED_ON_D-06",
+  "progress": 65,
+  "resume": ".gpd/phases/02-minimal-extraction-smoke/02-01-SUMMARY.md",
   "blockers": [
-    "D-06: owned-arm source files (scripts/indus/stroke_native_encoding.py, scripts/indus/phase3_common.py) absent from portfolio snapshot"
+    "D-06: owned-arm source files (scripts/indus/stroke_native_encoding.py, scripts/indus/phase3_common.py) absent from portfolio snapshot",
+    "D-02a-06: baseline_orb saturates the 12-glyph fixture (NMI=1.0, mean_jaccard=1.0) — Phase 03 risk"
   ],
   "next_actions": [
-    "retrieve owned-arm source files from live monorepo",
-    "provision RunPod workspace at /workspace/gnosis-glyph-engine/",
-    "author Phase 02 PLAN once D-06 clears",
-    "extract src/gnosis_glyph_engine/ tree per frozen destination map"
+    "owner retrieves owned-arm source files or grants live-monorepo access on pod",
+    "or run '/gpd:insert-phase 02.1 Fixture Hardening' if fixture saturation is judged unacceptable",
+    "then author Phase 02b PLAN and re-run run_ablation.py with owned arms included"
   ],
   "completed_phases": [
     {
@@ -29,19 +35,18 @@
       "phase": "01",
       "name": "Consumer And Interface Freeze",
       "completed": "2026-04-24",
+      "verdict": "PASS"
+    },
+    {
+      "phase": "02a",
+      "name": "Borrowed-Baseline Sanity Path",
+      "completed": "2026-04-24",
       "verdict": "PASS",
-      "frozen": {
-        "consumer": "gnosis-morph-bench",
-        "interface": "Descriptor / LearnedDescriptor protocols + manifest_builder helper",
-        "fixture": "12-glyph synthetic, 3 families x 4 variants, 64x64 binary, seed=42",
-        "ablation_arms": [
-          "baseline_orb",
-          "baseline_hu_regionprops",
-          "baseline_hog",
-          "owned_stroke_compass",
-          "owned_topology"
-        ],
-        "pass_rule": "one owned arm beats best baseline by >= 0.5 on morph-bench sigma AND ties/beats on mean_jaccard(leave_fraction_out=0.25, repeats=6, seed=42)"
+      "artefact": "artifacts/ablation/ablation_report.json",
+      "measured": {
+        "baseline_orb": {"nmi": 1.0, "sigma": 6.399654, "mean_jaccard": 1.0, "silhouette": 0.267592},
+        "baseline_hog": {"nmi": 0.568183, "sigma": 3.773654, "mean_jaccard": 0.399821, "silhouette": 0.022096},
+        "baseline_hu_regionprops": {"nmi": 0.49571, "sigma": 3.39922, "mean_jaccard": 0.832621, "silhouette": 0.40835}
       }
     }
   ]

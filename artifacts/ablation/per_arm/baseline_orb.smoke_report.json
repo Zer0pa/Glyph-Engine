@@ -1,0 +1,42 @@
+{
+  "best_route": "baseline_orb",
+  "route_results": [
+    {
+      "route_name": "baseline_orb",
+      "reference_key": "family",
+      "n_items": 12,
+      "dim": 32,
+      "n_clusters": 3,
+      "nmi": 1.0,
+      "sigma": 6.399654,
+      "null_mean": 0.212272,
+      "null_std": 0.123089,
+      "silhouette": 0.267592,
+      "labels_by_item": {
+        "A-0": 1,
+        "A-1": 1,
+        "A-2": 1,
+        "A-3": 1,
+        "B-0": 0,
+        "B-1": 0,
+        "B-2": 0,
+        "B-3": 0,
+        "C-0": 2,
+        "C-1": 2,
+        "C-2": 2,
+        "C-3": 2
+      }
+    }
+  ],
+  "reference_freeze_sha256": "7729559a5b052623e47a995459b15a0fe44fb871e75b9e255d4417b362195dbd",
+  "replay_all_identical": true,
+  "leave_fraction_out": {
+    "mode": "leave_fraction_out",
+    "route_name": "baseline_orb",
+    "fraction": 0.25,
+    "repeats": 6,
+    "mean_jaccard": 1.0,
+    "min_jaccard": 1.0,
+    "max_jaccard": 1.0
+  }
+}

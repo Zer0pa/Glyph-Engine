@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gnosis-glyph-engine"
+version = "0.1.0a1"
+description = "Internal extraction-target scaffold for glyph geometry and descriptor kernels. Not a public library. Authority metric: package_boundary_earned = UNTESTED."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "OWNER_DEFERRED" }
+authors = [{ name = "Zer0pa Architect-Prime", email = "architects@zer0pa.ai" }]
+keywords = ["glyph", "descriptor", "internal-extraction-target"]
+
+dependencies = [
+  "numpy>=1.24",
+  "opencv-python-headless>=4.8",
+  "scikit-image>=0.22",
+  "scikit-learn>=1.3",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.4",
+  "pytest-cov>=4.1",
+]
+morph-bench = [
+  # Sibling workstream; installed via editable path on the execution host.
+  # No upstream pin yet; Phase 03 will decide whether to pin by git ref.
+]
+
+[project.scripts]
+glyph-engine-ablation = "gnosis_glyph_engine.scripts.run_ablation:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["gnosis_glyph_engine*"]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"

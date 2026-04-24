@@ -1,61 +1,56 @@
 # TODO
 
-## Phase 01 (Consumer And Interface Freeze) — COMPLETE
+## Phase 01 (Consumer And Interface Freeze) — COMPLETE 2026-04-24
 
-- [x] Freeze the first real consumer (`gnosis-morph-bench`).
-- [x] Define the smallest descriptor or geometry interface worth extracting
-      (`Descriptor`, `LearnedDescriptor`, `manifest_builder`).
-- [x] Define the tiny fixture needed for a smoke path (12-glyph synthetic,
-      3 families × 4 variants).
-- [x] Define the ablation against public baselines (5 arms, numeric pass
-      rule).
-- [x] Freeze destination path map for Phase 02 extraction.
+- [x] Freeze first consumer, interface, fixture, ablation, destination paths.
 
-Frozen deliverables live under
-`.gpd/phases/01-consumer-and-interface-freeze/`.
+## Phase 02a (Borrowed-Baseline Sanity Path) — COMPLETE 2026-04-24
 
-## Phase 02 (Minimal Extraction Smoke) — BLOCKED ON OWNER ACTION
+- [x] Provision RunPod workspace (Python 3.13 venv + borrowed deps +
+      editable morph-bench).
+- [x] Implement `src/gnosis_glyph_engine/` tree for borrowed-only arms.
+- [x] Write 16-test pytest suite; all pass on pod.
+- [x] Run `run_ablation.py`; produce `artifacts/ablation/ablation_report.json`.
+- [x] Mirror artefacts to HF dataset `Zer0pa/glyph-engine-artefacts`.
+- [x] Update extraction ledger (Phase 02a: zero monorepo copies).
 
-Blocker: retrieve
+## Phase 02b (Owned-Arm Ablation) — BLOCKED ON D-06
+
+Blocker: owner retrieves
 `scripts/indus/stroke_native_encoding.py` and
-`scripts/indus/phase3_common.py` from the live monorepo. Both owned-arm
-ablations are blocked until those files are placed or access to a live-monorepo
-clone is granted. Tracked as Phase 01 decision D-06.
+`scripts/indus/phase3_common.py` from the live monorepo (or grants pod
+access to a monorepo clone).
 
-Work ready to start once blocker clears:
+Work ready to start the moment D-06 clears:
 
-- [ ] Provision RunPod workspace at `/workspace/gnosis-glyph-engine/` with
-      Python 3.13 venv and borrowed baselines (`opencv-python-headless`,
-      `scikit-image`, `scikit-learn`, `numpy`).
-- [ ] Write path-rewrite ledger for each copied source file in
-      `SOURCE_BOUNDARY.md`.
-- [ ] Extract `src/gnosis_glyph_engine/` tree per frozen destination map.
-- [ ] Implement `fixtures.synthesize_twelve_glyphs(seed=42)`.
-- [ ] Implement the three borrowed-baseline descriptor classes.
-- [ ] Implement the two owned-candidate descriptor classes (after source
-      retrieval).
-- [ ] Implement `manifest_builder.build_manifest(...)`.
-- [ ] Add `pyproject.toml` (only after the `src/` tree lands).
-- [ ] Implement `scripts/run_ablation.py` writing `artifacts/ablation_report.json`.
-- [ ] Run the full ablation, hand the report to `gnosis-morph-bench.cli`, and
-      record the numeric verdict.
+- [ ] Record path-rewrite ledger rows for the two copied files.
+- [ ] Implement `src/gnosis_glyph_engine/owned/stroke_compass.py` from
+      `stroke_native_encoding.py` (32-d fixed output).
+- [ ] Implement `src/gnosis_glyph_engine/owned/topology.py` from
+      `phase3_common.py` (≈16-d fixed output).
+- [ ] Remove the `SourceRetrievalPending` placeholders.
+- [ ] Add unit tests for the two owned descriptors.
+- [ ] Extend `run_ablation.py` to include both owned arms.
+- [ ] Regenerate `ablation_report.json` with five arms.
 
-## Phase 03 (Package-Boundary Review) — BLOCKED
+## Phase 03 (Package-Boundary Review) — BLOCKED ON PHASE 02b
 
-- [ ] Verify `package_boundary_earned` against the four gate conditions
-      (consumer, independence, smoke, ablation).
-- [ ] Record verdict in `SOVEREIGN_PRD.md` and `STATE.md`.
-- [ ] If PASSED: author `pyproject.toml`, package README claims, private
-      release packet.
-- [ ] If FAILED: add `Generic glyph-engine package` to the `Do Not Build`
-      section of `BUILD_VS_BORROW_CANON.md` and close the scaffold as a
-      recorded negative result.
+- [ ] Decide on fixture-saturation risk (D-02a-06): accept tight D-04
+      threshold, or insert a fixture-hardening phase first.
+- [ ] Apply D-04 numeric pass rule to the five-arm ablation.
+- [ ] Declare `package_boundary_earned` `PASSED` / `FAILED` /
+      `INCONCLUSIVE` in `SOVEREIGN_PRD.md` and `STATE.md`.
+- [ ] If `PASSED`: author private release packet, license text, and contact
+      surface.
+- [ ] If `FAILED`: add `Generic glyph-engine package` to
+      `BUILD_VS_BORROW_CANON.md` `Do Not Build`; close scaffold as a
+      negative result.
 
 ## Required Before Any Public Moves
 
 - [ ] Final license text (owner-deferred).
 - [ ] Public contact surface (owner-deferred).
-- [ ] Benchmark evidence that clears Phase 03.
+- [ ] Phase 03 verdict `PASSED`.
 
 ## Blocked Public Moves
 

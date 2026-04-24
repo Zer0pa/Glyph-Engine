@@ -1,0 +1,42 @@
+{
+  "best_route": "baseline_hog",
+  "route_results": [
+    {
+      "route_name": "baseline_hog",
+      "reference_key": "family",
+      "n_items": 12,
+      "dim": 32,
+      "n_clusters": 3,
+      "nmi": 0.568183,
+      "sigma": 3.773654,
+      "null_mean": 0.213204,
+      "null_std": 0.094068,
+      "silhouette": 0.022096,
+      "labels_by_item": {
+        "A-0": 2,
+        "A-1": 2,
+        "A-2": 2,
+        "A-3": 1,
+        "B-0": 0,
+        "B-1": 1,
+        "B-2": 0,
+        "B-3": 0,
+        "C-0": 0,
+        "C-1": 0,
+        "C-2": 0,
+        "C-3": 0
+      }
+    }
+  ],
+  "reference_freeze_sha256": "7729559a5b052623e47a995459b15a0fe44fb871e75b9e255d4417b362195dbd",
+  "replay_all_identical": true,
+  "leave_fraction_out": {
+    "mode": "leave_fraction_out",
+    "route_name": "baseline_hog",
+    "fraction": 0.25,
+    "repeats": 6,
+    "mean_jaccard": 0.399821,
+    "min_jaccard": 0.294118,
+    "max_jaccard": 0.692308
+  }
+}

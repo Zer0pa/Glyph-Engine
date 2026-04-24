@@ -1,23 +1,18 @@
 # Code Surface
 
-No code is extracted in this scaffold yet.
+Phase 02a is complete. The real code now lives under
+`../src/gnosis_glyph_engine/`.
 
-Phase 01 froze the extraction target on 2026-04-24:
+Current code status: **`BORROWED_ARMS_EXTRACTED`**. Owned arms
+(`owned/stroke_compass.py`, `owned/topology.py`) remain BLOCKED on Phase 01
+decision D-06 (retrieval of two Indus source files).
 
-- first consumer: `gnosis-morph-bench`,
-- interface: `Descriptor` / `LearnedDescriptor` protocols + `manifest_builder`
-  helper (see `.gpd/phases/01-consumer-and-interface-freeze/01-DECISIONS.md`),
-- fixture: 12-glyph synthetic generator, 3 families × 4 variants,
-- ablation: 5 arms with a numeric pass rule against morph-bench `sigma` and
-  `mean_jaccard`.
-
-Phase 02 (Minimal Extraction Smoke) begins once the owned-arm source
-retrieval blocker (D-06) is resolved. Until then, current code status remains:
-
-`NO_CODE_EXTRACTED_YET`.
+This directory exists as a legacy marker for Phase 00 posture tracking and
+is no longer the canonical code surface.
 
 See also:
 
-- `../SOURCE_BOUNDARY.md` — candidate families, destination paths, blocker
-- `../.gpd/phases/01-consumer-and-interface-freeze/01-SUMMARY.md`
+- `../src/gnosis_glyph_engine/` — implemented package
+- `../SOURCE_BOUNDARY.md` — extraction ledger + destination map
+- `../.gpd/phases/02-minimal-extraction-smoke/02-01-SUMMARY.md`
 - `../.gpd/STATE.md`
