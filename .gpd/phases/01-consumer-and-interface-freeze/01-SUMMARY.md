@@ -46,6 +46,6 @@ Phase 02 kickoff).
 Pre-flight for Phase 02:
 
 1. Resolve D-06 (owned-arm source retrieval).
-2. Provision RunPod workspace at `/workspace/gnosis-glyph-engine/` with
+2. Provision RunPod workspace at `<RUNPOD_WORKSPACE>/gnosis-glyph-engine/` with
    Python 3.13 venv and borrowed baselines installed.
 3. Clone `Zer0pa/Glyph-Engine` onto the pod for execution.

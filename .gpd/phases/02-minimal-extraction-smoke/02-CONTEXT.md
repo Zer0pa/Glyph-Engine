@@ -24,8 +24,8 @@
 ## Execution Envelope
 
 - Authoring: local Mac at `05_repo_scaffold/`.
-- Execution: RunPod host `38.80.152.147:34587`, pod `7k3riasglemecu`,
-  workspace `/workspace/gnosis-glyph-engine/`.
+- Execution: RunPod host `<RUNPOD_HOST>`, pod `<RUNPOD_POD_ID>`,
+  workspace `<RUNPOD_WORKSPACE>/gnosis-glyph-engine/`.
 - Python: 3.13 venv.
 - Borrowed deps: `opencv-python-headless`, `scikit-image`, `scikit-learn`,
   `numpy` (+ transitive `scipy`), plus editable install of the local

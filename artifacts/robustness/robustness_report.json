@@ -1,0 +1,434 @@
+{
+  "schema_version": 1,
+  "phase": "02c",
+  "phase_name": "OSS-Baseline Robustness",
+  "generated_at": "2026-04-24T13:54:39.114250+00:00",
+  "gnosis_glyph_engine_version": "0.1.0a1",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "n_clusters": 3,
+  "null_repeats": 32,
+  "fixture": {
+    "generator": "gnosis_glyph_engine.fixtures.synthesize_twelve_glyphs",
+    "n_items_per_seed": 12
+  },
+  "arms": [
+    {
+      "arm": "baseline_orb",
+      "n_seeds": 10,
+      "sigma": {
+        "n": 10,
+        "mean": 4.1377,
+        "stdev": 1.115659,
+        "min": 2.729151,
+        "max": 6.23405
+      },
+      "nmi": {
+        "n": 10,
+        "mean": 0.764591,
+        "stdev": 0.14255,
+        "min": 0.57938,
+        "max": 1.0
+      },
+      "mean_jaccard": {
+        "n": 10,
+        "mean": 0.898995,
+        "stdev": 0.099415,
+        "min": 0.707837,
+        "max": 1.0
+      },
+      "silhouette": {
+        "n": 10,
+        "mean": 0.287878,
+        "stdev": 0.054368,
+        "min": 0.215829,
+        "max": 0.382025
+      },
+      "per_seed": [
+        {
+          "arm": "baseline_orb",
+          "seed": 0,
+          "nmi": 0.818054,
+          "sigma": 3.4029,
+          "null_mean": 0.214946,
+          "null_std": 0.177233,
+          "silhouette": 0.382025,
+          "mean_jaccard": 1.0
+        },
+        {
+          "arm": "baseline_orb",
+          "seed": 1,
+          "nmi": 0.605709,
+          "sigma": 2.729151,
+          "null_mean": 0.243116,
+          "null_std": 0.132859,
+          "silhouette": 0.253946,
+          "mean_jaccard": 0.815873
+        },
+        {
+          "arm": "baseline_orb",
+          "seed": 2,
+          "nmi": 0.57938,
+          "sigma": 3.350617,
+          "null_mean": 0.187594,
+          "null_std": 0.11693,
+          "silhouette": 0.289508,
+          "mean_jaccard": 0.81975
+        },
+        {
+          "arm": "baseline_orb",
+          "seed": 3,
+          "nmi": 1.0,
+          "sigma": 6.23405,
+          "null_mean": 0.191315,
+          "null_std": 0.129721,
+          "silhouette": 0.220606,
+          "mean_jaccard": 0.707837
+        },
+        {
+          "arm": "baseline_orb",
+          "seed": 4,
+          "nmi": 1.0,
+          "sigma": 5.103119,
+          "null_mean": 0.234533,
+          "null_std": 0.15,
+          "silhouette": 0.257403,
+          "mean_jaccard": 0.895833
+        },
+        {
+          "arm": "baseline_orb",
+          "seed": 5,
+          "nmi": 0.818054,
+          "sigma": 4.564233,
+          "null_mean": 0.212816,
+          "null_std": 0.132604,
+          "silhouette": 0.215829,
+          "mean_jaccard": 0.815476
+        },
+        {
+          "arm": "baseline_orb",
+          "seed": 6,
+          "nmi": 0.605709,
+          "sigma": 2.938056,
+          "null_mean": 0.212442,
+          "null_std": 0.133853,
+          "silhouette": 0.274636,
+          "mean_jaccard": 1.0
+        },
+        {
+          "arm": "baseline_orb",
+          "seed": 7,
+          "nmi": 0.739667,
+          "sigma": 3.141475,
+          "null_mean": 0.227035,
+          "null_std": 0.163182,
+          "silhouette": 0.306163,
+          "mean_jaccard": 0.935185
+        },
+        {
+          "arm": "baseline_orb",
+          "seed": 8,
+          "nmi": 0.739667,
+          "sigma": 5.060959,
+          "null_mean": 0.185972,
+          "null_std": 0.109405,
+          "silhouette": 0.378647,
+          "mean_jaccard": 1.0
+        },
+        {
+          "arm": "baseline_orb",
+          "seed": 9,
+          "nmi": 0.739667,
+          "sigma": 4.852435,
+          "null_mean": 0.196237,
+          "null_std": 0.111991,
+          "silhouette": 0.300017,
+          "mean_jaccard": 1.0
+        }
+      ]
+    },
+    {
+      "arm": "baseline_hu_regionprops",
+      "n_seeds": 10,
+      "sigma": {
+        "n": 10,
+        "mean": 2.953718,
+        "stdev": 1.05569,
+        "min": 0.703315,
+        "max": 4.097922
+      },
+      "nmi": {
+        "n": 10,
+        "mean": 0.574906,
+        "stdev": 0.130245,
+        "min": 0.309849,
+        "max": 0.739667
+      },
+      "mean_jaccard": {
+        "n": 10,
+        "mean": 0.942923,
+        "stdev": 0.073113,
+        "min": 0.809524,
+        "max": 1.0
+      },
+      "silhouette": {
+        "n": 10,
+        "mean": 0.488197,
+        "stdev": 0.0761,
+        "min": 0.333363,
+        "max": 0.587317
+      },
+      "per_seed": [
+        {
+          "arm": "baseline_hu_regionprops",
+          "seed": 0,
+          "nmi": 0.65876,
+          "sigma": 2.437617,
+          "null_mean": 0.223435,
+          "null_std": 0.178587,
+          "silhouette": 0.494475,
+          "mean_jaccard": 1.0
+        },
+        {
+          "arm": "baseline_hu_regionprops",
+          "seed": 1,
+          "nmi": 0.65876,
+          "sigma": 3.951926,
+          "null_mean": 0.238625,
+          "null_std": 0.106312,
+          "silhouette": 0.587317,
+          "mean_jaccard": 1.0
+        },
+        {
+          "arm": "baseline_hu_regionprops",
+          "seed": 2,
+          "nmi": 0.57938,
+          "sigma": 3.350617,
+          "null_mean": 0.187594,
+          "null_std": 0.11693,
+          "silhouette": 0.52146,
+          "mean_jaccard": 1.0
+        },
+        {
+          "arm": "baseline_hu_regionprops",
+          "seed": 3,
+          "nmi": 0.353084,
+          "sigma": 1.492267,
+          "null_mean": 0.208058,
+          "null_std": 0.097185,
+          "silhouette": 0.375914,
+          "mean_jaccard": 0.841435
+        },
+        {
+          "arm": "baseline_hu_regionprops",
+          "seed": 4,
+          "nmi": 0.605709,
+          "sigma": 2.85713,
+          "null_mean": 0.238236,
+          "null_std": 0.128616,
+          "silhouette": 0.468722,
+          "mean_jaccard": 0.809524
+        },
+        {
+          "arm": "baseline_hu_regionprops",
+          "seed": 5,
+          "nmi": 0.739667,
+          "sigma": 4.097922,
+          "null_mean": 0.216702,
+          "null_std": 0.127617,
+          "silhouette": 0.536354,
+          "mean_jaccard": 1.0
+        },
+        {
+          "arm": "baseline_hu_regionprops",
+          "seed": 6,
+          "nmi": 0.65876,
+          "sigma": 3.846505,
+          "null_mean": 0.199997,
+          "null_std": 0.119268,
+          "silhouette": 0.468829,
+          "mean_jaccard": 0.892857
+        },
+        {
+          "arm": "baseline_hu_regionprops",
+          "seed": 7,
+          "nmi": 0.309849,
+          "sigma": 0.703315,
+          "null_mean": 0.221903,
+          "null_std": 0.125045,
+          "silhouette": 0.333363,
+          "mean_jaccard": 0.885417
+        },
+        {
+          "arm": "baseline_hu_regionprops",
+          "seed": 8,
+          "nmi": 0.605709,
+          "sigma": 3.47249,
+          "null_mean": 0.178011,
+          "null_std": 0.123168,
+          "silhouette": 0.538056,
+          "mean_jaccard": 1.0
+        },
+        {
+          "arm": "baseline_hu_regionprops",
+          "seed": 9,
+          "nmi": 0.57938,
+          "sigma": 3.327387,
+          "null_mean": 0.188464,
+          "null_std": 0.117485,
+          "silhouette": 0.557483,
+          "mean_jaccard": 1.0
+        }
+      ]
+    },
+    {
+      "arm": "baseline_hog",
+      "n_seeds": 10,
+      "sigma": {
+        "n": 10,
+        "mean": 1.153333,
+        "stdev": 1.167746,
+        "min": -0.592545,
+        "max": 2.989135
+      },
+      "nmi": {
+        "n": 10,
+        "mean": 0.362079,
+        "stdev": 0.144388,
+        "min": 0.152064,
+        "max": 0.573341
+      },
+      "mean_jaccard": {
+        "n": 10,
+        "mean": 0.435006,
+        "stdev": 0.086865,
+        "min": 0.325167,
+        "max": 0.567538
+      },
+      "silhouette": {
+        "n": 10,
+        "mean": 0.023061,
+        "stdev": 0.004949,
+        "min": 0.01205,
+        "max": 0.030723
+      },
+      "per_seed": [
+        {
+          "arm": "baseline_hog",
+          "seed": 0,
+          "nmi": 0.573341,
+          "sigma": 2.989135,
+          "null_mean": 0.204511,
+          "null_std": 0.12339,
+          "silhouette": 0.021153,
+          "mean_jaccard": 0.567538
+        },
+        {
+          "arm": "baseline_hog",
+          "seed": 1,
+          "nmi": 0.233493,
+          "sigma": 0.604927,
+          "null_mean": 0.174414,
+          "null_std": 0.097662,
+          "silhouette": 0.023835,
+          "mean_jaccard": 0.36947
+        },
+        {
+          "arm": "baseline_hog",
+          "seed": 2,
+          "nmi": 0.433438,
+          "sigma": 1.35417,
+          "null_mean": 0.251069,
+          "null_std": 0.134672,
+          "silhouette": 0.022074,
+          "mean_jaccard": 0.376393
+        },
+        {
+          "arm": "baseline_hog",
+          "seed": 3,
+          "nmi": 0.525812,
+          "sigma": 2.710627,
+          "null_mean": 0.213135,
+          "null_std": 0.115352,
+          "silhouette": 0.024676,
+          "mean_jaccard": 0.535991
+        },
+        {
+          "arm": "baseline_hog",
+          "seed": 4,
+          "nmi": 0.189043,
+          "sigma": -0.396646,
+          "null_mean": 0.232928,
+          "null_std": 0.110639,
+          "silhouette": 0.028113,
+          "mean_jaccard": 0.501654
+        },
+        {
+          "arm": "baseline_hog",
+          "seed": 5,
+          "nmi": 0.520665,
+          "sigma": 1.732227,
+          "null_mean": 0.257446,
+          "null_std": 0.151954,
+          "silhouette": 0.023749,
+          "mean_jaccard": 0.370786
+        },
+        {
+          "arm": "baseline_hog",
+          "seed": 6,
+          "nmi": 0.152064,
+          "sigma": -0.592545,
+          "null_mean": 0.197792,
+          "null_std": 0.077172,
+          "silhouette": 0.01205,
+          "mean_jaccard": 0.331686
+        },
+        {
+          "arm": "baseline_hog",
+          "seed": 7,
+          "nmi": 0.239793,
+          "sigma": 0.101368,
+          "null_mean": 0.226215,
+          "null_std": 0.133948,
+          "silhouette": 0.030723,
+          "mean_jaccard": 0.527637
+        },
+        {
+          "arm": "baseline_hog",
+          "seed": 8,
+          "nmi": 0.397071,
+          "sigma": 1.930942,
+          "null_mean": 0.201948,
+          "null_std": 0.101051,
+          "silhouette": 0.018287,
+          "mean_jaccard": 0.443734
+        },
+        {
+          "arm": "baseline_hog",
+          "seed": 9,
+          "nmi": 0.356067,
+          "sigma": 1.099121,
+          "null_mean": 0.214313,
+          "null_std": 0.12897,
+          "silhouette": 0.025947,
+          "mean_jaccard": 0.325167
+        }
+      ]
+    }
+  ],
+  "interpretation_notes": [
+    "This run evaluates only the borrowed-baseline arms; owned arms remain BLOCKED on D-06.",
+    "Saturation is defined as mean NMI == 1.0 and mean mean_jaccard == 1.0 across seeds.",
+    "A saturating baseline implies the Phase 01 D-04 pass rule is near-impossible on the current fixture; Phase 03 must judge routing."
+  ]
+}

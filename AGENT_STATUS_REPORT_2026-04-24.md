@@ -3,10 +3,17 @@
 Author: autonomous executor (Claude, Anthropic), operating under
 `AUTONOMOUS_EXECUTION_POLICY.md` with executive mandate from the workstream
 owner.
-Scope of this report: Phase 00 → Phase 02a inclusive. Interim snapshot for
-the human review team.
-Status summary: **Phases 00, 01, 02a complete (gates PASSED). Phase 02b
-blocked on D-06. Phase 03 not started.**
+Scope of this report: Phase 00 → Phase 02c inclusive (closeout-brief
+lane-A compliance added). Interim snapshot for the human review team.
+Status summary: **Phases 00, 01, 02a, 02c complete (gates PASSED).
+Phase 02b blocked on D-06. Phase 03 not started.**
+
+**Important revision** (appended 2026-04-24 post-Phase 02c): the
+Phase 02a "baseline_orb saturates the fixture" finding was a **seed=42
+artefact**. Multi-seed evidence (10 seeds) retires that concern
+(D-02c-01). The sovereign Glyph-Engine repo boundary is preserved
+(D-02c-02); adapter-only scope is a conditional rollback, not a
+present recommendation.
 
 This document is an **agent-authored narrative layer** over the sovereign
 GPD artefacts. If anything in it contradicts `SOVEREIGN_PRD.md`,
@@ -51,7 +58,7 @@ is a reading guide, not an authority surface.
    builder, three borrowed-baseline descriptors, owned placeholder,
    scripts), the 16-test pytest suite, and the ablation runner.
 6. **Phase 02a execution.** Rsync'd both scaffolds to the RunPod host
-   `/workspace/`, created a Python 3.13 venv, editable-installed
+   `<RUNPOD_WORKSPACE>/`, created a Python 3.13 venv, editable-installed
    `gnosis-morph-bench` and `gnosis-glyph-engine[dev]`, ran `pytest -q`
    (16 passed, 9.4 s), ran `run_ablation.py` (wrote
    `artifacts/ablation/ablation_report.json` + six per-arm files).
@@ -81,11 +88,12 @@ arm; reference-freeze sha256 identical across arms).
   `scripts/indus/phase3_common.py`. The scaffold's `SOURCE_BOUNDARY.md`
   seeded them as aspirational monorepo references, not as assets
   present here. Escalated as **D-06**, not papered over.
-- **`baseline_orb` saturates the 12-glyph synthetic fixture.** Perfect
-  clustering, full jaccard stability, large null margin. Any owned arm
-  must now clear σ ≈ 6.9 and `mean_jaccard` = 1.0 to beat it under the
-  Phase 01 D-04 pass rule. Escalated as **D-02a-06** (a Phase 03 risk,
-  not a veto).
+- **`baseline_orb` did NOT saturate the fixture robustly.** Phase 02a
+  (single-seed, seed=42) observed NMI=1.0 and mean_jaccard=1.0 and this
+  report originally framed it as saturation. Phase 02c (seeds 0..9)
+  retired that framing: mean σ = 4.14 (stdev 1.12), mean NMI = 0.77,
+  NMI=1.0 in only 2 of 10 seeds. The D-04 pass rule is plausible on the
+  existing fixture. Recorded as **D-02c-01**, and **D-02a-06 is retired**.
 - **Morph-bench has more surface than its README listing suggested.**
   Files `_utils.py`, `__main__.py`, `adapters/`, `replay.py` exist in
   addition to `schema.py`, `benchmark.py`, `stability.py`, `cli.py`.
@@ -117,22 +125,24 @@ restated here for review convenience:
 | D-07 | No package metadata in Phase 01 | Preserved Phase 00 posture. Superseded by 02a when extraction began. |
 | D-08 | GitHub (code) + HF dataset (artefacts), both private | Mac-loss resilience. |
 | D-02a-01 | Split Phase 02 into 02a (now) + 02b (blocked) | Unblock gates 2+3 immediately. |
-| D-02a-06 | Record baseline saturation as Phase 03 risk | Phase 03 must judge D-04 achievability. |
+| D-02a-06 | Record baseline saturation as Phase 03 risk | *Retired by D-02c-01.* |
+| D-02c-01 | Multi-seed supersedes single-seed saturation narrative | 10-seed ORB mean σ = 4.14 (not 6.4); NMI=1 only 2/10 seeds. |
+| D-02c-02 | Glyph-Engine stays sovereign; adapter-only scope NOT recommended now | Baseline ceiling beatable; owned arms still UNTESTED. Adapter-only is a conditional rollback. |
+| D-02c-03 | Retire fixture-hardening detour | Multi-seed evidence de-risks the pass rule. |
+| D-02c-04 | Keep `baseline_hog` despite below-null seeds | Honest ablations include negative arms. |
+| D-02c-05 | Closeout-brief lane-A fixes folded in | Dep boundary, path scrub, private licence, HF custody register. |
 
 ## 5. What Is Blocked, And On Whom
 
 - **D-06** (owner action): retrieve
   `scripts/indus/stroke_native_encoding.py` and
   `scripts/indus/phase3_common.py` from the live monorepo, or grant
-  pod access to a monorepo clone at
-  `ssh -i ~/.ssh/id_ed25519 -p 34587 root@38.80.152.147`.
-- **Phase 03 fixture-hardening routing** (review team judgement): given
-  `baseline_orb`'s saturation, choose one of
-  (a) run Phase 02b as-is with the tight D-04 threshold,
-  (b) insert a `02.1 Fixture Hardening` phase before 02b,
-  (c) accept borrowed-baseline sufficiency and declare
-      `package_boundary_earned = FAILED` without running 02b,
-      recording `Generic glyph-engine package` as a `Do Not Build` row.
+  pod access to a monorepo clone at `<RUNPOD_HOST>` with the owner-held
+  key (`<LOCAL_SSH_KEY>`).
+- **Phase 03 fixture-hardening routing** — *no longer a blocker*.
+  Phase 02c retired this concern (D-02c-03). Phase 02b runs the owned
+  arms directly against the multi-seed borrowed ceiling when D-06
+  clears.
 
 ## 6. Recommendations For The Review Team
 
@@ -221,8 +231,8 @@ docs/ARCHITECTURE.md                       # component map + data flow
 |---|---|---|
 | GitHub code remote | `Zer0pa/Glyph-Engine` (private, `main`) | commit `d04c708` (playbook refresh) |
 | HF artefact dataset | `Zer0pa/glyph-engine-artefacts` (private) | sha `58cbc2e…` |
-| RunPod execution substrate | `38.80.152.147:34587` (pod `7k3riasglemecu`) | `/workspace/gnosis-glyph-engine/` + `/workspace/gnosis-morph-bench/` + `/workspace/.venv/` |
-| Local authoring | `~/Gnosis Portfolio/workstreams/gnosis-glyph-engine/05_repo_scaffold/` | clean working tree, zero divergence from `origin/main` |
+| RunPod execution substrate | `<RUNPOD_HOST>` (pod `<RUNPOD_POD_ID>`) | `<RUNPOD_WORKSPACE>/gnosis-glyph-engine/` + `<RUNPOD_WORKSPACE>/gnosis-morph-bench/` + `<RUNPOD_WORKSPACE>/.venv/` |
+| Local authoring | `<LOCAL_WORKSTREAM_ROOT>/05_repo_scaffold/` | clean working tree, zero divergence from `origin/main` |
 
 ## 10. Closing
 

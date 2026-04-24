@@ -33,10 +33,10 @@ Gate: `PASS`
 
 - Authoring: local Mac at
   `Gnosis Portfolio/workstreams/gnosis-glyph-engine/05_repo_scaffold/`.
-- Execution: RunPod host `38.80.152.147:34587`, pod `7k3riasglemecu`,
-  workspace `/workspace/gnosis-glyph-engine/`, Python 3.13 venv.
+- Execution: RunPod host `<RUNPOD_HOST>`, pod `<RUNPOD_POD_ID>`,
+  workspace `<RUNPOD_WORKSPACE>/gnosis-glyph-engine/`, Python 3.13 venv.
 - Morph-bench: editable install from rsync'd
-  `/workspace/gnosis-morph-bench/`.
+  `<RUNPOD_WORKSPACE>/gnosis-morph-bench/`.
 
 ## Artefacts Produced
 

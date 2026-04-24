@@ -9,17 +9,30 @@
 - [x] Provision RunPod workspace (Python 3.13 venv + borrowed deps +
       editable morph-bench).
 - [x] Implement `src/gnosis_glyph_engine/` tree for borrowed-only arms.
-- [x] Write 16-test pytest suite; all pass on pod.
+- [x] Write pytest suite; all pass on pod.
 - [x] Run `run_ablation.py`; produce `artifacts/ablation/ablation_report.json`.
 - [x] Mirror artefacts to HF dataset `Zer0pa/glyph-engine-artefacts`.
-- [x] Update extraction ledger (Phase 02a: zero monorepo copies).
+
+## Phase 02c (OSS-Baseline Robustness + Closeout) — COMPLETE 2026-04-24
+
+- [x] Fix dependency/test boundary: `importorskip` + local schema test.
+- [x] Add `pyproject.toml` comments clarifying morph-bench is host-supplied.
+- [x] Build multi-seed OSS-baseline robustness script + console entry.
+- [x] Run verification: 17 pass WITH morph-bench, 16 pass + 1 skipped
+      WITHOUT.
+- [x] Retire D-02a-06 fixture-saturation risk via multi-seed evidence.
+- [x] Decide Glyph-Engine stays sovereign (D-02c-02); define adapter-only
+      rollback trigger.
+- [x] Scrub public-facing paths via `docs/PROVENANCE_LABELS.md`.
+- [x] Add `PRIVATE_INTERNAL_LICENSE_NOTICE.md`.
+- [x] Produce `HF_CUSTODY_REGISTER.md` with production-token verification.
 
 ## Phase 02b (Owned-Arm Ablation) — BLOCKED ON D-06
 
 Blocker: owner retrieves
 `scripts/indus/stroke_native_encoding.py` and
-`scripts/indus/phase3_common.py` from the live monorepo (or grants pod
-access to a monorepo clone).
+`scripts/indus/phase3_common.py` from the live monorepo, or grants pod
+access to a monorepo clone.
 
 Work ready to start the moment D-06 clears:
 
@@ -31,30 +44,36 @@ Work ready to start the moment D-06 clears:
 - [ ] Remove the `SourceRetrievalPending` placeholders.
 - [ ] Add unit tests for the two owned descriptors.
 - [ ] Extend `run_ablation.py` to include both owned arms.
-- [ ] Regenerate `ablation_report.json` with five arms.
+- [ ] Extend `run_robustness.py` to include both owned arms across the
+      same 10 seeds.
+- [ ] Apply the D-04 pass rule under D-02c-02 routing (sovereign stays
+      unless owned fails vs multi-seed ORB ceiling).
 
 ## Phase 03 (Package-Boundary Review) — BLOCKED ON PHASE 02b
 
-- [ ] Decide on fixture-saturation risk (D-02a-06): accept tight D-04
-      threshold, or insert a fixture-hardening phase first.
-- [ ] Apply D-04 numeric pass rule to the five-arm ablation.
 - [ ] Declare `package_boundary_earned` `PASSED` / `FAILED` /
       `INCONCLUSIVE` in `SOVEREIGN_PRD.md` and `STATE.md`.
-- [ ] If `PASSED`: author private release packet, license text, and contact
-      surface.
-- [ ] If `FAILED`: add `Generic glyph-engine package` to
-      `BUILD_VS_BORROW_CANON.md` `Do Not Build`; close scaffold as a
-      negative result.
+- [ ] If `PASSED`: await legal on canonical licence and public-release
+      packet; do NOT self-promote.
+- [ ] If `FAILED`: demote to adapter-only; add `Generic glyph-engine
+      package` to `BUILD_VS_BORROW_CANON.md` `Do Not Build`.
+
+## Optional Follow-Ups (P2 from closeout brief)
+
+- [ ] Add minimal GitHub Actions CI (install + pytest + robustness
+      smoke; do not fetch HF).
+- [ ] Cross-lane `HF_CUSTODY_REGISTER.md` consolidation (portfolio-level,
+      not this lane's call).
 
 ## Required Before Any Public Moves
 
-- [ ] Final license text (owner-deferred).
-- [ ] Public contact surface (owner-deferred).
+- [ ] Canonical `LICENSE` file from Zer0pa legal.
+- [ ] Public contact surface.
 - [ ] Phase 03 verdict `PASSED`.
 
 ## Blocked Public Moves
 
 - Public promotion.
-- Performance claims.
+- Performance claims (including across-seeds generalisation).
 - Cross-domain library claims.
 - Ownership of Indus or cuneiform findings.

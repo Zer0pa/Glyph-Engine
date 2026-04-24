@@ -34,7 +34,7 @@ Status: `FROZEN`
 ## D-02a-04 Morph-bench integration via editable install
 
 - Decision: on the RunPod host, `gnosis-morph-bench` is installed editable
-  from `/workspace/gnosis-morph-bench/`. `gnosis-glyph-engine` calls its
+  from `<RUNPOD_WORKSPACE>/gnosis-morph-bench/`. `gnosis-glyph-engine` calls its
   `schema`, `benchmark`, and `stability` modules directly, not via
   subprocess.
 - Rationale: morph-bench is a sibling Python package with a published

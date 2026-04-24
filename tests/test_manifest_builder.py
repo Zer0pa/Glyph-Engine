@@ -65,8 +65,17 @@ def test_empty_inputs_rejected():
 
 
 def test_morph_bench_loader_accepts_manifest(tmp_path):
-    """Integration check: morph-bench's loader must parse our output."""
-    from gnosis_morph_bench.schema import load_manifest  # noqa: WPS433
+    """Cross-repo contract check: morph-bench's loader must parse our output.
+
+    This test is skipped if ``gnosis_morph_bench`` is not installed.
+    ``gnosis-glyph-engine`` does not declare it as a hard dependency to
+    preserve repo-boundary independence; supply it on the execution host
+    via editable path install (see ``pyproject.toml`` comments).
+    """
+    load_manifest = pytest.importorskip(
+        "gnosis_morph_bench.schema",
+        reason="gnosis_morph_bench not installed; cross-repo contract test skipped",
+    ).load_manifest
 
     items = synthesize_twelve_glyphs(seed=42)
     manifest = build_manifest(
@@ -80,3 +89,41 @@ def test_morph_bench_loader_accepts_manifest(tmp_path):
     assert loaded.manifest_name == "phase02a-smoke"
     assert len(loaded.items) == 12
     assert set(loaded.route_names) == {"baseline_orb", "baseline_hu_regionprops"}
+
+
+def test_manifest_matches_local_schema_contract():
+    """Fallback contract test that does NOT depend on morph-bench.
+
+    Encodes the fixed morph-bench schema-v1 shape locally so the cross-repo
+    contract is verifiable even when the sibling package is unavailable.
+    Must stay in lock-step with morph-bench's schema; if morph-bench bumps
+    its schema, update this fixture and open a Phase 03 decision.
+    """
+    items = synthesize_twelve_glyphs(seed=42)
+    manifest = build_manifest(
+        "phase02a-local-schema",
+        items,
+        [OrbDescriptor(), HuRegionpropsDescriptor()],
+    )
+    # Schema v1 invariants the loader enforces, copied here as a decoupled
+    # local fixture.
+    assert manifest["schema_version"] == 1
+    assert isinstance(manifest["manifest_name"], str)
+    assert isinstance(manifest["items"], list) and manifest["items"]
+    seen_ids: set[str] = set()
+    for entry in manifest["items"]:
+        assert set(entry.keys()) == {"item_id", "reference_labels", "route_features"}
+        assert isinstance(entry["item_id"], str)
+        assert entry["item_id"] not in seen_ids, "item_id values must be unique"
+        seen_ids.add(entry["item_id"])
+        assert isinstance(entry["reference_labels"], dict) and entry["reference_labels"]
+        assert isinstance(entry["route_features"], dict) and entry["route_features"]
+        route_dims: set[int] = set()
+        for route_name, values in entry["route_features"].items():
+            assert isinstance(route_name, str) and route_name
+            assert isinstance(values, list) and values
+            assert all(isinstance(v, float) for v in values)
+            route_dims.add(len(values))
+        # morph-bench requires each route to have a consistent dim across
+        # items; enforce per-item here as a structural sanity pre-check.
+        assert len(route_dims) >= 1

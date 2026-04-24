@@ -6,21 +6,21 @@ Commit: will be appended on push
 
 ## Environment
 
-- Python `3.13.5` (system) in `/workspace/.venv`
+- Python `3.13.5` (system) in `<RUNPOD_WORKSPACE>/.venv`
 - `numpy==2.4.4`, `opencv-python-headless==4.13.0.92`,
   `scikit-image==0.26.0`, `scikit-learn==1.8.0`, `scipy==1.17.1`
-- `gnosis-morph-bench==0.1.0` (editable from `/workspace/gnosis-morph-bench`)
-- `gnosis-glyph-engine==0.1.0a1` (editable from `/workspace/gnosis-glyph-engine`)
+- `gnosis-morph-bench==0.1.0` (editable from `<RUNPOD_WORKSPACE>/gnosis-morph-bench`)
+- `gnosis-glyph-engine==0.1.0a1` (editable from `<RUNPOD_WORKSPACE>/gnosis-glyph-engine`)
 
 ## Gate 1 — monorepo-free install
 
-`pip install -e /workspace/gnosis-glyph-engine[dev]` completed without
+`pip install -e <RUNPOD_WORKSPACE>/gnosis-glyph-engine[dev]` completed without
 resolving any live-monorepo path. All transitive deps resolved from PyPI.
 **PASS.**
 
 ## Gate 2 — pytest
 
-Command: `python -m pytest -q` from `/workspace/gnosis-glyph-engine/`.
+Command: `python -m pytest -q` from `<RUNPOD_WORKSPACE>/gnosis-glyph-engine/`.
 Result: `16 passed in 9.41s`. **PASS.**
 
 Test coverage:

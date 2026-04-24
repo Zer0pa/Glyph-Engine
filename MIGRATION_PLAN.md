@@ -35,8 +35,8 @@ Pass condition:
 ## Compute Substrate
 
 - Authoring: local Mac at `Gnosis Portfolio/workstreams/gnosis-glyph-engine/`.
-- Execution (Phase 02+): RunPod host `38.80.152.147:34587`, pod
-  `7k3riasglemecu`, Python 3.13 venv under `/workspace/gnosis-glyph-engine/`.
+- Execution (Phase 02+): RunPod host `<RUNPOD_HOST>`, pod
+  `<RUNPOD_POD_ID>`, Python 3.13 venv under `<RUNPOD_WORKSPACE>/gnosis-glyph-engine/`.
 - Artefact failover: Hugging Face `Zer0pa/glyph-engine-artefacts`.
 
 ## Do Not Do Yet

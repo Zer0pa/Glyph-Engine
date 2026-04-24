@@ -24,13 +24,25 @@ dev = [
   "pytest>=7.4",
   "pytest-cov>=4.1",
 ]
-morph-bench = [
-  # Sibling workstream; installed via editable path on the execution host.
-  # No upstream pin yet; Phase 03 will decide whether to pin by git ref.
+test = [
+  "pytest>=7.4",
+]
+# The sibling `gnosis-morph-bench` is the cross-repo contract partner. It is
+# NOT declared as a hard dependency here because `gnosis-glyph-engine` must
+# remain independently installable. Tests that require morph-bench skip
+# automatically when it is unavailable (see `tests/test_manifest_builder.py`).
+# Supply it on the execution host with an editable path install or a future
+# pinned git ref, e.g.:
+#     pip install -e /path/to/gnosis-morph-bench
+# or:
+#     pip install 'gnosis-morph-bench @ git+ssh://git@github.com/Zer0pa/Morph-Bench@<rev>'
+morph-bench-contract = [
+  # intentionally empty; declarative marker only
 ]
 
 [project.scripts]
 glyph-engine-ablation = "gnosis_glyph_engine.scripts.run_ablation:main"
+glyph-engine-robustness = "gnosis_glyph_engine.scripts.run_robustness:main"
 
 [tool.setuptools]
 package-dir = { "" = "src" }

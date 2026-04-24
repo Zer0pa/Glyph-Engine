@@ -16,5 +16,5 @@
 - Git hygiene: atomic commits per GPD sub-task; commit messages cite the
   authority metric and phase id; no force-push, no rebase of shared history.
 - Environment rule: Phase 02+ compute runs on the RunPod host under
-  `/workspace/gnosis-glyph-engine/` with a Python 3.13 venv; the Mac is the
+  `<RUNPOD_WORKSPACE>/gnosis-glyph-engine/` with a Python 3.13 venv; the Mac is the
   authoring surface only.

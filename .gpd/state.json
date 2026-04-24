@@ -1,6 +1,6 @@
 {
   "_version": 1,
-  "_synced_at": "2026-04-24T03:31:09+00:00",
+  "_synced_at": "2026-04-24T14:00:00+00:00",
   "workstream": "gnosis-glyph-engine",
   "authority_metric": "package_boundary_earned",
   "authority_status": "UNTESTED",
@@ -13,17 +13,18 @@
   "current_phase": "02b",
   "current_phase_name": "Owned-Arm Ablation",
   "status": "BLOCKED_ON_D-06",
-  "progress": 65,
-  "resume": ".gpd/phases/02-minimal-extraction-smoke/02-01-SUMMARY.md",
+  "progress": 75,
+  "resume": ".gpd/phases/02-minimal-extraction-smoke/02-02-SUMMARY.md",
   "blockers": [
-    "D-06: owned-arm source files (scripts/indus/stroke_native_encoding.py, scripts/indus/phase3_common.py) absent from portfolio snapshot",
-    "D-02a-06: baseline_orb saturates the 12-glyph fixture (NMI=1.0, mean_jaccard=1.0) — Phase 03 risk"
+    "D-06: owned-arm source files (scripts/indus/stroke_native_encoding.py, scripts/indus/phase3_common.py) absent from portfolio snapshot"
   ],
   "next_actions": [
-    "owner retrieves owned-arm source files or grants live-monorepo access on pod",
-    "or run '/gpd:insert-phase 02.1 Fixture Hardening' if fixture saturation is judged unacceptable",
-    "then author Phase 02b PLAN and re-run run_ablation.py with owned arms included"
+    "owner retrieves owned-arm source files or grants live-monorepo clone access on pod",
+    "author Phase 02b PLAN",
+    "run owned arms against multi-seed ORB ceiling (mean sigma ~4.14)",
+    "proceed to Phase 03 verdict application of D-04 rule under D-02c-02 routing"
   ],
+  "closeout_brief_2026_04_24_status": "LANE_A_FIXES_COMPLETE",
   "completed_phases": [
     {
       "phase": "00",
@@ -43,11 +44,25 @@
       "completed": "2026-04-24",
       "verdict": "PASS",
       "artefact": "artifacts/ablation/ablation_report.json",
-      "measured": {
+      "measured_seed_42": {
         "baseline_orb": {"nmi": 1.0, "sigma": 6.399654, "mean_jaccard": 1.0, "silhouette": 0.267592},
         "baseline_hog": {"nmi": 0.568183, "sigma": 3.773654, "mean_jaccard": 0.399821, "silhouette": 0.022096},
         "baseline_hu_regionprops": {"nmi": 0.49571, "sigma": 3.39922, "mean_jaccard": 0.832621, "silhouette": 0.40835}
       }
+    },
+    {
+      "phase": "02c",
+      "name": "OSS-Baseline Robustness + Closeout",
+      "completed": "2026-04-24",
+      "verdict": "PASS",
+      "artefact": "artifacts/robustness/robustness_report.json",
+      "measured_multi_seed_0_9": {
+        "baseline_orb": {"sigma_mean": 4.1377, "sigma_stdev": 1.115659, "nmi_mean": 0.764591, "mean_jaccard_mean": 0.898995, "silhouette_mean": 0.287878},
+        "baseline_hu_regionprops": {"sigma_mean": 2.953718, "sigma_stdev": 1.05569, "nmi_mean": 0.574906, "mean_jaccard_mean": 0.942923, "silhouette_mean": 0.488197},
+        "baseline_hog": {"sigma_mean": 1.153333, "sigma_stdev": 1.167746, "nmi_mean": 0.362079, "mean_jaccard_mean": 0.435006, "silhouette_mean": 0.023061}
+      },
+      "superseded_decisions": ["D-02a-06"],
+      "new_decisions": ["D-02c-01", "D-02c-02", "D-02c-03", "D-02c-04", "D-02c-05", "D-02c-06"]
     }
   ]
 }
