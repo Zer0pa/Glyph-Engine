@@ -59,8 +59,17 @@ Key numeric claims:
 
 ## Gate D — scrub of public-facing paths
 
-Command: `grep -rl -E "38\.80\.152\.147|7k3riasglemecu|/Users/zer0palab|/workspace/gnosis|ssh\.runpod\.io"` across the repo (excluding `.git`).
-Result: **CLEAN** — zero matches after the sed pass.
+Operational fingerprints scrubbed (runpod host ipv4 + port, pod id,
+local user home, pod workspace path, runpod proxy hostname). The scrub
+command and its raw regex are held off-surface in the owner's
+provenance notes — citing them verbatim here would reintroduce the
+very fingerprints the scrub removed. Reviewer reproduction:
+
+1. Construct the regex locally from `docs/PROVENANCE_LABELS.md`
+   (every label maps to a concrete value the owner can disclose).
+2. Run `grep -rlE '<your-regex>' --exclude-dir=.git .` from repo root.
+
+Result on 2026-04-24: **CLEAN** — zero matches after the sed pass.
 
 Replacements use the symbolic labels defined in
 `docs/PROVENANCE_LABELS.md`: `<RUNPOD_HOST>`, `<RUNPOD_POD_ID>`,
