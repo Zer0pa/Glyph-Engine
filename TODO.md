@@ -24,7 +24,7 @@
 - [x] Decide Glyph-Engine stays sovereign (D-02c-02); define adapter-only
       rollback trigger.
 - [x] Scrub public-facing paths via `docs/PROVENANCE_LABELS.md`.
-- [x] Add `PRIVATE_INTERNAL_LICENSE_NOTICE.md`.
+- [x] Add `PRIVATE_INTERNAL_LICENSE_NOTICE.md` *(later retired in Wave 2 and superseded by canonical `NOTICE.md`)*.
 - [x] Produce `HF_CUSTODY_REGISTER.md` with production-token verification.
 
 ## Phase 02b (Owned-Arm Ablation) — BLOCKED ON D-06

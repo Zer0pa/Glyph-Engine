@@ -93,8 +93,7 @@ product**, and **not a decipherment claim**. The authority metric
 
 ```
 .
-├── NOTICE.md                                  # root legal posture (Gnosis Phase 1)
-├── PRIVATE_INTERNAL_LICENSE_NOTICE.md         # longer private notice
+├── NOTICE.md                                  # root legal posture (Gnosis Phase 1, canonical)
 ├── HF_CUSTODY_REGISTER.md                     # HF artefact-dataset truth
 ├── README.md                                  # this file
 ├── SOVEREIGN_PRD.md                           # authority metric + extraction gate

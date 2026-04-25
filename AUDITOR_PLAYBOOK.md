@@ -31,8 +31,10 @@ package. Authority metric `package_boundary_earned` is currently
 10. Confirm `artifacts/robustness/robustness_report.json` is present and
     `arms[*].sigma.n == 10`.
 11. Confirm `code/README.md` reflects `BORROWED_ARMS_EXTRACTED`.
-12. Read `PRIVATE_INTERNAL_LICENSE_NOTICE.md` and `HF_CUSTODY_REGISTER.md`
-    — they own the rights-posture and HF-custody truth.
+12. Read `NOTICE.md` and `HF_CUSTODY_REGISTER.md` — they own the
+    rights-posture and HF-custody truth (the earlier
+    `PRIVATE_INTERNAL_LICENSE_NOTICE.md` was retired in the Wave 2
+    front-door pass; root legal posture is now `NOTICE.md`).
 
 ## Claim Replay Map
 

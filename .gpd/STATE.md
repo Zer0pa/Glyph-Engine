@@ -55,7 +55,7 @@ Phase 02b (Owned-Arm Ablation) remains blocked on D-06.
 | Sovereign-vs-adapter scope decision | DONE (D-02c-02: stay sovereign; adapter-only trigger defined) |
 | Scrub public-facing paths via parameterisation | DONE (docs/PROVENANCE_LABELS.md) |
 | Keep private/internal | IN FORCE |
-| No public licence | IN FORCE (PRIVATE_INTERNAL_LICENSE_NOTICE.md) |
+| No public licence | IN FORCE (`NOTICE.md`; `PRIVATE_INTERNAL_LICENSE_NOTICE.md` retired in Wave 2) |
 | No negative evidence deleted | HONOURED (baseline_hog kept despite weakness) |
 | HF custody register verified | DONE (HF_CUSTODY_REGISTER.md) |
 | Verification run before reporting done | DONE (Phase 02c Gates A–F) |
@@ -69,7 +69,7 @@ Phase 02b (Owned-Arm Ablation) remains blocked on D-06.
   + `artifacts/ablation/`.
 - Phase 02c closeout: `.gpd/phases/02-minimal-extraction-smoke/02-02-*`
   + `artifacts/robustness/`.
-- Closeout surfaces: `PRIVATE_INTERNAL_LICENSE_NOTICE.md`,
+- Closeout surfaces: `NOTICE.md` (canonical, Wave 2),
   `HF_CUSTODY_REGISTER.md`, `docs/PROVENANCE_LABELS.md`.
 - HF mirror: `Zer0pa/glyph-engine-artefacts` (pre-02c SHA `58cbc2e…`;
   post-02c SHA to be recorded after push).

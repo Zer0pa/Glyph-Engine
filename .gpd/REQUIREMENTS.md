@@ -39,7 +39,8 @@ Last updated: 2026-04-24 (Phase 02c closeout)
       *(docs/PROVENANCE_LABELS.md + sed pass; zero matches on operational
       fingerprints.)*
 - [x] **CLOSE-P2-licence**: Explicit private licence notice.
-      *(PRIVATE_INTERNAL_LICENSE_NOTICE.md.)*
+      *(Originally `PRIVATE_INTERNAL_LICENSE_NOTICE.md`; replaced in
+      Wave 2 by canonical `NOTICE.md`.)*
 - [x] **CLOSE-HF**: HF custody register with live token verification.
       *(HF_CUSTODY_REGISTER.md row HF-01.)*
 

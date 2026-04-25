@@ -36,7 +36,7 @@ rename.
 | Latest commit SHA | `58cbc2e6cb1f3c72b6e5ec88dad9637028467657` (pre-Phase 02c) |
 | Last modified | 2026-04-24 03:36:49 UTC |
 | Consuming GitHub repo | `Zer0pa/Glyph-Engine` |
-| Rights class | `PRIVATE_INTERNAL_ONLY` (no licence grant; see `PRIVATE_INTERNAL_LICENSE_NOTICE.md`) |
+| Rights class | `PRIVATE_INTERNAL_ONLY` (no licence grant; see `NOTICE.md`) |
 | Intended contents | Phase 02 ablation + robustness artefacts (ablation_report.json, per-arm manifests and smoke reports, robustness_report.json). |
 
 Files present at registered SHA (pre-02c refresh):
