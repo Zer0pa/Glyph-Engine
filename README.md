@@ -14,7 +14,9 @@ falsifiable question:
 It is an internal extraction-target scaffold for reusable glyph geometry,
 stroke, and descriptor kernels. It is **not a public library**, **not a
 product**, and **not a decipherment claim**. The authority metric
-`package_boundary_earned` is currently `UNTESTED`.
+`package_boundary_earned` is currently `UNTESTED`, so this repo remains a
+private research hold until D-06 clears and the owned-arm gate is actually
+tested.
 
 ## What We Prove
 
@@ -149,7 +151,8 @@ Console scripts (after install): `glyph-engine-ablation`,
   `scripts/indus/phase3_common.py` from the live monorepo, or grant pod
   access to a live-monorepo clone. Phase 02b cannot start until D-06
   clears.
-- Final license/canonical legal text is owner-deferred (see `NOTICE.md`).
+- Public-release licensing is owner-deferred; current legal posture is the
+  canonical Phase 1 private notice in `NOTICE.md`.
 - Public contact surface is owner-deferred.
 - No real-glyph fixture; the synthetic 12-glyph generator is the only
   ablation surface today.
