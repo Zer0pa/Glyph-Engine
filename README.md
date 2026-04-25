@@ -1,104 +1,156 @@
+> **Notice:** This is a private internal repository. See `NOTICE.md`.
+
 # Gnosis Glyph Engine
 
-> Internal extraction-target scaffold for glyph geometry, stroke, and descriptor
-> kernels. Not a public library yet.
+## What This Is
 
-## What This Repo Is
+`gnosis-glyph-engine` is the Gnosis private research lane that asks one
+falsifiable question:
 
-`gnosis-glyph-engine` is a migration scaffold for auditing reusable
-image-to-geometry and glyph-descriptor code currently spread across Indus
-and cuneiform source families. Its job is to decide whether a real package
-boundary exists. It does not yet prove a reusable library, performance
-superiority, or a commercial product.
+> Is a standalone glyph-engine package boundary earned by a real consumer,
+> a monorepo-free smoke path, and a descriptor ablation against borrowed
+> baselines?
 
-## Current Authority
+It is an internal extraction-target scaffold for reusable glyph geometry,
+stroke, and descriptor kernels. It is **not a public library**, **not a
+product**, and **not a decipherment claim**. The authority metric
+`package_boundary_earned` is currently `UNTESTED`.
 
-| Item | Current Truth |
+## What We Prove
+
+- The frozen Phase 01 interface (`Descriptor`, `LearnedDescriptor`,
+  `manifest_builder`) is implementable using only borrowed OSS — OpenCV,
+  scikit-image, scikit-learn, NumPy.
+- The package installs cleanly with `pip install -e .[dev]` on Python 3.13
+  with no live-monorepo imports and no monorepo path coupling.
+- The 17-test pytest suite passes when sibling `gnosis-morph-bench` is
+  installed; 16 pass + 1 cleanly skips when it is not — preserving repo
+  independence.
+- The frozen `BenchmarkManifest` shape is consumed unmodified by
+  `gnosis_morph_bench.schema.load_manifest`, producing finite `sigma`,
+  `null_mean`, `null_std`, `silhouette`, and `mean_jaccard` per arm.
+- A multi-seed (10-seed) borrowed-baseline ceiling is recorded in
+  `artifacts/robustness/robustness_report.json`; mean σ across seeds
+  comes out to `baseline_orb` 4.14 ± 1.12, `baseline_hu_regionprops`
+  2.95 ± 1.06, `baseline_hog` 1.15 ± 1.17.
+- Determinism is checked: `replay_all_identical == true` for every arm
+  in the seed-42 ablation; reference-freeze SHA256 is byte-stable across
+  arms.
+
+## What We Don't Claim
+
+- We do not claim that any owned descriptor beats borrowed baselines.
+  Phase 02b is BLOCKED on D-06 (two Indus source files are not present
+  in the portfolio snapshot) and the gate-4 verdict is `UNTESTED`.
+- We do not claim cross-corpus generalisation. The fixture is a
+  deterministic 12-glyph synthetic generator; rights-cleared real-glyph
+  evidence does not yet exist in this repo.
+- We do not claim public-release readiness, performance superiority, or
+  product readiness.
+- We do not claim Indus or cuneiform domain results — those are owned by
+  sibling lanes.
+
+## Tests and Verification
+
+- Local CI: `.github/workflows/ci.yml` runs `pip install -e .[dev]` then
+  `pytest -q` on every push and PR to `main`.
+- Local repro:
+
+  ```bash
+  python3.13 -m venv .venv && source .venv/bin/activate
+  pip install -e .[dev]
+  pytest -q                         # → 16 passed, 1 skipped
+  pip install -e /path/to/gnosis-morph-bench    # optional contract test
+  pytest -q                         # → 17 passed
+  python -m gnosis_glyph_engine.scripts.run_ablation
+  python -m gnosis_glyph_engine.scripts.run_robustness
+  ```
+
+- Provenance: `seed=42` ablation matches
+  `.gpd/phases/02-minimal-extraction-smoke/02-01-VERIFICATION.md`
+  to 6 decimal places; `seeds=0..9` robustness matches `02-02-VERIFICATION.md`.
+- Endpoint-leak scan is part of the closeout verification (Gate D in
+  `02-02-VERIFICATION.md`); see `docs/PROVENANCE_LABELS.md` for the
+  symbolic-label convention.
+
+## Proof Anchors
+
+| Claim | Evidence |
 |---|---|
-| Product lane | `INTERNAL_EXTRACTION_TARGET` |
-| Code remote | `Zer0pa/Glyph-Engine` (private GitHub) |
-| Default branch | `main` |
-| Artefact failover | `Zer0pa/glyph-engine-artefacts` (Hugging Face, private) |
-| Acquisition surface | internal only |
-| Current authority artifact | `SOVEREIGN_PRD.md` + `.gpd/phases/*/` |
-| Authority metric | `package_boundary_earned` |
-| Metric verdict | `UNTESTED` (gates 1–3 PASSED, gate 4 blocked on D-06) |
-| Active phase | Phase 02b (BLOCKED on owned-arm source retrieval, D-06) |
-| License | `PRIVATE_INTERNAL_ONLY` — see `PRIVATE_INTERNAL_LICENSE_NOTICE.md` |
-| Primary contact | owner-controlled private coordination path |
+| Authority metric definition | `SOVEREIGN_PRD.md` §Authority Metric |
+| Frozen consumer + interface | `.gpd/phases/01-consumer-and-interface-freeze/01-DECISIONS.md` D-01, D-02 |
+| Frozen fixture + ablation rule | `.gpd/phases/01-consumer-and-interface-freeze/01-DECISIONS.md` D-03, D-04 |
+| Phase 02a single-seed ablation | `artifacts/ablation/ablation_report.json` + `.gpd/phases/02-minimal-extraction-smoke/02-01-VERIFICATION.md` |
+| Phase 02c multi-seed robustness | `artifacts/robustness/robustness_report.json` + `.gpd/phases/02-minimal-extraction-smoke/02-02-VERIFICATION.md` |
+| Sovereign-vs-adapter scope decision | `.gpd/phases/02-minimal-extraction-smoke/02-02-DECISIONS.md` D-02c-02 |
+| Owned-arm source-retrieval blocker | `SOURCE_BOUNDARY.md` (D-06) |
+| HF custody truth | `HF_CUSTODY_REGISTER.md` HF-01 |
+| Path/endpoint scrub convention | `docs/PROVENANCE_LABELS.md` |
+| Reviewer interim status | `AGENT_STATUS_REPORT_2026-04-24.md` |
+| Auditor fast path | `AUDITOR_PLAYBOOK.md` |
 
-## Phase Progress
+## Repo Shape
 
-| Phase | Status |
-|---|---|
-| 00 Hold-Surface Bootstrap | Complete (2026-04-23) |
-| 01 Consumer And Interface Freeze | Complete (2026-04-24) |
-| 02a Borrowed-Baseline Sanity Path | Complete (2026-04-24) |
-| 02c OSS-Baseline Robustness + Closeout | **Complete (2026-04-24)** |
-| 02b Owned-Arm Ablation | Blocked on D-06 |
-| 03 Package-Boundary Review | Pending |
+```
+.
+├── NOTICE.md                                  # root legal posture (Gnosis Phase 1)
+├── PRIVATE_INTERNAL_LICENSE_NOTICE.md         # longer private notice
+├── HF_CUSTODY_REGISTER.md                     # HF artefact-dataset truth
+├── README.md                                  # this file
+├── SOVEREIGN_PRD.md                           # authority metric + extraction gate
+├── SOURCE_BOUNDARY.md                         # candidate sources, ledger, D-06
+├── AUDITOR_PLAYBOOK.md                        # fast path + reproduce + claim-replay
+├── AGENT_STATUS_REPORT_2026-04-24.md          # agent narrative layer for review
+├── MIGRATION_PLAN.md, ROADMAP.md, GOVERNANCE.md, RELEASING.md, SECURITY.md, ...
+├── DATA_POLICY.md, PUBLIC_AUDIT_LIMITS.md
+├── pyproject.toml                             # gnosis-glyph-engine==0.1.0a1
+├── .github/
+│   ├── workflows/ci.yml
+│   ├── ISSUE_TEMPLATE/, PULL_REQUEST_TEMPLATE.md
+├── .gpd/
+│   ├── PROJECT.md, STATE.md, ROADMAP.md, REQUIREMENTS.md, DECISIONS.md,
+│   │   CONVENTIONS.md, NOTATION_GLOSSARY.md, state.json, config.json
+│   └── phases/
+│       ├── 00-workstream-bootstrap/*
+│       ├── 01-consumer-and-interface-freeze/*
+│       └── 02-minimal-extraction-smoke/*      # 02a + 02c artefacts
+├── src/gnosis_glyph_engine/
+│   ├── __init__.py, protocols.py, fixtures.py, manifest_builder.py
+│   ├── baselines/{__init__,orb,hu_regionprops,hog}.py
+│   ├── owned/__init__.py                      # raises SourceRetrievalPending until D-06
+│   └── scripts/{__init__,run_ablation,run_robustness}.py
+├── tests/{test_fixtures,test_baselines,test_manifest_builder}.py
+├── scripts/run_ablation.py                    # thin shim
+├── artifacts/
+│   ├── ablation/   {ablation_report.json, per_arm/baseline_*.{manifest,smoke_report}.json}
+│   └── robustness/ robustness_report.json
+├── code/README.md                             # legacy code-surface marker
+└── docs/{ARCHITECTURE,LEGAL_BOUNDARIES,PROVENANCE_LABELS,FAQ,SUPPORT,README}.md
+```
 
-## What Phase 02a+02c Proved
+## Quick Start
 
-- The frozen Phase 01 interface is implementable using only borrowed OSS
-  (OpenCV, scikit-image, scikit-learn, NumPy).
-- The scaffold installs with `pip install -e .[dev]` on a clean Python 3.13
-  environment, imports nothing from the live monorepo, and is independently
-  testable **without** `gnosis-morph-bench`.
-- 17-test pytest suite passes when `gnosis-morph-bench` is installed; 16
-  passed + 1 skipped in a clean venv without it.
-- Borrowed-baseline ceiling across 10 seeds:
+```bash
+git clone https://github.com/Zer0pa/Glyph-Engine.git
+cd Glyph-Engine
+python3.13 -m venv .venv && source .venv/bin/activate
+pip install -e .[dev]
+pytest -q                          # → 16 passed, 1 skipped
+python -m gnosis_glyph_engine.scripts.run_ablation
+python -m gnosis_glyph_engine.scripts.run_robustness
+```
 
-  | Arm | σ mean ± stdev | NMI mean | mean_jaccard mean |
-  |---|---|---:|---:|
-  | baseline_orb | 4.14 ± 1.12 | 0.765 | 0.899 |
-  | baseline_hu_regionprops | 2.95 ± 1.06 | 0.575 | 0.943 |
-  | baseline_hog | 1.15 ± 1.17 | 0.362 | 0.435 |
-
-## What Phase 02a+02c Could Not Prove
-
-- Whether any *owned* descriptor beats the borrowed baselines. Phase 02b
-  is blocked on D-06 (two Indus source files not present in the portfolio
-  snapshot).
-- Cross-corpus generalisation. The fixture is synthetic; a rights-cleared
-  real-glyph fixture appears only after owner action on D-06.
-
-## Prior Framing Corrected
-
-An earlier single-seed (seed=42) reading suggested `baseline_orb` saturated
-the fixture and that Phase 03 would need to widen the fixture before
-running Phase 02b. **That framing has been retired by Phase 02c.** The
-multi-seed evidence shows `baseline_orb` does not robustly saturate;
-Phase 02b can proceed directly against the 10-seed ceiling when D-06
-clears. See `.gpd/phases/02-minimal-extraction-smoke/02-02-DECISIONS.md`
-(D-02c-01, D-02c-02, D-02c-03).
-
-## Read Next
-
-| Need | File |
-|---|---|
-| Review team entry point (interim status) | `AGENT_STATUS_REPORT_2026-04-24.md` |
-| Auditor fast path + reproduce block | `AUDITOR_PLAYBOOK.md` |
-| Rights posture | `PRIVATE_INTERNAL_LICENSE_NOTICE.md` |
-| HF custody truth | `HF_CUSTODY_REGISTER.md` |
-| Public-path label convention | `docs/PROVENANCE_LABELS.md` |
-| Sovereign hold/extraction brief | `SOVEREIGN_PRD.md` |
-| Candidate source families + extraction ledger | `SOURCE_BOUNDARY.md` |
-| Phase 01 frozen decisions | `.gpd/phases/01-consumer-and-interface-freeze/01-DECISIONS.md` |
-| Phase 02a verification (seed=42) | `.gpd/phases/02-minimal-extraction-smoke/02-01-VERIFICATION.md` |
-| Phase 02c verification (multi-seed + closeout) | `.gpd/phases/02-minimal-extraction-smoke/02-02-VERIFICATION.md` |
-| Phase 02c scope decision | `.gpd/phases/02-minimal-extraction-smoke/02-02-DECISIONS.md` |
-| Ablation report (machine-readable) | `artifacts/ablation/ablation_report.json` |
-| Robustness report (machine-readable) | `artifacts/robustness/robustness_report.json` |
-| Data and rights posture | `DATA_POLICY.md` |
-| Architecture truth map | `docs/ARCHITECTURE.md` |
-| Current gaps | `TODO.md` |
-| GPD state | `.gpd/PROJECT.md`, `.gpd/STATE.md` |
+Console scripts (after install): `glyph-engine-ablation`,
+`glyph-engine-robustness`.
 
 ## Current Gaps
 
-- Owned-arm source files absent from portfolio snapshot (D-06).
-- Final license and public contact fields remain owner-deferred (see
-  `PRIVATE_INTERNAL_LICENSE_NOTICE.md`).
-- No GitHub Actions CI yet. Brief's guidance: add minimal CI only after
-  P1 fixes; with P1 done on this lane, CI can be added as a follow-up.
+- **D-06** (owner action): retrieve
+  `scripts/indus/stroke_native_encoding.py` and
+  `scripts/indus/phase3_common.py` from the live monorepo, or grant pod
+  access to a live-monorepo clone. Phase 02b cannot start until D-06
+  clears.
+- Final license/canonical legal text is owner-deferred (see `NOTICE.md`).
+- Public contact surface is owner-deferred.
+- No real-glyph fixture; the synthetic 12-glyph generator is the only
+  ablation surface today.
