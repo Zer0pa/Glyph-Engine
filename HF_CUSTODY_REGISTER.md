@@ -1,9 +1,10 @@
 # Hugging Face Custody Register — `gnosis-glyph-engine`
 
-Date: 2026-04-24 (initial); 2026-04-26 (HF lane brief refresh).
+Date: 2026-04-24 (initial); 2026-04-26 (HF lane brief refresh; HF
+storage execution brief refresh).
 Verifier: autonomous lane-A run against the Zer0pa closeout brief
 dated 2026-04-24, refreshed against the HF lane execution brief dated
-2026-04-26.
+2026-04-26 and the Gnosis HF storage execution brief dated 2026-04-26.
 Authentication: production HF token `Zer0pa HF Storage` (user
 `Architect-Prime`, org membership `Zer0pa`).
 
@@ -121,3 +122,23 @@ recorded here once complete).
 | Visibility decision (per §4.4) | PRIVATE (Glyph-Engine is `private for now` in the brief's lane direction table). Maintained. |
 | Architect-Prime drift | NONE for this lane (verified 2026-04-26: zero datasets, zero models, zero spaces under `Architect-Prime`). |
 | Verification | `HfApi().dataset_info("Zer0pa/glyph-engine-artefacts")` via production token, 2026-04-26 18:31:47 UTC. |
+
+### HF-01 post-storage-tier state (verified 2026-04-26)
+
+| Field | Value |
+|---|---|
+| Latest commit SHA | `46cca8b9188f506e132b410b0fe910c1e6da6b3a` |
+| Change | README gained a `## Storage tier` section per `GNOSIS_HF_STORAGE_EXECUTION_BRIEF_2026-04-26.md` §5.1 point 5. Source-commit pin in card refreshed from `2efe3c7` to `c42a054`. No artefact payload changed. |
+| Inventory at refresh | 10 files, 52,985 B total (≈ 51.7 KiB); largest single file 13,714 B (`artifacts/ablation/per_arm/baseline_orb.manifest.json`). All payload is small JSON + Markdown. |
+| Routing classification (per §3, §4, §7.5) | **Lightweight discovery surface only.** Nothing on this lane meets any heavy-tier threshold: no file >1 MB, payload <<100 MB, no model weights, no many-file directory of meaningful aggregate weight. |
+| Verification | `HfApi().dataset_info("Zer0pa/glyph-engine-artefacts")` via production token, 2026-04-26 19:25:51 UTC. |
+
+### HF-02 — `Architect-Prime/glyph-engine-artefacts` — INTENTIONALLY NOT CREATED
+
+| Field | Value |
+|---|---|
+| Repo ID | `Architect-Prime/glyph-engine-artefacts` |
+| Existence at 2026-04-26 | **DOES NOT EXIST** (`HfApi().dataset_info(...)` raises `RepositoryNotFoundError` 404 against production token). |
+| Decision | Do **NOT** create at this time. |
+| Rationale (per brief §3 note + §6 step 6 + §7.5) | "If a repo does not yet exist on `Architect-Prime`, create it only if the lane actually has heavy content worth storing there." The lane has no heavy content (52.2 KB total, all small JSON/MD). §7.5 specifically directs Glyph-Engine: "do not over-build HF presence until there is a real earned boundary and real heavy content to justify it". The authority metric `package_boundary_earned` is still `UNTESTED`; a heavy-canonical store would precede the evidence it should custody. |
+| Trigger to create | Phase 02b owned-arm extraction produces heavy outputs (model weights, real-glyph imagery, bulky benchmark dumps). At that point the AP repo will be created and this row updated. |
