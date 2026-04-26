@@ -1,8 +1,9 @@
 # Hugging Face Custody Register — `gnosis-glyph-engine`
 
-Date: 2026-04-24
-Verifier: autonomous closeout run for lane `Glyph-Engine` against the
-Zer0pa closeout brief dated 2026-04-24.
+Date: 2026-04-24 (initial); 2026-04-26 (HF lane brief refresh).
+Verifier: autonomous lane-A run against the Zer0pa closeout brief
+dated 2026-04-24, refreshed against the HF lane execution brief dated
+2026-04-26.
 Authentication: production HF token `Zer0pa HF Storage` (user
 `Architect-Prime`, org membership `Zer0pa`).
 
@@ -109,3 +110,14 @@ recorded here once complete).
 | Latest commit SHA | `76fa5fff552eb47af120ca795e8a7ed5f1eb330c` |
 | Siblings added since pre-02c SHA | `artifacts/robustness/robustness_report.json`, README.md refreshed |
 | Verification | `HfApi().dataset_info("Zer0pa/glyph-engine-artefacts")` via production token, 2026-04-24 |
+
+### HF-01 post-card-refresh state (verified 2026-04-26)
+
+| Field | Value |
+|---|---|
+| Latest commit SHA | `32a8b5eeb78198c62a18158f81205ce1aa03a0c6` |
+| Change | README.md rewritten to match HF Lane Execution Brief 2026-04-26 §5 template (no SAL wording, no open-source license, license frontmatter omitted, internal-only posture made explicit). No artefact payload changed; the nine artefact files under `artifacts/ablation/` and `artifacts/robustness/` are unchanged. |
+| Classification (per §6.2) | Canonical and keep; card refreshed. |
+| Visibility decision (per §4.4) | PRIVATE (Glyph-Engine is `private for now` in the brief's lane direction table). Maintained. |
+| Architect-Prime drift | NONE for this lane (verified 2026-04-26: zero datasets, zero models, zero spaces under `Architect-Prime`). |
+| Verification | `HfApi().dataset_info("Zer0pa/glyph-engine-artefacts")` via production token, 2026-04-26 18:31:47 UTC. |
