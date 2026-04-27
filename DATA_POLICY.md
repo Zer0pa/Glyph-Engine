@@ -18,4 +18,4 @@ feature matrices. It is a source-boundary and package-boundary decision surface.
 ## Public Boundary
 
 No public data release is authorized from this scaffold. Any future release must
-first supply license authority, source provenance, and benchmark evidence.
+first supply source provenance, benchmark evidence, and data/artifact release clearance.

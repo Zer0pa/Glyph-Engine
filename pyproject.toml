@@ -8,7 +8,7 @@ version = "0.1.0a1"
 description = "Internal extraction-target scaffold for glyph geometry and descriptor kernels. Not a public library. Authority metric: package_boundary_earned = UNTESTED."
 readme = "README.md"
 requires-python = ">=3.10"
-license = { text = "OWNER_DEFERRED" }
+license = { text = "Apache-2.0" }
 authors = [{ name = "Zer0pa Architect-Prime", email = "architects@zer0pa.ai" }]
 keywords = ["glyph", "descriptor", "internal-extraction-target"]
 

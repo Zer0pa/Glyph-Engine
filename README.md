@@ -1,6 +1,28 @@
-> **Notice:** This is a private internal repository. See `NOTICE.md`.
-
 # Gnosis Glyph Engine
+
+## Licensing
+
+This repository is part of the Zer0pa Gnosis Portfolio.
+
+**Code** in this repository is licensed under the Apache License 2.0. See
+`LICENSE` for the full text. SPDX identifier: `Apache-2.0`.
+
+**Documentation, reports, and written materials** are licensed under Creative
+Commons Attribution 4.0 International. SPDX identifier: `CC-BY-4.0`. Canonical
+terms: <https://creativecommons.org/licenses/by/4.0/>.
+
+**Data and fixtures** are handled per dataset and artifact family. See
+`DATA_POLICY.md` for this repository's data boundary. The code license does not
+license raw corpora, image-bearing cultural-heritage assets, private HF
+artifacts, model weights, endpoint logs, or operational transcripts.
+
+**Trademarks** - "Gnosis", "Zer0pa Gnosis", and distinctive sub-marks are
+trademarks of Zer0pa. Apache-2.0 and CC-BY-4.0 do not grant trademark rights.
+See `TRADEMARKS.md`.
+
+Public visibility is a separate repository-setting action. The license files in
+this repo define the intended open-source/open-documentation terms for released
+Gnosis code and written materials; they do not publish rights-gated data.
 
 ## What This Is
 
@@ -95,7 +117,7 @@ tested.
 
 ```
 .
-├── NOTICE.md                                  # root legal posture (Gnosis Phase 1, canonical)
+├── NOTICE                                  # Apache-2.0 code and CC-BY-4.0 docs posture
 ├── HF_CUSTODY_REGISTER.md                     # HF artefact-dataset truth
 ├── README.md                                  # this file
 ├── SOVEREIGN_PRD.md                           # authority metric + extraction gate
@@ -151,8 +173,9 @@ Console scripts (after install): `glyph-engine-ablation`,
   `scripts/indus/phase3_common.py` from the live monorepo, or grant pod
   access to a live-monorepo clone. Phase 02b cannot start until D-06
   clears.
-- Public-release licensing is owner-deferred; current legal posture is the
-  canonical Phase 1 private notice in `NOTICE.md`.
-- Public contact surface is owner-deferred.
+- Public-release licensing has landed as Apache-2.0 for code and CC-BY-4.0
+  for docs. Public visibility is still blocked by the unearned package
+  boundary, D-06, and absence of a real-glyph fixture.
+- Public contact surface remains owner-held.
 - No real-glyph fixture; the synthetic 12-glyph generator is the only
   ablation surface today.
