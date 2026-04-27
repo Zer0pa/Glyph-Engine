@@ -88,8 +88,10 @@ to migrate everything off Zer0pa org storage. The repo was created on
 
 ## Disaster-Recovery Posture
 
-If the local Mac dies, every artefact of value for this lane is
-recoverable from these two remotes:
+**The local Mac is a working surface, not a storage tier.** GitHub
+holds the canonical code; Architect-Prime holds the canonical heavy
+artefacts. If the Mac dies, every asset of value for this lane is
+recoverable from these two remotes alone:
 
 | What | Where | Verification |
 |---|---|---|
@@ -105,6 +107,21 @@ from source. No real-glyph corpus exists for this lane.
 The owned-arm files referenced in Phase 01 D-06 do not exist on
 either remote; their absence is the lane's open scientific blocker
 and is recorded in `SOURCE_BOUNDARY.md`.
+
+### Local-vs-HF posture for new artefacts
+
+When future Phase 02b (post-D-06) or any later phase produces
+artefacts, the access pattern is:
+
+- write to `<workstream>/artifacts/...` while developing,
+- commit *small* JSON/MD outputs to git (they are also tracked
+  redundantly — local + GitHub + AP — but git is the canonical
+  diff-able copy),
+- upload *heavy* outputs (model weights, real-glyph imagery, bulky
+  benchmark dumps) only to `Architect-Prime/glyph-engine-artefacts`
+  with byte-exact SHA256 verification, and gitignore them locally,
+- never push heavy outputs to the Zer0pa org HF namespace,
+- never assume the Mac will survive.
 
 ## Cross-Lane Claims NOT Owned Here
 
@@ -160,3 +177,4 @@ Expected on 2026-04-27 baseline:
 | 2026-04-26 | Card aligned to HF Lane Execution Brief 2026-04-26 §5 (sha `32a8b5ee`). | post-card-refresh row |
 | 2026-04-26 | Storage-tier section added per HF Storage Brief §5.1 (sha `46cca8b9`). | post-storage-tier row |
 | 2026-04-27 | Owner directive: migrate off Zer0pa org HF storage entirely. Mirror created at `Architect-Prime/glyph-engine-artefacts` (sha `301b0756`); every artefact SHA256-verified byte-for-byte; orphan auto-rename `Architect-Prime/zeropa-org-glyph-engine-artefacts` cleaned up; `Zer0pa/glyph-engine-artefacts` deleted; Zer0pa namespace verified empty (0 datasets / 0 models / 0 spaces). | this register; HF API responses captured during execution |
+| 2026-04-27 (post-mirror DR verify) | Universal DR-verify circular: this-session SHA256 round-trip on every artefact between local Mac and `Architect-Prime/glyph-engine-artefacts` — fresh download, fresh hash, no cached reuse — all 8 files match byte-for-byte (verified 2026-04-27 10:31 UTC). Bucket-existence probe: `Zer0pa/{,Glyph-Engine-,gnosis-glyph-engine-}scratch` and `Architect-Prime/{,zeropa-org-,gnosis-}glyph-engine-scratch` all 404 — this lane has no bucket in either namespace. Disposable `/tmp/gnosis-glyph-*` venv scratch removed. No local-only artefact of value found; no preservation defect. | this-session HF API responses; `bucket_probe_2026-04-27` block above |
