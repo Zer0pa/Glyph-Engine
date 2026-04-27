@@ -5,7 +5,7 @@
 Phase 00 (hold-surface bootstrap) and Phase 01 (consumer + interface freeze)
 are complete. The scaffold is paired with a private GitHub remote
 `Zer0pa/Glyph-Engine` for durable custody and a Hugging Face dataset
-`Zer0pa/glyph-engine-artefacts` for artefact failover.
+`Architect-Prime/glyph-engine-artefacts` for artefact failover.
 
 ## Next Gate
 
@@ -37,7 +37,7 @@ Pass condition:
 - Authoring: local Mac at `Gnosis Portfolio/workstreams/gnosis-glyph-engine/`.
 - Execution (Phase 02+): RunPod host `<RUNPOD_HOST>`, pod
   `<RUNPOD_POD_ID>`, Python 3.13 venv under `<RUNPOD_WORKSPACE>/gnosis-glyph-engine/`.
-- Artefact failover: Hugging Face `Zer0pa/glyph-engine-artefacts`.
+- Artefact failover: Hugging Face `Architect-Prime/glyph-engine-artefacts`.
 
 ## Do Not Do Yet
 

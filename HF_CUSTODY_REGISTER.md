@@ -1,144 +1,162 @@
 # Hugging Face Custody Register — `gnosis-glyph-engine`
 
 Date: 2026-04-24 (initial); 2026-04-26 (HF lane brief refresh; HF
-storage execution brief refresh).
-Verifier: autonomous lane-A run against the Zer0pa closeout brief
-dated 2026-04-24, refreshed against the HF lane execution brief dated
-2026-04-26 and the Gnosis HF storage execution brief dated 2026-04-26.
+storage execution brief refresh); 2026-04-27 (DR migration off
+Zer0pa org).
+Verifier: autonomous lane-A run.
 Authentication: production HF token `Zer0pa HF Storage` (user
-`Architect-Prime`, org membership `Zer0pa`).
+`Architect-Prime`, org membership `Zer0pa` admin).
 
-This register names every HF repository that this workstream claims as
-remote custody. Every row must be verified against a live API response
-from the production token, not against documentation-only claims. The
-closeout brief notes that several cross-lane HF repos were not visible to
-a reviewer token; this file documents the ground truth for `Glyph-Engine`
-only.
+This register names every HF repository this workstream claims as
+remote custody. Every row is verified against a live API response from
+the production token, not against documentation-only claims.
+
+## Current Custody Truth (2026-04-27)
+
+**The canonical and only Hugging Face custody surface for this lane
+is `Architect-Prime/glyph-engine-artefacts` (private, dataset).**
+The Zer0pa org HF namespace is intentionally NOT used by this lane.
+GitHub `Zer0pa/Glyph-Engine` (private, INTERNAL) plus
+`Architect-Prime/glyph-engine-artefacts` together constitute the
+durable disaster-recovery surface for the lane: if the local Mac is
+lost, those two remotes cumulatively hold every artefact of value.
 
 ## Spelling Policy
 
-This repo uses the British spelling **`artefact`** in code, docs, and HF
-repo ids. Other Gnosis lanes may use the American spelling **`artifact`**
-(e.g. `Zer0pa/gnosis-morph-bench-artifacts`). Both spellings are
-considered valid within Gnosis; cross-lane agents must not assume one
-spelling when the other is in use. If cross-lane consolidation is needed,
-it is a portfolio-level decision (owner action), not a lane-level
-rename.
+This lane uses the British spelling **`artefact`** in code, docs, and
+HF repo ids. Other Gnosis lanes may use the American spelling
+`artifact` (e.g. `Zer0pa/gnosis-morph-bench-artifacts`). Both are
+valid; cross-lane consolidation is a portfolio-level decision (owner
+action), not a lane-level rename.
 
 ## Rows
 
-### HF-01 — `Zer0pa/glyph-engine-artefacts`
-
-| Field | Value |
-|---|---|
-| Repo ID | `Zer0pa/glyph-engine-artefacts` |
-| Repo type | `dataset` |
-| Visibility | `private` |
-| Verified via | `HfApi().dataset_info(...)` with production token, 2026-04-24 |
-| Latest commit SHA | `58cbc2e6cb1f3c72b6e5ec88dad9637028467657` (pre-Phase 02c) |
-| Last modified | 2026-04-24 03:36:49 UTC |
-| Consuming GitHub repo | `Zer0pa/Glyph-Engine` |
-| Rights class | `PRIVATE_INTERNAL_ONLY` (no licence grant; see `NOTICE.md`) |
-| Intended contents | Phase 02 ablation + robustness artefacts (ablation_report.json, per-arm manifests and smoke reports, robustness_report.json). |
-
-Files present at registered SHA (pre-02c refresh):
-
-| Path in HF repo | Size | Local SHA256 | Origin |
-|---|---:|---|---|
-| `README.md` | (HF-managed) | n/a | `Zer0pa/glyph-engine-artefacts`, agent-authored 2026-04-24 |
-| `.gitattributes` | (HF-managed) | n/a | default |
-| `artifacts/ablation/ablation_report.json` | 2642 B | `32f83e5a…ae3428c` | pod run, seed=42 |
-| `artifacts/ablation/per_arm/baseline_orb.manifest.json` | 13714 B | `8f526060…6a953657` | pod run, seed=42 |
-| `artifacts/ablation/per_arm/baseline_orb.smoke_report.json` | 921 B | `2a8b4a66…ecec12d886` | pod run, seed=42 |
-| `artifacts/ablation/per_arm/baseline_hu_regionprops.manifest.json` | 6142 B | `10fbe19e…02d867ae34aff7` | pod run, seed=42 |
-| `artifacts/ablation/per_arm/baseline_hu_regionprops.smoke_report.json` | 965 B | `c3b30202…45a9bd8a5bb1c` | pod run, seed=42 |
-| `artifacts/ablation/per_arm/baseline_hog.manifest.json` | 10135 B | `eaabaaba…94c37789b0c8` | pod run, seed=42 |
-| `artifacts/ablation/per_arm/baseline_hog.smoke_report.json` | 941 B | `decd0a3c…8ea26b558d995` | pod run, seed=42 |
-
-Phase 02c will append:
-
-| Path in HF repo | Size | Local SHA256 | Origin |
-|---|---:|---|---|
-| `artifacts/robustness/robustness_report.json` | 10809 B | `c2510b61…08eac6f076ffb` | pod run, seeds 0..9 |
-
-After Phase 02c push, this register will be re-verified and the new HF
-SHA recorded as a follow-up row below.
-
-## Cross-Lane Claims NOT Owned Here
-
-The following HF ids appear in the closeout brief as potentially related
-but are **not** owned or verified by this lane:
-
-- `Zer0pa/gnosis-morph-bench-artifacts` — owned by Lane E (`Morph-Bench`).
-- `Zer0pa/gnosis-morph-bench-authority-bundle` — owned by Lane E.
-- `Zer0pa/cuneiform-control-artefacts` — owned by Lane C (`Cuneiform`).
-- `Zer0pa/gnosis-indus-artifacts` — owned by Lane F (`Indus-Valley`).
-- `Zer0pa/gnosis-indus-models` — owned by Lane F.
-
-The reviewer in the closeout brief reported that these were not visible
-to the reviewer token. This lane makes no assertion about their status;
-each owning lane must verify its own rows.
-
-## Verification Command
-
-The register is falsifiable with the production HF token:
-
-```python
-from huggingface_hub import HfApi
-info = HfApi(token=<production_token>).dataset_info(
-    "Zer0pa/glyph-engine-artefacts"
-)
-print(info.private, info.sha, info.last_modified)
-for s in info.siblings:
-    print(s.rfilename)
-```
-
-Expected `private = True` and `sha = 58cbc2e6cb1f3c72b6e5ec88dad9637028467657`
-at the pre-02c point, or a later SHA after the 02c mirror push (also
-recorded here once complete).
-
-## Follow-Ups
-
-- [x] Append the post-02c HF SHA once `artifacts/robustness/` is mirrored.
-- [ ] If cross-lane `HF_CUSTODY_REGISTER.md` consolidation is scoped by
-      the Zer0pa roadmap team, surface this file as the Glyph-Engine
-      canonical row source.
-
-### HF-01 post-02c state (verified 2026-04-24)
-
-| Field | Value |
-|---|---|
-| Latest commit SHA | `76fa5fff552eb47af120ca795e8a7ed5f1eb330c` |
-| Siblings added since pre-02c SHA | `artifacts/robustness/robustness_report.json`, README.md refreshed |
-| Verification | `HfApi().dataset_info("Zer0pa/glyph-engine-artefacts")` via production token, 2026-04-24 |
-
-### HF-01 post-card-refresh state (verified 2026-04-26)
-
-| Field | Value |
-|---|---|
-| Latest commit SHA | `32a8b5eeb78198c62a18158f81205ce1aa03a0c6` |
-| Change | README.md rewritten to match HF Lane Execution Brief 2026-04-26 §5 template (no SAL wording, no open-source license, license frontmatter omitted, internal-only posture made explicit). No artefact payload changed; the nine artefact files under `artifacts/ablation/` and `artifacts/robustness/` are unchanged. |
-| Classification (per §6.2) | Canonical and keep; card refreshed. |
-| Visibility decision (per §4.4) | PRIVATE (Glyph-Engine is `private for now` in the brief's lane direction table). Maintained. |
-| Architect-Prime drift | NONE for this lane (verified 2026-04-26: zero datasets, zero models, zero spaces under `Architect-Prime`). |
-| Verification | `HfApi().dataset_info("Zer0pa/glyph-engine-artefacts")` via production token, 2026-04-26 18:31:47 UTC. |
-
-### HF-01 post-storage-tier state (verified 2026-04-26)
-
-| Field | Value |
-|---|---|
-| Latest commit SHA | `46cca8b9188f506e132b410b0fe910c1e6da6b3a` |
-| Change | README gained a `## Storage tier` section per `GNOSIS_HF_STORAGE_EXECUTION_BRIEF_2026-04-26.md` §5.1 point 5. Source-commit pin in card refreshed from `2efe3c7` to `c42a054`. No artefact payload changed. |
-| Inventory at refresh | 10 files, 52,985 B total (≈ 51.7 KiB); largest single file 13,714 B (`artifacts/ablation/per_arm/baseline_orb.manifest.json`). All payload is small JSON + Markdown. |
-| Routing classification (per §3, §4, §7.5) | **Lightweight discovery surface only.** Nothing on this lane meets any heavy-tier threshold: no file >1 MB, payload <<100 MB, no model weights, no many-file directory of meaningful aggregate weight. |
-| Verification | `HfApi().dataset_info("Zer0pa/glyph-engine-artefacts")` via production token, 2026-04-26 19:25:51 UTC. |
-
-### HF-02 — `Architect-Prime/glyph-engine-artefacts` — INTENTIONALLY NOT CREATED
+### HF-CANONICAL — `Architect-Prime/glyph-engine-artefacts`
 
 | Field | Value |
 |---|---|
 | Repo ID | `Architect-Prime/glyph-engine-artefacts` |
-| Existence at 2026-04-26 | **DOES NOT EXIST** (`HfApi().dataset_info(...)` raises `RepositoryNotFoundError` 404 against production token). |
-| Decision | Do **NOT** create at this time. |
-| Rationale (per brief §3 note + §6 step 6 + §7.5) | "If a repo does not yet exist on `Architect-Prime`, create it only if the lane actually has heavy content worth storing there." The lane has no heavy content (52.2 KB total, all small JSON/MD). §7.5 specifically directs Glyph-Engine: "do not over-build HF presence until there is a real earned boundary and real heavy content to justify it". The authority metric `package_boundary_earned` is still `UNTESTED`; a heavy-canonical store would precede the evidence it should custody. |
-| Trigger to create | Phase 02b owned-arm extraction produces heavy outputs (model weights, real-glyph imagery, bulky benchmark dumps). At that point the AP repo will be created and this row updated. |
+| Repo type | `dataset` |
+| Visibility | `private` (permanently — Gnosis HF Storage Brief §1.3 hard rule: never make an `Architect-Prime/*` Gnosis repo public) |
+| Latest commit SHA | `301b0756e858d73261cea509150d235ed5da8e07` |
+| Last verified | 2026-04-27 via production token |
+| Consuming GitHub repo | `Zer0pa/Glyph-Engine` (private, INTERNAL) |
+| Rights class | `PRIVATE_INTERNAL_ONLY` (no licence grant; see `NOTICE.md`) |
+| Card | Authored to Gnosis HF Storage Brief 2026-04-26 §5.2 |
+| Inventory | 10 files, 53,544 B (~52.3 KB) total |
+
+Files present (each verified byte-for-byte by SHA256 against the
+pre-migration Zer0pa source on 2026-04-27):
+
+| Path in HF repo | Size (B) | SHA256 (full) |
+|---|---:|---|
+| `.gitattributes` | 2504 | (HF-managed) |
+| `README.md` | 4771 | (card; AP §5.2 canonical) |
+| `artifacts/ablation/ablation_report.json` | 2642 | `32f83e5ac60c2b73304829c6f8d75cabe397c17d632f8d03a558f6e11ae3428c` |
+| `artifacts/ablation/per_arm/baseline_orb.manifest.json` | 13714 | `8f526060416b7fb40ac54da6cade36bea132e4927ec619cb38ef0a632a953657` |
+| `artifacts/ablation/per_arm/baseline_orb.smoke_report.json` | 921 | `2a8b4a66192ab234f8c3739b070eb27c3f416b78d1512e68d15dcebcec12d886` |
+| `artifacts/ablation/per_arm/baseline_hu_regionprops.manifest.json` | 6142 | `10fbe19ead566901768a9c521f4dc6fc4690d3560104f4db5002d867ae34aff7` |
+| `artifacts/ablation/per_arm/baseline_hu_regionprops.smoke_report.json` | 965 | `c3b30202d70896e352d0fd7c23a14c88be0f9a9f5518247712445a9bd8a5bb1c` |
+| `artifacts/ablation/per_arm/baseline_hog.manifest.json` | 10135 | `eaabaaba9829297f0886529103f41f1ca7c4614b2ce1651b9ff394c37789b0c8` |
+| `artifacts/ablation/per_arm/baseline_hog.smoke_report.json` | 941 | `decd0a3c87a37c0d9f6c5d65fb86ebc288fc1513c41a8f349860ea26b558d995` |
+| `artifacts/robustness/robustness_report.json` | 10809 | `c2510b61b64e781e862b65d3bbd4f83a3a53265558de83baf824eeac6f076ffb` |
+
+Origin: every artefact file in the table above was generated on the
+RunPod execution substrate, pulled into git on the local Mac, and
+committed to `Zer0pa/Glyph-Engine` before being uploaded to
+Hugging Face. The on-disk copies in
+`<LOCAL_WORKSTREAM_ROOT>/artifacts/...` (also tracked in git on `main`
+at commit `cca8350` and successors) are byte-identical to the AP
+copies as of 2026-04-27.
+
+### HF-RETIRED — `Zer0pa/glyph-engine-artefacts` — DELETED 2026-04-27
+
+| Field | Value |
+|---|---|
+| Repo ID at the time | `Zer0pa/glyph-engine-artefacts` |
+| Final state | DELETED. The Zer0pa namespace currently lists 0 datasets, 0 models, 0 spaces (verified 2026-04-27 via production token). |
+| Reason | Owner directive 2026-04-27: free Zer0pa org HF storage; canonicalise heavy-store on Architect-Prime per Gnosis HF Storage Brief §3 routing table; `Zer0pa/*` is no longer used by this lane. |
+| Migration evidence | Every artefact byte-for-byte SHA256-verified between source and destination across two independent verification passes before deletion. The migration also briefly produced an auto-rename to `Architect-Prime/zeropa-org-glyph-engine-artefacts`; that orphan duplicate was deleted on 2026-04-27 after a third byte-for-byte integrity check confirmed it was payload-identical to the canonical `Architect-Prime/glyph-engine-artefacts`. |
+
+### HF-02 (SUPERSEDED) — earlier "AP not created" decision
+
+The 2026-04-26 `HF-02` row in this register said
+`Architect-Prime/glyph-engine-artefacts` would not be created at that
+time. **That decision is superseded by the 2026-04-27 owner directive**
+to migrate everything off Zer0pa org storage. The repo was created on
+2026-04-27 and is the row HF-CANONICAL above.
+
+## Disaster-Recovery Posture
+
+If the local Mac dies, every artefact of value for this lane is
+recoverable from these two remotes:
+
+| What | Where | Verification |
+|---|---|---|
+| Source code (full repo, every commit) | GitHub `Zer0pa/Glyph-Engine` (private/INTERNAL) | `git clone https://github.com/Zer0pa/Glyph-Engine.git` |
+| Phase 02a + 02c JSON artefacts | Architect-Prime `glyph-engine-artefacts` (private dataset) | `huggingface-cli download Architect-Prime/glyph-engine-artefacts --repo-type dataset` |
+| Provenance, conventions, GPD state | inside the GitHub repo (`.gpd/`, `NOTICE.md`, `HF_CUSTODY_REGISTER.md`, etc.) | recovered with the git clone above |
+
+The synthetic 12-glyph fixture is *not* a stored artefact; it is
+deterministically regenerated by
+`gnosis_glyph_engine.fixtures.synthesize_twelve_glyphs(seed=...)`
+from source. No real-glyph corpus exists for this lane.
+
+The owned-arm files referenced in Phase 01 D-06 do not exist on
+either remote; their absence is the lane's open scientific blocker
+and is recorded in `SOURCE_BOUNDARY.md`.
+
+## Cross-Lane Claims NOT Owned Here
+
+The following HF ids may be referenced elsewhere in the portfolio
+brief set but are **not** owned or verified by this lane:
+
+- `Zer0pa/gnosis-morph-bench-artifacts` — owned by Lane E.
+- `Zer0pa/cuneiform-control-artefacts` — owned by Lane C.
+- `Architect-Prime/<other-lane>*` — owned by the corresponding lane.
+
+Each owning lane must verify its own rows independently.
+
+## Verification Command
+
+```python
+from huggingface_hub import HfApi
+info = HfApi(token=<production_token>).dataset_info(
+    "Architect-Prime/glyph-engine-artefacts",
+    files_metadata=True,
+)
+print(info.private, info.sha, info.last_modified)
+for s in info.siblings:
+    print(s.rfilename, s.size)
+
+# And to confirm the Zer0pa namespace stays empty for this lane:
+list(HfApi(token=<production_token>).list_datasets(author="Zer0pa"))  # → []
+```
+
+Expected on 2026-04-27 baseline:
+
+- `private = True`
+- `sha = 301b0756e858d73261cea509150d235ed5da8e07`
+- 10 siblings totalling 53,544 B
+- `Zer0pa` namespace empty for this lane.
+
+## Follow-Ups
+
+- [ ] If Phase 02b owned-arm extraction (currently blocked on D-06)
+      ever produces heavy outputs (model weights, real-glyph imagery,
+      bulky benchmark dumps), upload them to
+      `Architect-Prime/glyph-engine-artefacts`, recompute SHA256, and
+      append a new row above.
+- [ ] If the consuming GitHub repo is ever published publicly, the
+      Portfolio Register at the Master Resolver Endpoint will record
+      the licence matrix; until then, this dataset stays private.
+
+## Migration Log
+
+| Date | Event | Evidence |
+|---|---|---|
+| 2026-04-24 | `Zer0pa/glyph-engine-artefacts` created; initial pre-02c upload (sha `58cbc2e6`). | initial register row |
+| 2026-04-24 | Phase 02c artefacts (`artifacts/robustness/`) added (sha `76fa5fff`). | post-02c row |
+| 2026-04-26 | Card aligned to HF Lane Execution Brief 2026-04-26 §5 (sha `32a8b5ee`). | post-card-refresh row |
+| 2026-04-26 | Storage-tier section added per HF Storage Brief §5.1 (sha `46cca8b9`). | post-storage-tier row |
+| 2026-04-27 | Owner directive: migrate off Zer0pa org HF storage entirely. Mirror created at `Architect-Prime/glyph-engine-artefacts` (sha `301b0756`); every artefact SHA256-verified byte-for-byte; orphan auto-rename `Architect-Prime/zeropa-org-glyph-engine-artefacts` cleaned up; `Zer0pa/glyph-engine-artefacts` deleted; Zer0pa namespace verified empty (0 datasets / 0 models / 0 spaces). | this register; HF API responses captured during execution |

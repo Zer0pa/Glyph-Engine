@@ -86,7 +86,7 @@ tested.
 | Phase 02c multi-seed robustness | `artifacts/robustness/robustness_report.json` + `.gpd/phases/02-minimal-extraction-smoke/02-02-VERIFICATION.md` |
 | Sovereign-vs-adapter scope decision | `.gpd/phases/02-minimal-extraction-smoke/02-02-DECISIONS.md` D-02c-02 |
 | Owned-arm source-retrieval blocker | `SOURCE_BOUNDARY.md` (D-06) |
-| HF custody truth | `HF_CUSTODY_REGISTER.md` HF-01 |
+| HF custody truth | `HF_CUSTODY_REGISTER.md` (canonical: `Architect-Prime/glyph-engine-artefacts`; Zer0pa namespace empty for this lane post-2026-04-27 migration) |
 | Path/endpoint scrub convention | `docs/PROVENANCE_LABELS.md` |
 | Reviewer interim status | `AGENT_STATUS_REPORT_2026-04-24.md` |
 | Auditor fast path | `AUDITOR_PLAYBOOK.md` |

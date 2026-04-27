@@ -71,8 +71,10 @@ Phase 02b (Owned-Arm Ablation) remains blocked on D-06.
   + `artifacts/robustness/`.
 - Closeout surfaces: `NOTICE.md` (canonical, Wave 2),
   `HF_CUSTODY_REGISTER.md`, `docs/PROVENANCE_LABELS.md`.
-- HF mirror: `Zer0pa/glyph-engine-artefacts` (pre-02c SHA `58cbc2e…`;
-  post-02c SHA to be recorded after push).
+- HF custody: `Architect-Prime/glyph-engine-artefacts` (private dataset,
+  sha `301b0756…` as of 2026-04-27 owner-directed migration off Zer0pa
+  org HF storage). Zer0pa namespace verified empty for this lane.
+  See `HF_CUSTODY_REGISTER.md`.
 
 ## Resume
 

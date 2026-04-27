@@ -11,7 +11,7 @@
 - Reporting rule: no interim reporting unless a blocker cannot be answered
   from admitted evidence. Final report only at phase close.
 - Remote rule: GitHub `Zer0pa/Glyph-Engine` is the canonical code remote
-  (private). Hugging Face `Zer0pa/glyph-engine-artefacts` is the artefact
+  (private). Hugging Face `Architect-Prime/glyph-engine-artefacts` is the artefact
   failover surface. Neither is public.
 - Git hygiene: atomic commits per GPD sub-task; commit messages cite the
   authority metric and phase id; no force-push, no rebase of shared history.

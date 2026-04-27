@@ -11,7 +11,7 @@
 - [x] Implement `src/gnosis_glyph_engine/` tree for borrowed-only arms.
 - [x] Write pytest suite; all pass on pod.
 - [x] Run `run_ablation.py`; produce `artifacts/ablation/ablation_report.json`.
-- [x] Mirror artefacts to HF dataset `Zer0pa/glyph-engine-artefacts`.
+- [x] Mirror artefacts to HF dataset `Architect-Prime/glyph-engine-artefacts`.
 
 ## Phase 02c (OSS-Baseline Robustness + Closeout) — COMPLETE 2026-04-24
 
