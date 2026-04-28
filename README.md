@@ -1,5 +1,12 @@
 # Gnosis Glyph Engine
 
+> This is a live window into the Zer0pa lab. None of the work in this repo is a
+> final release. Zer0pa GitHub repos are open as a matter of course for
+> visibility and community participation. Always-in-beta is the posture: useful
+> now, improving continuously. Open gates and honest blockers are surfaced in
+> plain text below — see §5 "What We Don't Claim" and §11 "Upcoming
+> Workstreams".
+
 ## Licensing
 
 This repository is part of the Zer0pa Gnosis Portfolio.
@@ -20,25 +27,32 @@ artifacts, model weights, endpoint logs, or operational transcripts.
 trademarks of Zer0pa. Apache-2.0 and CC-BY-4.0 do not grant trademark rights.
 See `TRADEMARKS.md`.
 
-Public visibility is a separate repository-setting action. The license files in
-this repo define the intended open-source/open-documentation terms for released
-Gnosis code and written materials; they do not publish rights-gated data.
-
 ## What This Is
 
-`gnosis-glyph-engine` is the Gnosis private research lane that asks one
-falsifiable question:
+`gnosis-glyph-engine` is the Gnosis research lane that asks one falsifiable
+question:
 
 > Is a standalone glyph-engine package boundary earned by a real consumer,
 > a monorepo-free smoke path, and a descriptor ablation against borrowed
 > baselines?
 
-It is an internal extraction-target scaffold for reusable glyph geometry,
-stroke, and descriptor kernels. It is **not a public library**, **not a
-product**, and **not a decipherment claim**. The authority metric
-`package_boundary_earned` is currently `UNTESTED`, so this repo remains a
-private research hold until D-06 clears and the owned-arm gate is actually
-tested.
+It is an extraction-target scaffold for reusable glyph geometry, stroke, and
+descriptor kernels. It is **not a public library**, **not a product**, and
+**not a decipherment claim**.
+
+**Defensible headline metrics (as of 2026-04-28):** Borrowed-baseline ablation
+across 10 seeds: mean σ `baseline_orb` 4.14 ± 1.12, `baseline_hu_regionprops`
+2.95 ± 1.06, `baseline_hog` 1.15 ± 1.17 (artifact:
+`artifacts/robustness/robustness_report.json`). Determinism:
+`replay_all_identical == true` for every arm in the seed-42 ablation;
+reference-freeze SHA256 is byte-stable across arms. 17 pytest tests pass when
+sibling `gnosis-morph-bench` is installed; 16 pass + 1 cleanly skips when it
+is not — preserving repo independence.
+
+**Honest blocker:** The owned-arm authority metric `package_boundary_earned`
+is `UNTESTED`. Two Indus source files (`scripts/indus/stroke_native_encoding.py`,
+`scripts/indus/phase3_common.py`) are not present in the portfolio snapshot;
+D-06 retrieval is the unblock. Phase 02b cannot start until D-06 clears.
 
 ## What We Prove
 
@@ -110,26 +124,50 @@ tested.
 | Owned-arm source-retrieval blocker | `SOURCE_BOUNDARY.md` (D-06) |
 | HF custody truth | `HF_CUSTODY_REGISTER.md` (canonical: `Architect-Prime/glyph-engine-artefacts`; Zer0pa namespace empty for this lane post-2026-04-27 migration) |
 | Path/endpoint scrub convention | `docs/PROVENANCE_LABELS.md` |
-| Reviewer interim status | `AGENT_STATUS_REPORT_2026-04-24.md` |
 | Auditor fast path | `AUDITOR_PLAYBOOK.md` |
+
+## Commercial Readiness
+
+| Field | Value |
+|---|---|
+| Verdict | `BLOCKED` |
+| Posture | `package_boundary_unearned_pending_owned_arm_d06` |
+
+The authority metric `package_boundary_earned` is `UNTESTED`. Gate 4 (owned
+arm ablation) cannot run until D-06 clears. The Verdict cell draws from the
+locked enum `{STAGED, PASS, PARTIAL, BLOCKED, FAIL, INCONCLUSIVE}`.
+
+No Confidence row: no artifact backs a confidence estimate for Phase 03
+readiness.
 
 ## Repo Shape
 
 ```
 .
 ├── NOTICE                                  # Apache-2.0 code and CC-BY-4.0 docs posture
-├── HF_CUSTODY_REGISTER.md                     # HF artefact-dataset truth
-├── README.md                                  # this file
-├── SOVEREIGN_PRD.md                           # authority metric + extraction gate
-├── SOURCE_BOUNDARY.md                         # candidate sources, ledger, D-06
-├── AUDITOR_PLAYBOOK.md                        # fast path + reproduce + claim-replay
-├── AGENT_STATUS_REPORT_2026-04-24.md          # agent narrative layer for review
-├── MIGRATION_PLAN.md, ROADMAP.md, GOVERNANCE.md, RELEASING.md, SECURITY.md, ...
+├── HF_CUSTODY_REGISTER.md                  # HF artefact-dataset truth
+├── README.md                               # this file
+├── SOVEREIGN_PRD.md                        # authority metric + extraction gate
+├── SOURCE_BOUNDARY.md                      # candidate sources, ledger, D-06
+├── AUDITOR_PLAYBOOK.md                     # fast path + reproduce + claim-replay
+├── CONTRIBUTING.md, GOVERNANCE.md, RELEASING.md, ROADMAP.md, SECURITY.md
+├── CHANGELOG.md, CITATION.cff, CODE_OF_CONDUCT.md
 ├── DATA_POLICY.md, PUBLIC_AUDIT_LIMITS.md
-├── pyproject.toml                             # gnosis-glyph-engine==0.1.0a1
+├── THIRD_PARTY_NOTICES.md, TRADEMARKS.md
+├── pyproject.toml                          # gnosis-glyph-engine==0.1.0a1
+├── _internal/                              # agent-orchestration scaffolding (not reader-facing)
+│   ├── AUTONOMOUS_EXECUTION_POLICY.md
+│   ├── GPD_BOOTSTRAP_GUIDE.md
+│   ├── UNIVERSAL_STARTUP_PROMPT.md
+│   ├── TEMPLATE_USAGE.md
+│   ├── MIGRATION_PLAN.md
+│   ├── WORKSTREAM_GPD_INIT_CHECKLIST.md
+│   ├── TODO.md
+│   └── AGENT_STATUS_REPORT_2026-04-24.md
 ├── .github/
 │   ├── workflows/ci.yml
-│   ├── ISSUE_TEMPLATE/, PULL_REQUEST_TEMPLATE.md
+│   ├── ISSUE_TEMPLATE/
+│   └── PULL_REQUEST_TEMPLATE.md
 ├── .gpd/
 │   ├── PROJECT.md, STATE.md, ROADMAP.md, REQUIREMENTS.md, DECISIONS.md,
 │   │   CONVENTIONS.md, NOTATION_GLOSSARY.md, state.json, config.json
@@ -173,9 +211,36 @@ Console scripts (after install): `glyph-engine-ablation`,
   `scripts/indus/phase3_common.py` from the live monorepo, or grant pod
   access to a live-monorepo clone. Phase 02b cannot start until D-06
   clears.
-- Public-release licensing has landed as Apache-2.0 for code and CC-BY-4.0
-  for docs. Public visibility is still blocked by the unearned package
-  boundary, D-06, and absence of a real-glyph fixture.
-- Public contact surface remains owner-held.
 - No real-glyph fixture; the synthetic 12-glyph generator is the only
-  ablation surface today.
+  ablation surface today. Rights-cleared real-glyph evidence does not yet
+  exist in this repo.
+- Public contact surface remains owner-held.
+
+## §11 Upcoming Workstreams
+
+### Operations / External Dependency
+
+- **D-06 source-file retrieval** — owner action: retrieve
+  `scripts/indus/stroke_native_encoding.py` and
+  `scripts/indus/phase3_common.py` from the live monorepo, or grant pod
+  access to a monorepo clone. All Phase 02b work is gated on this.
+
+### Research-Deferred — Investigation Underway
+
+- **Real-glyph fixture** — replace the deterministic 12-glyph synthetic
+  generator with rights-cleared real-glyph evidence. No rights-cleared
+  fixture exists yet; investigation of sourcing options is underway. Cross-
+  corpus generalisation claims cannot be made until this is resolved.
+
+### Active Engineering
+
+- **Phase 02b — owned-arm gate testing** — implement
+  `src/gnosis_glyph_engine/owned/stroke_compass.py` and
+  `src/gnosis_glyph_engine/owned/topology.py` from the retrieved Indus
+  source files; run ablation + robustness against the Phase 02c baseline
+  ceiling; apply D-04 pass rule under D-02c-02 sovereign routing. Starts
+  the moment D-06 clears.
+
+### Zero-Base Scientific Thinking — GPD Research and Planning Pending
+
+- None at this time.

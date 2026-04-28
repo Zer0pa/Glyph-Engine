@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: >
+  If you use this methodology or reference this work, please cite it
+  using the metadata below.
+title: "Gnosis Glyph Engine — Borrowed-Baseline Ablation and Package-Boundary Research"
+abstract: >
+  Glyph-descriptor extraction package-boundary research in the Zer0pa Gnosis
+  Portfolio. Borrowed-baseline ablation across multi-seed robustness sweep;
+  owned-arm authority gate (UNTESTED, pending D-06). Methodology only;
+  no decipherment claim.
+authors:
+  - name: "Zer0pa"
+    alias: "Zer0pa-Architect-Prime"
+    website: "https://github.com/Zer0pa"
+repository-code: "https://github.com/Zer0pa/Glyph-Engine"
+license: "Apache-2.0"
+date-released: "2026-04-28"
+version: "0.1.0a1"
+keywords:
+  - gnosis
+  - zer0pa
+  - glyph-engine
+  - descriptors
+  - ablation
+  - borrowed-baselines
+  - package-boundary
+  - methods
+  - methodology
+  - multi-seed
+  - robustness
+  - python
