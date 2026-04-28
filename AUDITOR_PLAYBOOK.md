@@ -1,13 +1,15 @@
 # Auditor Playbook
 
-Last updated: 2026-04-24 (Phase 02c closeout-brief lane-A compliance
-complete; Phase 02a "saturation" framing retired by D-02c-01).
+Last reviewed: 2026-04-28 against GitHub `main@67800f2` plus the
+Ops-Gates adoption wave.
 
 ## Goal
 
 Verify that this scaffold is not overclaiming a `gnosis-glyph-engine`
 package. Authority metric `package_boundary_earned` is currently
 `UNTESTED`: gates 1–3 have PASSED, gate 4 is BLOCKED on D-06 and unrun.
+Apache-2.0 code licensing and CC-BY-4.0 documentation licensing are present;
+they do not change the package-boundary verdict.
 
 ## Fast Path
 
@@ -31,7 +33,10 @@ package. Authority metric `package_boundary_earned` is currently
 10. Confirm `artifacts/robustness/robustness_report.json` is present and
     `arms[*].sigma.n == 10`.
 11. Confirm `code/README.md` reflects `BORROWED_ARMS_EXTRACTED`.
-12. Read `NOTICE.md` and `HF_CUSTODY_REGISTER.md` — they own the
+12. Confirm the Ops-Gates coupling audit is wired into CI:
+    `tools/gnosis_ops_gates/coupling_audit.py` runs from
+    `.github/workflows/ci.yml` before package installation.
+13. Read `LICENSE`, `NOTICE`, and `HF_CUSTODY_REGISTER.md` — they own the
     rights-posture and HF-custody truth (the earlier
     `PRIVATE_INTERNAL_LICENSE_NOTICE.md` was retired in the Wave 2
     front-door pass; root legal posture is now `NOTICE.md`).
@@ -49,7 +54,9 @@ package. Authority metric `package_boundary_earned` is currently
 | `baseline_orb` does NOT saturate robustly across seeds | `artifacts/robustness/robustness_report.json::arms[0].sigma` + `nmi` | yes | mean σ = 4.14, NMI=1.0 in 2/10 seeds only |
 | Owned arms are not yet run | `src/gnosis_glyph_engine/owned/__init__.py` (raises `SourceRetrievalPending`) | yes | D-06 blocker stated in every relevant surface |
 | No public package boundary is proven | `SOVEREIGN_PRD.md`, `README.md` current-authority table | yes | gate 4 still `UNTESTED` |
-| Public promotion is blocked | `README.md`, `RELEASING.md`, GitHub visibility `INTERNAL` | yes | license still `OWNER_DEFERRED` |
+| Ops-Gates coupling audit is load-bearing | `.github/workflows/ci.yml`, `tools/gnosis_ops_gates/coupling_audit.py` | yes | local redaction-safe copy derived from Ops-Gates; full sibling-package install not required |
+| Apache/CC licensing is present | `LICENSE`, `NOTICE`, `docs/LEGAL_BOUNDARIES.md` | yes | licensing does not imply package-boundary readiness |
+| Public promotion is blocked | `README.md`, `RELEASING.md`, GitHub visibility `INTERNAL` | yes | gate 4 still `UNTESTED` |
 
 ## Reproduce The Evidence
 
@@ -59,6 +66,7 @@ On any Python 3.13 host with internet access:
 git clone https://github.com/Zer0pa/Glyph-Engine.git
 cd Glyph-Engine
 python3.13 -m venv .venv && source .venv/bin/activate
+python tools/gnosis_ops_gates/coupling_audit.py src tests scripts
 pip install -e .[dev]
 pytest -q                         # expect: 16 passed, 1 skipped (morph-bench absent)
 
@@ -86,8 +94,9 @@ decimal places. A successful multi-seed run matches
   Phase 02b and Phase 03 run).
 - Domain results from Indus or cuneiform are presented as glyph-engine
   proof.
-- `pyproject.toml` carries a canonical non-`OWNER_DEFERRED` licence
-  without Phase 03 having declared PASS.
+- Apache-2.0 / CC-BY-4.0 licensing is presented as public-readiness or
+  package-boundary evidence.
+- CI drops the Ops-Gates coupling audit or lets it become non-blocking.
 - `SOURCE_BOUNDARY.md` path-rewrite ledger contains rows for code the
   scaffold cannot produce on replay.
 - Phase 02b results are presented without reference to the multi-seed

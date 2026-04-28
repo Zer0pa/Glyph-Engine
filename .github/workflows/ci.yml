@@ -7,6 +7,7 @@ on:
     branches: [main]
 
 # Keep this workflow narrow:
+# - run the vendored Gnosis Ops-Gates coupling audit
 # - install the package
 # - run the repo-local pytest suite (the morph-bench cross-repo contract test
 #   skips cleanly when gnosis-morph-bench is not installed)
@@ -29,6 +30,9 @@ jobs:
         with:
           python-version: '3.13'
           cache: pip
+
+      - name: gnosis ops coupling audit
+        run: python tools/gnosis_ops_gates/coupling_audit.py src tests scripts
 
       - name: install package with dev extras
         run: |

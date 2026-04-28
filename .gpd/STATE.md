@@ -41,8 +41,8 @@ Phase 02b (Owned-Arm Ablation) remains blocked on D-06.
 ## Blockers
 
 - `D-06`: owned-arm source files absent from portfolio snapshot.
-- No public promotion until `package_boundary_earned` passes Phase 03
-  AND canonical licence is supplied.
+- No public promotion until `package_boundary_earned` passes Phase 03 and
+  operator/orchestrator release approval is explicit.
 - (retired) `D-02a-06` baseline-saturation Phase-03 risk — retired by
   D-02c-01.
 
@@ -54,8 +54,8 @@ Phase 02b (Owned-Arm Ablation) remains blocked on D-06.
 | Smallest fair OSS-baseline comparison | DONE (Phase 02c robustness) |
 | Sovereign-vs-adapter scope decision | DONE (D-02c-02: stay sovereign; adapter-only trigger defined) |
 | Scrub public-facing paths via parameterisation | DONE (docs/PROVENANCE_LABELS.md) |
-| Keep private/internal | IN FORCE |
-| No public licence | IN FORCE (`NOTICE.md`; `PRIVATE_INTERNAL_LICENSE_NOTICE.md` retired in Wave 2) |
+| Keep private/internal until operator changes visibility | IN FORCE |
+| Apache/CC licence posture present without public-readiness implication | IN FORCE (`LICENSE`, `NOTICE`; `PRIVATE_INTERNAL_LICENSE_NOTICE.md` retired in Wave 2) |
 | No negative evidence deleted | HONOURED (baseline_hog kept despite weakness) |
 | HF custody register verified | DONE (HF_CUSTODY_REGISTER.md) |
 | Verification run before reporting done | DONE (Phase 02c Gates A–F) |
@@ -71,6 +71,8 @@ Phase 02b (Owned-Arm Ablation) remains blocked on D-06.
   + `artifacts/robustness/`.
 - Closeout surfaces: `NOTICE.md` (canonical, Wave 2),
   `HF_CUSTODY_REGISTER.md`, `docs/PROVENANCE_LABELS.md`.
+- Operational hygiene: Ops-Gates-derived coupling audit
+  `tools/gnosis_ops_gates/coupling_audit.py` wired into CI.
 - HF custody: `Architect-Prime/glyph-engine-artefacts` (private dataset,
   sha `301b0756…` as of 2026-04-27 owner-directed migration off Zer0pa
   org HF storage). Zer0pa namespace verified empty for this lane.

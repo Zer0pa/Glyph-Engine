@@ -7,6 +7,17 @@ All notable changes to this repository are documented here.
 Phase 02b (Owned-Arm Ablation) blocked pending D-06 source-file retrieval.
 Phase 03 (Package-Boundary Review) not started.
 
+## 2026-04-28 — Ops-Gates adoption and playbook coherence wave
+
+- Added root `AGENTS.md` with current lane truth and agent check instructions.
+- Added local Ops-Gates-derived coupling audit and wired it into CI before
+  package installation without requiring a sibling checkout.
+- Refreshed release, audit-limit, data-policy, roadmap, architecture, legal,
+  and internal TODO/startup surfaces to remove stale pre-Phase-02 evidence and
+  pre-license language.
+- Preserved `package_boundary_earned = UNTESTED`, D-06 blocker, and all
+  no-claim boundaries.
+
 ## 2026-04-28 — Public refresh wave
 
 - Added live-window banner to README (Zer0pa ethos: always-in-beta).

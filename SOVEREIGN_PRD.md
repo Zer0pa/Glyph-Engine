@@ -1,16 +1,16 @@
 # Sovereign PRD: Gnosis Glyph Engine Extraction Target
 
 Date: 2026-04-23
-Last updated: 2026-04-24 (Phase 01 freeze recorded)
-Status: `HOLD_EXTRACTION_ONLY`
+Last updated: 2026-04-28 (Phase 02c evidence and Ops-Gates adoption recorded)
+Status: `BLOCKED_ON_D-06`
 Class: `INTERNAL_EXTRACTION_TARGET`
 
 ## Sovereign Objective
 
 Determine whether the reusable glyph geometry, stroke, descriptor, and
-transport helpers in the source repo deserve a real package boundary. Until a
-consumer or ablation proves that boundary, this scaffold is a hold surface, not
-a public repo candidate.
+transport helpers in the source repo deserve a real package boundary. Until
+D-06, Phase 02b owned-arm evidence, and Phase 03 package-boundary review close,
+this repo is an extraction/review surface, not a public package candidate.
 
 ## Authority Metric
 
@@ -32,8 +32,10 @@ Current verdict: `UNTESTED`.
 |---|---|---|
 | 00 Hold-Surface Bootstrap | Complete (2026-04-23) | `.gpd/phases/00-workstream-bootstrap/` |
 | 01 Consumer And Interface Freeze | Complete (2026-04-24) | `.gpd/phases/01-consumer-and-interface-freeze/` |
-| 02 Minimal Extraction Smoke | Blocked on D-06 | `.gpd/STATE.md` |
-| 03 Package-Boundary Review | Pending | - |
+| 02a Borrowed-Baseline Sanity Path | Complete (2026-04-24) | `artifacts/ablation/`, `.gpd/phases/02-minimal-extraction-smoke/02-01-*` |
+| 02c OSS-Baseline Robustness + Closeout | Complete (2026-04-24) | `artifacts/robustness/`, `.gpd/phases/02-minimal-extraction-smoke/02-02-*` |
+| 02b Owned-Arm Ablation | Blocked on D-06 | `.gpd/STATE.md`, `SOURCE_BOUNDARY.md` |
+| 03 Package-Boundary Review | Pending Phase 02b evidence | - |
 
 Frozen by Phase 01:
 
@@ -48,7 +50,7 @@ Frozen by Phase 01:
 - source-family inventory for glyph geometry and descriptor candidates
 - boundary design for future `gnosis_glyph_engine` package
 - explicit build-vs-borrow decisions
-- future smoke path design
+- repo-local smoke, ablation, robustness, and operational-hygiene evidence
 
 ## Out Of Scope
 

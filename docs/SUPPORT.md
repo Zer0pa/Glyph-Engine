@@ -22,10 +22,10 @@
 
 | Request Type | Expected Handling |
 |---|---|
-| Bug | Triage against the hold-surface boundary before changing code. |
+| Bug | Triage against the extraction-boundary state before changing code. |
 | Question | Answer from repo-local truth surfaces or mark unresolved. |
 | Evidence dispute | Update the authority metric only with artifact evidence. |
-| Feature request | Reject or defer unless it helps freeze consumer, interface, fixture, or ablation. |
+| Feature request | Reject or defer unless it advances D-06, Phase 02b, Phase 03, or operational coherence. |
 
 ## Boundary Note
 

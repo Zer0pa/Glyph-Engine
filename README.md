@@ -1,11 +1,11 @@
 # Gnosis Glyph Engine
 
 > This is a live window into the Zer0pa lab. None of the work in this repo is a
-> final release. Zer0pa GitHub repos are open as a matter of course for
-> visibility and community participation. Always-in-beta is the posture: useful
-> now, improving continuously. Open gates and honest blockers are surfaced in
-> plain text below — see §5 "What We Don't Claim" and §11 "Upcoming
-> Workstreams".
+> final release, and the package boundary is not yet earned. The current front
+> door is intended for repo-orchestrator review and website-sync evaluation: it
+> exposes the useful evidence, the operational gates, and the blockers without
+> converting licensing or borrowed-baseline progress into a public-readiness
+> claim. See §5 "What We Don't Claim" and §11 "Upcoming Workstreams".
 
 ## Licensing
 
@@ -64,6 +64,10 @@ D-06 retrieval is the unblock. Phase 02b cannot start until D-06 clears.
 - The 17-test pytest suite passes when sibling `gnosis-morph-bench` is
   installed; 16 pass + 1 cleanly skips when it is not — preserving repo
   independence.
+- The local Ops-Gates-derived coupling audit
+  (`tools/gnosis_ops_gates/coupling_audit.py`) runs in CI before package
+  installation and rejects concrete operational leakage in `src`, `tests`, and
+  `scripts`.
 - The frozen `BenchmarkManifest` shape is consumed unmodified by
   `gnosis_morph_bench.schema.load_manifest`, producing finite `sigma`,
   `null_mean`, `null_std`, `silhouette`, and `mean_jaccard` per arm.
@@ -90,12 +94,14 @@ D-06 retrieval is the unblock. Phase 02b cannot start until D-06 clears.
 
 ## Tests and Verification
 
-- Local CI: `.github/workflows/ci.yml` runs `pip install -e .[dev]` then
-  `pytest -q` on every push and PR to `main`.
+- Local CI: `.github/workflows/ci.yml` runs the Ops-Gates coupling audit,
+  then `pip install -e .[dev]`, then `pytest -q` on every push and PR to
+  `main`.
 - Local repro:
 
   ```bash
   python3.13 -m venv .venv && source .venv/bin/activate
+  python tools/gnosis_ops_gates/coupling_audit.py src tests scripts
   pip install -e .[dev]
   pytest -q                         # → 16 passed, 1 skipped
   pip install -e /path/to/gnosis-morph-bench    # optional contract test
@@ -124,6 +130,7 @@ D-06 retrieval is the unblock. Phase 02b cannot start until D-06 clears.
 | Owned-arm source-retrieval blocker | `SOURCE_BOUNDARY.md` (D-06) |
 | HF custody truth | `HF_CUSTODY_REGISTER.md` (canonical: `Architect-Prime/glyph-engine-artefacts`; Zer0pa namespace empty for this lane post-2026-04-27 migration) |
 | Path/endpoint scrub convention | `docs/PROVENANCE_LABELS.md` |
+| Ops-Gates coupling audit | `tools/gnosis_ops_gates/coupling_audit.py` + `.github/workflows/ci.yml` |
 | Auditor fast path | `AUDITOR_PLAYBOOK.md` |
 
 ## Commercial Readiness
@@ -145,6 +152,7 @@ readiness.
 ```
 .
 ├── NOTICE                                  # Apache-2.0 code and CC-BY-4.0 docs posture
+├── AGENTS.md                               # agent operating instructions
 ├── HF_CUSTODY_REGISTER.md                  # HF artefact-dataset truth
 ├── README.md                               # this file
 ├── SOVEREIGN_PRD.md                        # authority metric + extraction gate
@@ -182,6 +190,7 @@ readiness.
 │   └── scripts/{__init__,run_ablation,run_robustness}.py
 ├── tests/{test_fixtures,test_baselines,test_manifest_builder}.py
 ├── scripts/run_ablation.py                    # thin shim
+├── tools/gnosis_ops_gates/coupling_audit.py   # Ops-Gates-derived CI gate
 ├── artifacts/
 │   ├── ablation/   {ablation_report.json, per_arm/baseline_*.{manifest,smoke_report}.json}
 │   └── robustness/ robustness_report.json
@@ -195,6 +204,7 @@ readiness.
 git clone https://github.com/Zer0pa/Glyph-Engine.git
 cd Glyph-Engine
 python3.13 -m venv .venv && source .venv/bin/activate
+python tools/gnosis_ops_gates/coupling_audit.py src tests scripts
 pip install -e .[dev]
 pytest -q                          # → 16 passed, 1 skipped
 python -m gnosis_glyph_engine.scripts.run_ablation
@@ -214,7 +224,8 @@ Console scripts (after install): `glyph-engine-ablation`,
 - No real-glyph fixture; the synthetic 12-glyph generator is the only
   ablation surface today. Rights-cleared real-glyph evidence does not yet
   exist in this repo.
-- Public contact surface remains owner-held.
+- No package-boundary or public-release greenlight exists until Phase 03
+  evaluates the owned-arm evidence.
 
 ## §11 Upcoming Workstreams
 

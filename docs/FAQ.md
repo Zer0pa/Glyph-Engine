@@ -2,17 +2,19 @@
 
 ## Is this an installable glyph-engine library?
 
-No. It is a hold/extraction scaffold.
+It is installable for repo-local testing (`pip install -e .[dev]`), but it is
+not a public library and the package boundary is not earned.
 
 ## Why keep the workstream?
 
-Descriptor and glyph-geometry code may become reusable, but the package
-boundary must be earned by a consumer, smoke path, and ablation.
+Descriptor and glyph-geometry code may become reusable. The borrowed-baseline
+smoke and robustness paths now exist; the remaining package-boundary question
+depends on D-06, Phase 02b owned-arm evidence, and Phase 03 review.
 
 ## Does this repo prove descriptor superiority?
 
-No. Any superiority claim is blocked until a benchmark or ablation runs from
-repo custody.
+No. Borrowed-baseline ablation exists, but owned descriptors are still unrun.
+Any superiority claim is blocked until Phase 02b and Phase 03.
 
 ## Why not build everything here now?
 

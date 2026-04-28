@@ -53,23 +53,27 @@ Work ready to start the moment D-06 clears:
 
 - [ ] Declare `package_boundary_earned` `PASSED` / `FAILED` /
       `INCONCLUSIVE` in `SOVEREIGN_PRD.md` and `STATE.md`.
-- [ ] If `PASSED`: await legal on canonical licence and public-release
-      packet; do NOT self-promote.
+- [ ] If `PASSED`: prepare a release/visibility packet for operator and
+      repo-orchestrator review; do NOT self-promote.
 - [ ] If `FAILED`: demote to adapter-only; add `Generic glyph-engine
       package` to `BUILD_VS_BORROW_CANON.md` `Do Not Build`.
 
 ## Optional Follow-Ups (P2 from closeout brief)
 
-- [ ] Add minimal GitHub Actions CI (install + pytest + robustness
-      smoke; do not fetch HF).
+- [x] Add minimal GitHub Actions CI (install + pytest; do not fetch HF).
+- [x] Add pinned Ops-Gates coupling audit to CI.
 - [ ] Cross-lane `HF_CUSTODY_REGISTER.md` consolidation (portfolio-level,
       not this lane's call).
 
-## Required Before Any Public Moves
+## Required Before Any Public Package Or Release Move
 
-- [ ] Canonical `LICENSE` file from Zer0pa legal.
-- [ ] Public contact surface.
+- [x] Apache-2.0 code licence and CC-BY-4.0 documentation posture present.
+- [ ] D-06 source retrieval.
+- [ ] Phase 02b owned-arm ablation.
 - [ ] Phase 03 verdict `PASSED`.
+- [ ] Operator/orchestrator release and visibility approval.
+- [ ] Rights-cleared data/artifact scrub for any public package or real-glyph
+      fixture.
 
 ## Blocked Public Moves
 

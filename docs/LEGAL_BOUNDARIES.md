@@ -31,8 +31,17 @@ image-bearing artifacts may be redistributed.
 | Model weights and checkpoints | separate release required | `DATA_POLICY.md`, HF custody registers |
 | Trademarks | not granted by Apache-2.0 or CC-BY-4.0 | `TRADEMARKS.md` |
 
-## Inputs Still Needed Before Visibility Flip
+## Visibility, Release, And Package Boundary
 
-- final public/non-public visibility decision for this repo
-- data/artifact scrub for any rights-gated assets
-- third-party dependency re-audit before a tagged public release
+These are separate gates:
+
+| Gate | Current state |
+|---|---|
+| Repository visibility | Operator / orchestrator decision; not changed by this document |
+| Code/docs licensing | Apache-2.0 for code, CC-BY-4.0 for docs |
+| Package-boundary readiness | `BLOCKED`: `package_boundary_earned = UNTESTED` until D-06, Phase 02b, and Phase 03 |
+| Tagged release / public package | Not authorized |
+
+Before any tagged release or package promotion, the repo still needs D-06
+resolution, Phase 02b owned-arm evidence, Phase 03 package-boundary review,
+data/artifact scrub for rights-gated assets, and dependency re-audit.
