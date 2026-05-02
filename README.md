@@ -1,33 +1,10 @@
 # Gnosis Glyph Engine
 
-> This is a live window into the Zer0pa lab. None of the work in this repo is a
-> final release. Zer0pa GitHub repos are open as a matter of course for
-> visibility and community participation. Always-in-beta is the posture: useful
-> now, improving continuously. Open gates and honest blockers are surfaced in
-> plain text below — see §5 "What We Don't Claim" and §11 "Upcoming
-> Workstreams".
-
-## Licensing
-
-This repository is part of the Zer0pa Gnosis Portfolio.
-
-**Code** in this repository is licensed under the Apache License 2.0. See
-`LICENSE` for the full text. SPDX identifier: `Apache-2.0`.
-
-**Documentation, reports, and written materials** are licensed under Creative
-Commons Attribution 4.0 International. SPDX identifier: `CC-BY-4.0`. Canonical
-terms: <https://creativecommons.org/licenses/by/4.0/>.
-
-**Data and fixtures** are handled per dataset and artifact family. See
-`DATA_POLICY.md` for this repository's data boundary. The code license does not
-license raw corpora, image-bearing cultural-heritage assets, private HF
-artifacts, model weights, endpoint logs, or operational transcripts.
-
-**Trademarks** - "Gnosis", "Zer0pa Gnosis", and distinctive sub-marks are
-trademarks of Zer0pa. Apache-2.0 and CC-BY-4.0 do not grant trademark rights.
-See `TRADEMARKS.md`.
+> Live window into the Zer0pa lab. Useful now, improving continuously; blockers are part of the public surface.
 
 ## What This Is
+
+Glyph-Engine tests whether a standalone glyph-descriptor package boundary is earned; borrowed baselines run, owned-arm authority remains blocked.
 
 `gnosis-glyph-engine` is the Gnosis research lane that asks one falsifiable
 question:
@@ -53,6 +30,54 @@ is not — preserving repo independence.
 is `UNTESTED`. Two Indus source files (`scripts/indus/stroke_native_encoding.py`,
 `scripts/indus/phase3_common.py`) are not present in the portfolio snapshot;
 D-06 retrieval is the unblock. Phase 02b cannot start until D-06 clears.
+
+## Method Mechanics
+
+| Field | Value |
+| --- | --- |
+| Architecture | GNOSIS_GLYPH_DESCRIPTOR_METHOD |
+| Method | Descriptor extraction scaffold with synthetic 12-glyph fixture |
+| Baselines | OpenCV ORB, Hu regionprops, HOG borrowed arms |
+| Manifest Contract | `BenchmarkManifest` consumed by Morph-Bench |
+| Authority Gate | `package_boundary_earned` owned-arm metric |
+| Open Gate | D-06 source retrieval blocks Phase 02b |
+
+## Key Metrics
+
+| Metric | Value | Baseline |
+| --- | --- | --- |
+| Borrowed-baseline robustness | ORB 4.14 +/- 1.12; Hu 2.95 +/- 1.06; HOG 1.15 +/- 1.17 | 10 seeds |
+| Deterministic replay | `replay_all_identical == true` | seed-42 ablation |
+| Pytest surface | 17 pass with Morph-Bench; 16 pass + 1 skip without sibling | repo independence preserved |
+| Authority gate | `package_boundary_earned == UNTESTED` | D-06 blocker |
+
+> Source: `artifacts/robustness/robustness_report.json`, `artifacts/ablation/ablation_report.json`, `.gpd/phases/02-minimal-extraction-smoke/`, and `SOURCE_BOUNDARY.md`.
+
+## Repo Identity
+
+| Field | Value |
+| --- | --- |
+| Identifier | Glyph-Engine |
+| Repository | https://github.com/Zer0pa/Glyph-Engine |
+| Portfolio | Gnosis |
+| Visibility | PUBLIC |
+| Default Branch | main |
+| Authority Source | `SOVEREIGN_PRD.md`; `.gpd/phases/02-minimal-extraction-smoke/` |
+| License | Apache-2.0 code; CC-BY-4.0 docs |
+
+## Readiness
+
+| Field | Value |
+| --- | --- |
+| Verdict | BLOCKED |
+| Posture | `package_boundary_unearned_pending_owned_arm_d06` |
+| Checks | borrowed-baseline and repo-independence checks pass |
+| Authority metric | `package_boundary_earned` is `UNTESTED` |
+| Authority | `SOURCE_BOUNDARY.md`; `SOVEREIGN_PRD.md` |
+
+### Honest Blocker
+
+The owned-arm authority metric is `UNTESTED`. Gate 4 cannot run until D-06 retrieves the two missing Indus source files.
 
 ## What We Prove
 
@@ -88,59 +113,38 @@ D-06 retrieval is the unblock. Phase 02b cannot start until D-06 clears.
 - We do not claim Indus or cuneiform domain results — those are owned by
   sibling lanes.
 
-## Tests and Verification
+## Verification Status
 
-- Local CI: `.github/workflows/ci.yml` runs `pip install -e .[dev]` then
-  `pytest -q` on every push and PR to `main`.
-- Local repro:
-
-  ```bash
-  python3.13 -m venv .venv && source .venv/bin/activate
-  pip install -e .[dev]
-  pytest -q                         # → 16 passed, 1 skipped
-  pip install -e /path/to/gnosis-morph-bench    # optional contract test
-  pytest -q                         # → 17 passed
-  python -m gnosis_glyph_engine.scripts.run_ablation
-  python -m gnosis_glyph_engine.scripts.run_robustness
-  ```
-
-- Provenance: `seed=42` ablation matches
-  `.gpd/phases/02-minimal-extraction-smoke/02-01-VERIFICATION.md`
-  to 6 decimal places; `seeds=0..9` robustness matches `02-02-VERIFICATION.md`.
-- Endpoint-leak scan is part of the closeout verification (Gate D in
-  `02-02-VERIFICATION.md`); see `docs/PROVENANCE_LABELS.md` for the
-  symbolic-label convention.
+| Code | Check | Verdict |
+| --- | --- | --- |
+| V_01 | `pip install -e .[dev]` on Python 3.13 | PASS |
+| V_02 | pytest without Morph-Bench sibling: 16 pass + 1 skip | PASS |
+| V_03 | pytest with Morph-Bench sibling: 17 pass | PASS |
+| V_04 | seed-42 ablation matches verification to 6 decimals | PASS |
+| V_05 | D-06 owned-arm source retrieval | BLOCKED |
 
 ## Proof Anchors
 
-| Claim | Evidence |
-|---|---|
-| Authority metric definition | `SOVEREIGN_PRD.md` §Authority Metric |
-| Frozen consumer + interface | `.gpd/phases/01-consumer-and-interface-freeze/01-DECISIONS.md` D-01, D-02 |
-| Frozen fixture + ablation rule | `.gpd/phases/01-consumer-and-interface-freeze/01-DECISIONS.md` D-03, D-04 |
-| Phase 02a single-seed ablation | `artifacts/ablation/ablation_report.json` + `.gpd/phases/02-minimal-extraction-smoke/02-01-VERIFICATION.md` |
-| Phase 02c multi-seed robustness | `artifacts/robustness/robustness_report.json` + `.gpd/phases/02-minimal-extraction-smoke/02-02-VERIFICATION.md` |
-| Sovereign-vs-adapter scope decision | `.gpd/phases/02-minimal-extraction-smoke/02-02-DECISIONS.md` D-02c-02 |
-| Owned-arm source-retrieval blocker | `SOURCE_BOUNDARY.md` (D-06) |
-| HF custody truth | `HF_CUSTODY_REGISTER.md` (canonical: `Architect-Prime/glyph-engine-artefacts`; Zer0pa namespace empty for this lane post-2026-04-27 migration) |
-| Path/endpoint scrub convention | `docs/PROVENANCE_LABELS.md` |
-| Auditor fast path | `AUDITOR_PLAYBOOK.md` |
-
-## Commercial Readiness
-
-| Field | Value |
-|---|---|
-| Verdict | `BLOCKED` |
-| Posture | `package_boundary_unearned_pending_owned_arm_d06` |
-
-The authority metric `package_boundary_earned` is `UNTESTED`. Gate 4 (owned
-arm ablation) cannot run until D-06 clears. The Verdict cell draws from the
-locked enum `{STAGED, PASS, PARTIAL, BLOCKED, FAIL, INCONCLUSIVE}`.
-
-No Confidence row: no artifact backs a confidence estimate for Phase 03
-readiness.
+| Path | State |
+| --- | --- |
+| `SOVEREIGN_PRD.md` | VERIFIED |
+| `.gpd/phases/01-consumer-and-interface-freeze/01-DECISIONS.md` | VERIFIED |
+| `artifacts/ablation/ablation_report.json` | VERIFIED |
+| `artifacts/robustness/robustness_report.json` | VERIFIED |
+| `SOURCE_BOUNDARY.md` | VERIFIED |
+| `HF_CUSTODY_REGISTER.md` | VERIFIED |
 
 ## Repo Shape
+
+| Field | Value |
+| --- | --- |
+| Proof Anchors | 6 display anchors |
+| Portfolio | Gnosis |
+| Package | gnosis-glyph-engine==0.1.0a1 |
+| Primary Source | `src/gnosis_glyph_engine/` |
+| Tests | `tests/` |
+| Artifacts | `artifacts/ablation/`; `artifacts/robustness/` |
+| Support Sections | Licensing; Quick Start; Current Gaps; Upcoming Workstreams |
 
 ```
 .
@@ -189,6 +193,26 @@ readiness.
 └── docs/{ARCHITECTURE,LEGAL_BOUNDARIES,PROVENANCE_LABELS,FAQ,SUPPORT,README}.md
 ```
 
+## Licensing
+
+This repository is part of the Zer0pa Gnosis Portfolio.
+
+**Code** in this repository is licensed under the Apache License 2.0. See
+`LICENSE` for the full text. SPDX identifier: `Apache-2.0`.
+
+**Documentation, reports, and written materials** are licensed under Creative
+Commons Attribution 4.0 International. SPDX identifier: `CC-BY-4.0`. Canonical
+terms: <https://creativecommons.org/licenses/by/4.0/>.
+
+**Data and fixtures** are handled per dataset and artifact family. See
+`DATA_POLICY.md` for this repository's data boundary. The code license does not
+license raw corpora, image-bearing cultural-heritage assets, private HF
+artifacts, model weights, endpoint logs, or operational transcripts.
+
+**Trademarks** - "Gnosis", "Zer0pa Gnosis", and distinctive sub-marks are
+trademarks of Zer0pa. Apache-2.0 and CC-BY-4.0 do not grant trademark rights.
+See `TRADEMARKS.md`.
+
 ## Quick Start
 
 ```bash
@@ -216,7 +240,7 @@ Console scripts (after install): `glyph-engine-ablation`,
   exist in this repo.
 - Public contact surface remains owner-held.
 
-## §11 Upcoming Workstreams
+## Upcoming Workstreams
 
 ### Operations / External Dependency
 
