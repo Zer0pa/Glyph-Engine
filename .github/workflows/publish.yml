@@ -1,0 +1,64 @@
+name: publish
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+# Trusted Publishing via OIDC — no PyPI API token or password used anywhere.
+# PyPI pending publisher slot must be registered at pypi.org before the first
+# tag push (package: gnosis-glyph-engine, repo: Zer0pa/Glyph-Engine,
+# workflow: publish.yml, environment: pypi).
+
+jobs:
+  build:
+    name: Build distribution
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+
+      - name: Install build tools
+        run: pip install --upgrade build twine
+
+      - name: Build sdist and wheel
+        run: python -m build --sdist --wheel .
+
+      - name: Check distributions
+        run: python -m twine check --strict dist/*
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+          if-no-files-found: error
+
+  publish:
+    name: Publish to PyPI
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/gnosis-glyph-engine
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        # attestations enabled by default in pypa/gh-action-pypi-publish >= 1.9
+        # no username, password, or PYPI_API_TOKEN passed here
