@@ -1,0 +1,35 @@
+{
+  "title": "Gnosis Glyph Engine — Borrowed-Baseline Ablation and Package-Boundary Research",
+  "description": "Glyph-descriptor extraction package-boundary research in the Zer0pa Gnosis Portfolio. Borrowed-baseline ablation across multi-seed robustness sweep; owned-arm authority gate (UNTESTED, pending D-06). Methodology only; no decipherment claim.",
+  "creators": [
+    {
+      "name": "Zer0pa",
+      "affiliation": "Zer0pa Research"
+    }
+  ],
+  "license": "Apache-2.0",
+  "version": "0.1.0a1",
+  "keywords": [
+    "gnosis",
+    "zer0pa",
+    "glyph-engine",
+    "descriptors",
+    "ablation",
+    "borrowed-baselines",
+    "package-boundary",
+    "methodology",
+    "multi-seed",
+    "robustness",
+    "python"
+  ],
+  "upload_type": "software",
+  "access_right": "open",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/Zer0pa/Glyph-Engine",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ],
+  "notes": "Always-in-beta posture. Authority metric package_boundary_earned is UNTESTED pending D-06 source retrieval. See SOURCE_BOUNDARY.md and SOVEREIGN_PRD.md for gate definitions."
+}
