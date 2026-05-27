@@ -2,6 +2,40 @@
 
 ## Install / Developer Commands
 
+<!-- INSTALL-DX:START -->
+#### Package Install
+
+Installable package: `python3.11 -m pip install gnosis-glyph-engine`.
+Current release: `0.1.0a1` on [PyPI](https://pypi.org/project/gnosis-glyph-engine/).
+Source: [Zer0pa/Glyph-Engine](https://github.com/Zer0pa/Glyph-Engine/).
+
+```bash
+python3.11 -m pip install gnosis-glyph-engine
+```
+
+Import smoke:
+
+```bash
+python3.11 - <<'PY'
+import importlib.metadata as md
+import gnosis_glyph_engine
+
+print("gnosis-glyph-engine", md.version("gnosis-glyph-engine"))
+PY
+```
+
+
+CLI smoke:
+
+```bash
+glyph-engine-ablation --help
+glyph-engine-robustness --help
+```
+
+Install success only proves package acquisition/import. Product scope, stale PyPI state, platform limits, and blockers remain in the front-door sections below.
+- Alpha package; package-boundary claims remain bounded by the front-door blockers below.
+<!-- INSTALL-DX:END -->
+
 #### Quick Start
 
 ```bash
