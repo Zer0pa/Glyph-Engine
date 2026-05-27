@@ -1,46 +1,46 @@
-# Gnosis Glyph Engine
+# Glyph-Engine
 
-> Live window into the Zer0pa lab. Useful now, improving continuously; blockers are part of the public surface.
+> Product-page mirror for `/gnosis/Gnosis-Glyph-Engine/`.
+> Live public repo: [Zer0pa/Glyph-Engine](https://github.com/Zer0pa/Glyph-Engine).
+> GitHub Markdown cannot reproduce the website typography, CSS, JavaScript, scroll behavior, or live bento layout; this README translates the product page into GitHub-safe Markdown evidence blocks.
 
-## What This Is
+## 0. Install / Developer Commands
 
-Glyph-Engine tests whether a standalone glyph-descriptor package boundary is earned; borrowed baselines run, owned-arm authority remains blocked.
+The product page is the positioning authority. This section is the only retained developer-surface material from the previous root README.
 
-`gnosis-glyph-engine` is the Gnosis research lane that asks one falsifiable
-question:
-
-> Is a standalone glyph-engine package boundary earned by a real consumer,
-> a monorepo-free smoke path, and a descriptor ablation against borrowed
-> baselines?
-
-It is an extraction-target scaffold for reusable glyph geometry, stroke, and
-descriptor kernels. It is **not a public library**, **not a product**, and
-**not a decipherment claim**.
-
-**Defensible headline metrics (as of 2026-04-28):** Borrowed-baseline ablation
-across 10 seeds: mean σ `baseline_orb` 4.14 ± 1.12, `baseline_hu_regionprops`
-2.95 ± 1.06, `baseline_hog` 1.15 ± 1.17 (artifact:
-`artifacts/robustness/robustness_report.json`). Determinism:
-`replay_all_identical == true` for every arm in the seed-42 ablation;
+```bash
 reference-freeze SHA256 is byte-stable across arms. 17 pytest tests pass when
-sibling `gnosis-morph-bench` is installed; 16 pass + 1 cleanly skips when it
-is not — preserving repo independence.
+- The package installs cleanly with `pip install -e .[dev]` on Python 3.13
+- The 17-test pytest suite passes when sibling `gnosis-morph-bench` is
+git clone https://github.com/Zer0pa/Glyph-Engine.git
+pip install -e .[dev]
+pytest -q                          # → 16 passed, 1 skipped
+```
 
-**Honest blocker:** The owned-arm authority metric `package_boundary_earned`
-is `UNTESTED`. Two Indus source files (`scripts/indus/stroke_native_encoding.py`,
-`scripts/indus/phase3_common.py`) are not present in the portfolio snapshot;
-D-06 retrieval is the unblock. Phase 02b cannot start until D-06 clears.
+## Product Page Mirror
 
-## Method Mechanics
+**Product-page title:** Gnosis-Glyph-Engine · Public alpha descriptor baseline · Zer0pa
+
+**Product-page description:** Gnosis-Glyph-Engine · public alpha glyph-descriptor baseline · borrowed ORB / Hu regionprops / HOG baselines on a synthetic 12-glyph fixture · seed-42 replay per borrowed arm · owned-arm tests UNTESTED until D-06 · PyPI 0.1.0a1 metadata incomplete
+
+### Hero Translation
+
+> 00 · GNOSIS-GLYPH-ENGINE · ANCIENT SCRIPT GEOMETRYRESEARCH-READY · OWNED ARM UNTESTED Ancient Script Geometry, Symbolic Shape Analysis Shape-only descriptor research for ancient script · Gnosis-Glyph-Engine · gnosis-glyph-engine v0.1.0a1 · github.com/Zer0pa/Glyph-Engine Ancient inscriptions carry geometry that no one has counted at the level of a single mark. Glyph-Engine runs three off-the-shelf shape algorithms — ORB, Hu regionprops, and HOG — across a 12-glyph fixture, ten seeds deep, and reports how steady each one is. HOG is the steadiest at sigma 1.15. Re-running with the same seed gives the same numbers, bit for bit. The page does not claim to read or decipher the marks, and the in-house descriptor stays UNTESTED until two missing Indus source files are recovered.
+
+## Positioning
 
 | Field | Value |
 | --- | --- |
-| Architecture | GNOSIS_GLYPH_DESCRIPTOR_METHOD |
-| Method | Descriptor extraction scaffold with synthetic 12-glyph fixture |
-| Baselines | OpenCV ORB, Hu regionprops, HOG borrowed arms |
-| Manifest Contract | `BenchmarkManifest` consumed by Morph-Bench |
-| Authority Gate | `package_boundary_earned` owned-arm metric |
-| Open Gate | D-06 source retrieval blocks Phase 02b |
+| Section | gnosis |
+| Product route | /gnosis/Gnosis-Glyph-Engine/ |
+| Live public repository | https://github.com/Zer0pa/Glyph-Engine |
+| Repo identity used here | Glyph-Engine |
+| Website display identity | Glyph-Engine |
+| Verdict | BLOCKED |
+| Posture | package_boundary_unearned_pending_owned_arm_d06 |
+| Headline metric | Borrowed-baseline ablation across 10 seeds: mean σ baseline_orb 4.14±1.12, hu_regionprops 2.95±1.06, hog 1.15±1.17. Determinism: replay_all_identical for every arm. |
+| Honest blocker | The owned-arm authority metric package_boundary_earned is UNTESTED. Two Indus source files are not present in the portfolio snapshot; D-06 retrieval is the unblock. |
+| Mechanics asset from product page |  |
 
 ## Key Metrics
 
@@ -51,69 +51,42 @@ D-06 retrieval is the unblock. Phase 02b cannot start until D-06 clears.
 | Pytest surface | 17 pass with Morph-Bench; 16 pass + 1 skip without sibling | repo independence preserved |
 | Authority gate | `package_boundary_earned == UNTESTED` | D-06 blocker |
 
-> Source: `artifacts/robustness/robustness_report.json`, `artifacts/ablation/ablation_report.json`, `.gpd/phases/02-minimal-extraction-smoke/`, and `SOURCE_BOUNDARY.md`.
+## Proof Anchors
 
-## Repo Identity
-
-| Field | Value |
+| Path | State |
 | --- | --- |
-| Identifier | Glyph-Engine |
-| Repository | https://github.com/Zer0pa/Glyph-Engine |
-| Portfolio | Gnosis |
-| Visibility | PUBLIC |
-| Default Branch | main |
-| Authority Source | `SOVEREIGN_PRD.md`; `.gpd/phases/02-minimal-extraction-smoke/` |
-| License | Apache-2.0 code; CC-BY-4.0 docs |
-
-## Readiness
-
-| Field | Value |
-| --- | --- |
-| Verdict | BLOCKED |
-| Posture | `package_boundary_unearned_pending_owned_arm_d06` |
-| Checks | borrowed-baseline and repo-independence checks pass |
-| Authority metric | `package_boundary_earned` is `UNTESTED` |
-| Authority | `SOURCE_BOUNDARY.md`; `SOVEREIGN_PRD.md` |
-
-### Honest Blocker
-
-The owned-arm authority metric is `UNTESTED`. Gate 4 cannot run until D-06 retrieves the two missing Indus source files.
+| Authority metric definition | SOVEREIGN_PRD.md §Authority Metric |
+| Frozen consumer + interface | .gpd/phases/01-consumer-and-interface-freeze/01-DECISIONS.md D-01, D-02 |
+| Frozen fixture + ablation rule | .gpd/phases/01-consumer-and-interface-freeze/01-DECISIONS.md D-03, D-04 |
+| Phase 02a single-seed ablation | artifacts/ablation/ablation_report.json + .gpd/phases/02-minimal-extraction-smoke/02-01-VERIFICATION.md |
+| Phase 02c multi-seed robustness | artifacts/robustness/robustness_report.json + .gpd/phases/02-minimal-extraction-smoke/02-02-VERIFICATION.md |
+| Sovereign-vs-adapter scope decision | .gpd/phases/02-minimal-extraction-smoke/02-02-DECISIONS.md D-02c-02 |
+| Owned-arm source-retrieval blocker | SOURCE_BOUNDARY.md (D-06) |
+| HF custody truth | HF_CUSTODY_REGISTER.md (canonical: Architect-Prime/glyph-engine-artefacts; Zer0pa namespace empty for this lane post-2026-04-27 migration) |
+| Path/endpoint scrub convention | docs/PROVENANCE_LABELS.md |
+| Auditor fast path | AUDITOR_PLAYBOOK.md |
 
 ## What We Prove
 
-- The frozen Phase 01 interface (`Descriptor`, `LearnedDescriptor`,
-  `manifest_builder`) is implementable using only borrowed OSS — OpenCV,
-  scikit-image, scikit-learn, NumPy.
-- The package installs cleanly with `pip install -e .[dev]` on Python 3.13
-  with no live-monorepo imports and no monorepo path coupling.
-- The 17-test pytest suite passes when sibling `gnosis-morph-bench` is
-  installed; 16 pass + 1 cleanly skips when it is not — preserving repo
-  independence.
-- The frozen `BenchmarkManifest` shape is consumed unmodified by
-  `gnosis_morph_bench.schema.load_manifest`, producing finite `sigma`,
-  `null_mean`, `null_std`, `silhouette`, and `mean_jaccard` per arm.
-- A multi-seed (10-seed) borrowed-baseline ceiling is recorded in
-  `artifacts/robustness/robustness_report.json`; mean σ across seeds
-  comes out to `baseline_orb` 4.14 ± 1.12, `baseline_hu_regionprops`
-  2.95 ± 1.06, `baseline_hog` 1.15 ± 1.17.
-- Determinism is checked: `replay_all_identical == true` for every arm
-  in the seed-42 ablation; reference-freeze SHA256 is byte-stable across
-  arms.
+- The frozen Phase 01 interface (`Descriptor`, `LearnedDescriptor`, `manifest_builder`) is implementable using only borrowed OSS — OpenCV, scikit-image, scikit-learn, NumPy.
+- The package installs cleanly with `pip install -e .[dev]` on Python 3.13 with no live-monorepo imports and no monorepo path coupling.
+- The 17-test pytest suite passes when sibling `gnosis-morph-bench` is installed; 16 pass + 1 cleanly skips when it is not — preserving repo independence.
+- The frozen `BenchmarkManifest` shape is consumed unmodified by `gnosis_morph_bench.schema.load_manifest`, producing finite `sigma`, `null_mean`, `null_std`, `silhouette`, and `mean_jaccard` per arm.
+- A multi-seed (10-seed) borrowed-baseline ceiling is recorded in `artifacts/robustness/robustness_report.json`; mean σ across seeds comes out to `baseline_orb` 4.14 ± 1.12, `baseline_hu_regionprops` 2.95 ± 1.06, `baseline_hog` 1.15 ± 1.17.
+- Determinism is checked: `replay_all_identical == true` for every arm in the seed-42 ablation; reference-freeze SHA256 is byte-stable across arms.
 
-## What We Don't Claim
+## What We Do Not Claim
 
-- We do not claim that any owned descriptor beats borrowed baselines.
-  Phase 02b is BLOCKED on D-06 (two Indus source files are not present
-  in the portfolio snapshot) and the gate-4 verdict is `UNTESTED`.
-- We do not claim cross-corpus generalisation. The fixture is a
-  deterministic 12-glyph synthetic generator; rights-cleared real-glyph
-  evidence does not yet exist in this repo.
-- We do not claim public-release readiness, performance superiority, or
-  product readiness.
-- We do not claim Indus or cuneiform domain results — those are owned by
-  sibling lanes.
+- We do not claim that any owned descriptor beats borrowed baselines. Phase 02b is BLOCKED on D-06 (two Indus source files are not present in the portfolio snapshot) and the gate-4 verdict is `UNTESTED`.
+- We do not claim cross-corpus generalisation. The fixture is a deterministic 12-glyph synthetic generator; rights-cleared real-glyph evidence does not yet exist in this repo.
+- We do not claim public-release readiness, performance superiority, or product readiness.
+- We do not claim Indus or cuneiform domain results — those are owned by sibling lanes.
 
-## Verification Status
+## Blockers / Failures
+
+> The owned-arm authority metric package_boundary_earned is UNTESTED. Two Indus source files are not present in the portfolio snapshot; D-06 retrieval is the unblock.
+
+## Verification Surface
 
 | Code | Check | Verdict |
 | --- | --- | --- |
@@ -121,150 +94,145 @@ The owned-arm authority metric is `UNTESTED`. Gate 4 cannot run until D-06 retri
 | V_02 | pytest without Morph-Bench sibling: 16 pass + 1 skip | PASS |
 | V_03 | pytest with Morph-Bench sibling: 17 pass | PASS |
 | V_04 | seed-42 ablation matches verification to 6 decimals | PASS |
-| V_05 | D-06 owned-arm source retrieval | BLOCKED |
+| V_05 | D-06 owned-arm source retrieval | STAGED |
 
-## Proof Anchors
-
-| Path | State |
-| --- | --- |
-| `SOVEREIGN_PRD.md` | VERIFIED |
-| `.gpd/phases/01-consumer-and-interface-freeze/01-DECISIONS.md` | VERIFIED |
-| `artifacts/ablation/ablation_report.json` | VERIFIED |
-| `artifacts/robustness/robustness_report.json` | VERIFIED |
-| `SOURCE_BOUNDARY.md` | VERIFIED |
-| `HF_CUSTODY_REGISTER.md` | VERIFIED |
-
-## Repo Shape
+## License
 
 | Field | Value |
 | --- | --- |
-| Proof Anchors | 6 display anchors |
-| Portfolio | Gnosis |
-| Package | gnosis-glyph-engine==0.1.0a1 |
-| Primary Source | `src/gnosis_glyph_engine/` |
-| Tests | `tests/` |
-| Artifacts | `artifacts/ablation/`; `artifacts/robustness/` |
-| Support Sections | Licensing; Quick Start; Current Gaps; Upcoming Workstreams |
-
-```
-.
-├── NOTICE                                  # Apache-2.0 code and CC-BY-4.0 docs posture
-├── HF_CUSTODY_REGISTER.md                  # HF artefact-dataset truth
-├── README.md                               # this file
-├── SOVEREIGN_PRD.md                        # authority metric + extraction gate
-├── SOURCE_BOUNDARY.md                      # candidate sources, ledger, D-06
-├── AUDITOR_PLAYBOOK.md                     # fast path + reproduce + claim-replay
-├── CONTRIBUTING.md, GOVERNANCE.md, RELEASING.md, ROADMAP.md, SECURITY.md
-├── CHANGELOG.md, CITATION.cff, CODE_OF_CONDUCT.md
-├── DATA_POLICY.md, PUBLIC_AUDIT_LIMITS.md
-├── THIRD_PARTY_NOTICES.md, TRADEMARKS.md
-├── pyproject.toml                          # gnosis-glyph-engine==0.1.0a1
-├── _internal/                              # agent-orchestration scaffolding (not reader-facing)
-│   ├── AUTONOMOUS_EXECUTION_POLICY.md
-│   ├── GPD_BOOTSTRAP_GUIDE.md
-│   ├── UNIVERSAL_STARTUP_PROMPT.md
-│   ├── TEMPLATE_USAGE.md
-│   ├── MIGRATION_PLAN.md
-│   ├── WORKSTREAM_GPD_INIT_CHECKLIST.md
-│   ├── TODO.md
-│   └── AGENT_STATUS_REPORT_2026-04-24.md
-├── .github/
-│   ├── workflows/ci.yml
-│   ├── ISSUE_TEMPLATE/
-│   └── PULL_REQUEST_TEMPLATE.md
-├── .gpd/
-│   ├── PROJECT.md, STATE.md, ROADMAP.md, REQUIREMENTS.md, DECISIONS.md,
-│   │   CONVENTIONS.md, NOTATION_GLOSSARY.md, state.json, config.json
-│   └── phases/
-│       ├── 00-workstream-bootstrap/*
-│       ├── 01-consumer-and-interface-freeze/*
-│       └── 02-minimal-extraction-smoke/*      # 02a + 02c artefacts
-├── src/gnosis_glyph_engine/
-│   ├── __init__.py, protocols.py, fixtures.py, manifest_builder.py
-│   ├── baselines/{__init__,orb,hu_regionprops,hog}.py
-│   ├── owned/__init__.py                      # raises SourceRetrievalPending until D-06
-│   └── scripts/{__init__,run_ablation,run_robustness}.py
-├── tests/{test_fixtures,test_baselines,test_manifest_builder}.py
-├── scripts/run_ablation.py                    # thin shim
-├── artifacts/
-│   ├── ablation/   {ablation_report.json, per_arm/baseline_*.{manifest,smoke_report}.json}
-│   └── robustness/ robustness_report.json
-├── code/README.md                             # legacy code-surface marker
-└── docs/{ARCHITECTURE,LEGAL_BOUNDARIES,PROVENANCE_LABELS,FAQ,SUPPORT,README}.md
-```
-
-## Licensing
-
-This repository is part of the Zer0pa Gnosis Portfolio.
-
-**Code** in this repository is licensed under the Apache License 2.0. See
-`LICENSE` for the full text. SPDX identifier: `Apache-2.0`.
-
-**Documentation, reports, and written materials** are licensed under Creative
-Commons Attribution 4.0 International. SPDX identifier: `CC-BY-4.0`. Canonical
-terms: <https://creativecommons.org/licenses/by/4.0/>.
-
-**Data and fixtures** are handled per dataset and artifact family. See
-`DATA_POLICY.md` for this repository's data boundary. The code license does not
-license raw corpora, image-bearing cultural-heritage assets, private HF
-artifacts, model weights, endpoint logs, or operational transcripts.
-
-**Trademarks** - "Gnosis", "Zer0pa Gnosis", and distinctive sub-marks are
-trademarks of Zer0pa. Apache-2.0 and CC-BY-4.0 do not grant trademark rights.
-See `TRADEMARKS.md`.
-
-## Quick Start
-
-```bash
-git clone https://github.com/Zer0pa/Glyph-Engine.git
-cd Glyph-Engine
-python3.13 -m venv .venv && source .venv/bin/activate
-pip install -e .[dev]
-pytest -q                          # → 16 passed, 1 skipped
-python -m gnosis_glyph_engine.scripts.run_ablation
-python -m gnosis_glyph_engine.scripts.run_robustness
-```
-
-Console scripts (after install): `glyph-engine-ablation`,
-`glyph-engine-robustness`.
-
-## Current Gaps
-
-- **D-06** (owner action): retrieve
-  `scripts/indus/stroke_native_encoding.py` and
-  `scripts/indus/phase3_common.py` from the live monorepo, or grant pod
-  access to a live-monorepo clone. Phase 02b cannot start until D-06
-  clears.
-- No real-glyph fixture; the synthetic 12-glyph generator is the only
-  ablation surface today. Rights-cleared real-glyph evidence does not yet
-  exist in this repo.
-- Public contact surface remains owner-held.
+| License | Apache-2.0+CC-BY-4.0 |
+| Authority source | README.md |
 
 ## Upcoming Workstreams
 
-### Operations / External Dependency
+| Category | Summary |
+| --- | --- |
+| Active Engineering | Continue current authority-packet refinement on Gnosis-Glyph-Engine; surface new receipts as they land. |
+| Operations / External Dependency | Maintain CI gates and license-resolver synchronization with Zer0pa/ZPE-License-Commercial. |
 
-- **D-06 source-file retrieval** — owner action: retrieve
-  `scripts/indus/stroke_native_encoding.py` and
-  `scripts/indus/phase3_common.py` from the live monorepo, or grant pod
-  access to a monorepo clone. All Phase 02b work is gated on this.
+## Related Repos
 
-### Research-Deferred — Investigation Underway
+No related repos are declared on the product page frontmatter.
 
-- **Real-glyph fixture** — replace the deterministic 12-glyph synthetic
-  generator with rights-cleared real-glyph evidence. No rights-cleared
-  fixture exists yet; investigation of sourcing options is underway. Cross-
-  corpus generalisation claims cannot be made until this is resolved.
+<details>
+<summary>Full Visible Product-Page Bento Translation</summary>
 
-### Active Engineering
+This section preserves the product page cells as Markdown text blocks. It intentionally omits shared site navigation, footer chrome, CSS, and scripts.
 
-- **Phase 02b — owned-arm gate testing** — implement
-  `src/gnosis_glyph_engine/owned/stroke_compass.py` and
-  `src/gnosis_glyph_engine/owned/topology.py` from the retrieved Indus
-  source files; run ablation + robustness against the Phase 02c baseline
-  ceiling; apply D-04 pass rule under D-02c-02 sovereign routing. Starts
-  the moment D-06 clears.
+### Bento Cell 1
 
-### Zero-Base Scientific Thinking — GPD Research and Planning Pending
+> 00 · GNOSIS-GLYPH-ENGINE · ANCIENT SCRIPT GEOMETRYRESEARCH-READY · OWNED ARM UNTESTED Ancient Script Geometry, Symbolic Shape Analysis Shape-only descriptor research for ancient script · Gnosis-Glyph-Engine · gnosis-glyph-engine v0.1.0a1 · github.com/Zer0pa/Glyph-Engine Ancient inscriptions carry geometry that no one has counted at the level of a single mark. Glyph-Engine runs three off-the-shelf shape algorithms — ORB, Hu regionprops, and HOG — across a 12-glyph fixture, ten seeds deep, and reports how steady each one is. HOG is the steadiest at sigma 1.15. Re-running with the same seed gives the same numbers, bit for bit. The page does not claim to read or decipher the marks, and the in-house descriptor stays UNTESTED until two missing Indus source files are recovered.
 
-- None at this time.
+### Bento Cell 2
+
+> 01 · THE GAPREADING VS MEASURING Paleography has names for ancient marks but no shared numbers for their shape. Glyph-Engine measures the shape without claiming to read it.
+
+### Bento Cell 3
+
+> 02 · MARKETSADJACENT FORECASTS Computer vision software'31 · $45.9B OCR software'30 · $22.4B Document AI'30 · $17.2B Heritage digitization'30 · $8.1B Digital humanities'30 · $3.2B Adjacent markets run on shape recognition; ancient-script geometry is the narrow, mostly unpriced corner inside them.
+
+### Bento Cell 4
+
+> 03 · VALUE $8.1B Heritage digitization '30 — the funded market where ancient-mark geometry becomes usable scholarly evidence.
+
+### Bento Cell 5
+
+> 04 · INSIGHT Ancient marks have a shape. Now it can be counted.
+
+### Bento Cell 6
+
+> 05.1 · CURRENT TECHDESCRIBED, NOT MEASURED Epigraphers and paleographers describe ancient marks by sign name, period, or catalogue entry. No common tool reports the geometry of the stroke itself, so visual arguments rest on prose and plates, not on numbers.
+
+### Bento Cell 7
+
+> 05.2 · OUR TECHGEOMETRY MEASUREMENT FIRST Glyph-Engine puts numbers on shape and reports how steady each number is. Three off-the-shelf algorithms — ORB, Hu regionprops, and HOG — run ten-seed sweeps over a 12-glyph synthetic fixture, with HOG at sigma 1.15 the steadiest. The same fixture and seeds are shared with the sibling Morph-Bench project. The in-house descriptor is not yet running, and nothing on this page claims to read a mark.
+
+### Bento Cell 8
+
+> 05.3 · BENCHMARKSBORROWED-ARM RESULTS ORB σ4.1410-seed mean Hu σ2.9510-seed mean HOG σ1.15most stable Tests17/17with sibling HOG σ1.15 Hu σ2.95 ORB σ4.14 Status: The three off-the-shelf algorithms have numbers; the in-house descriptor is UNTESTED until two missing Indus source files are recovered.
+
+### Bento Cell 9
+
+> 06 · MEASUREMENTBORROWED-ARM SIGMA Three off-the-shelf shape algorithms read the 12-glyph fixture. The in-house descriptor is not running yet.
+
+### Bento Cell 10
+
+> 06.1 · COMPARATIVE PERFORMANCE · 10-SEED SIGMA HOG (borrowed)σ 1.15 · most stable Hu regionprops (borrowed)σ 2.95 OpenCV ORB (borrowed)σ 4.14 Owned descriptorUNTESTED · D-06 unblocks 10-seed σ mean across borrowed ORB, Hu regionprops, and HOG over the 12-glyph synthetic fixture; lower σ means a more stable shape number. The owned descriptor has no number yet.
+
+### Bento Cell 11
+
+> 07 · KEY METRICSMEASURED RESULTS
+
+### Bento Cell 12
+
+> 07.1 · ORB ROBUSTNESS Σ 4.14 10-seed mean · borrowed OpenCV ORB
+
+### Bento Cell 13
+
+> 07.2 · HU REGIONPROPS Σ 2.95 10-seed mean · borrowed scikit-image regionprops
+
+### Bento Cell 14
+
+> 07.3 · HOG ROBUSTNESS Σ 1.15 10-seed mean · steadiest borrowed arm
+
+### Bento Cell 15
+
+> 07.4 · PYTEST SURFACE 17/17 17 pass with sibling · 16 pass plus 1 skip without it
+
+### Bento Cell 16
+
+> 07.5 · OWNED DESCRIPTOR Σ null Owned descriptor pending · D-06 is the unblock
+
+### Bento Cell 17
+
+> 08 · DETERMINISMPER-ARM REPLAY Seed-42 replay is per borrowed arm, not owned arms.
+
+### Bento Cell 18
+
+> 08.1 · WHAT DETERMINISM MEANSBORROWED BASELINES ONLY At seed 42, each borrowed ORB, Hu regionprops, and HOG arm replays identically: replay_all_identical == true. The reference-freeze SHA-256 is byte-stable across the declared 12-glyph fixture. The same fixture produces the same numbers, every run. That does not prove owned descriptors, real glyphs, or arbitrary scripts. The unit of bit-exactness is per-arm, per-seed, borrowed baselines only. Shape measurement without determinism is anecdote; determinism is the thin floor under everything else here.
+
+### Bento Cell 19
+
+> 08.2 · HONEST BLOCKER Honest Blocker · package_boundary_earned is UNTESTED. PyPI 0.1.0a1 is a public alpha with incomplete metadata. D-06 must retrieve scripts/indus/stroke_native_encoding.py and phase3_common.py before owned arms run. Claims stop at borrowed-baseline receipts: no release, no owned encoder, no production engine, no script understanding.
+
+### Bento Cell 20
+
+> 09 MARKS WITH A MEASURED SHAPE.
+
+### Bento Cell 21
+
+> 09.1 · THIS REPO'S AMBITION Glyph-Engine wants ancient-mark geometry to become an evidence layer that heritage researchers, paleographers, and decipherment specialists can share. The ambition is a shape vocabulary that travels between archives and journals without smuggling in a reading, so the conversation about what the marks mean can rest on what they actually look like.
+
+### Bento Cell 22
+
+> 09.2 · WHAT WORKS NOW Three borrowed shape arms produce stable, bit-identical numbers over a declared 12-glyph fixture today.
+
+### Bento Cell 23
+
+> 09.3 · WHAT'S STILL OPEN The owned descriptor and a real-glyph corpus stay UNTESTED until D-06 retrieves the missing Indus files.
+
+### Bento Cell 24
+
+> 09.4 · ARCHIVES · NEAR-TERM (12–24 MO) Heritage archives sort marks by shape A heritage archive curator can group thousands of unread marks by geometric similarity instead of cataloguer notes. The same descriptor numbers travel between corpora, so sorting decisions are reviewable by anyone, not stuck in one institution's house style.
+
+### Bento Cell 25
+
+> 09.5 · SCHOLARSHIP · NEAR-TERM (12–24 MO) Paleographers gain a measurement vocabulary A paleographer publishing a stroke-form argument can attach a sigma figure to the visual claim. Reviewers can re-run the descriptors against their own corpus and disagree on numbers instead of impressions, which moves epigraphic debate onto firmer ground.
+
+### Bento Cell 26
+
+> 09.6 · DECIPHERMENT DISCIPLINE · MID-TERM (24–48 MO) Shape and meaning stay separated Script-decipherment specialists working on contested scripts get a reusable shape layer that refuses to encode a reading. That keeps speculative translations from quietly leaking into descriptor metadata, which is how earlier decipherment programmes contaminated the evidence they were trying to weigh.
+
+### Bento Cell 27
+
+> 09.7 · TOOLING · MID-TERM (24–48 MO) Digital humanities tools share one floor A digital-humanities lab adopting Glyph-Engine baselines as a common floor can compare its custom descriptors against three well-understood arms before publishing a kernel. Comparison becomes the first step, not the last, so weak descriptors are caught before they reach a manuscript.
+
+### Bento Cell 28
+
+> 09.8 · METHOD · PARADIGM (48 MO+) Geometry travels across heritage domains A descriptor kernel that earns its independent boundary can move beyond ancient script into seals, pottery marks, textile motifs, and rock art. The portable object is the measurement method itself, which is what changes how heritage research builds reusable evidence.
+
+</details>
+
+---
+
+Source mapping: product route `/gnosis/Gnosis-Glyph-Engine/` -> live public repo `Zer0pa/Glyph-Engine`. README generated from product-page authority plus retained install/dev commands only.
