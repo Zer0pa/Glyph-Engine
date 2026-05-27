@@ -69,7 +69,7 @@ Console scripts (after install): `glyph-engine-ablation`,
 <table width="100%">
 <tr>
 <td width="50%" valign="top">
-<div><b>03 · VALUE</b></div>
+<div><b>03 · VALUE OF MARKET</b></div>
       <div>$8.1<span>B</span></div>
       <div>Heritage digitization '30 — the funded market where ancient-mark geometry becomes usable scholarly evidence.</div>
 </td>
