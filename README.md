@@ -1,9 +1,6 @@
 # Glyph-Engine
 
-## Install / Developer Commands
-
-<!-- INSTALL-DX:START -->
-#### Package Install
+## Package Install
 
 Installable package: `python3.11 -m pip install gnosis-glyph-engine`.
 Current release: `0.1.0a1` on [PyPI](https://pypi.org/project/gnosis-glyph-engine/).
@@ -13,43 +10,9 @@ Source: [Zer0pa/Glyph-Engine](https://github.com/Zer0pa/Glyph-Engine/).
 python3.11 -m pip install gnosis-glyph-engine
 ```
 
-Import smoke:
+For full install, smoke, source, and developer commands, [click here](#install-developer-commands-detailed).
 
-```bash
-python3.11 - <<'PY'
-import importlib.metadata as md
-import gnosis_glyph_engine
-
-print("gnosis-glyph-engine", md.version("gnosis-glyph-engine"))
-PY
-```
-
-
-CLI smoke:
-
-```bash
-glyph-engine-ablation --help
-glyph-engine-robustness --help
-```
-
-Install success only proves package acquisition/import. Product scope, stale PyPI state, platform limits, and blockers remain in the front-door sections below.
-- Alpha package; package-boundary claims remain bounded by the front-door blockers below.
-<!-- INSTALL-DX:END -->
-
-#### Quick Start
-
-```bash
-git clone https://github.com/Zer0pa/Glyph-Engine.git
-cd Glyph-Engine
-python3.13 -m venv .venv && source .venv/bin/activate
-pip install -e .[dev]
-pytest -q                          # → 16 passed, 1 skipped
-python -m gnosis_glyph_engine.scripts.run_ablation
-python -m gnosis_glyph_engine.scripts.run_robustness
-```
-
-Console scripts (after install): `glyph-engine-ablation`,
-`glyph-engine-robustness`.
+---
 
 <table width="100%">
 <tr>
@@ -322,3 +285,58 @@ Console scripts (after install): `glyph-engine-ablation`,
 </td>
 </tr>
 </table>
+
+---
+
+<a id="install-developer-commands-detailed"></a>
+
+## Install / Developer Commands Detailed
+
+<!-- INSTALL-DX:START -->
+#### Package Install
+
+Installable package: `python3.11 -m pip install gnosis-glyph-engine`.
+Current release: `0.1.0a1` on [PyPI](https://pypi.org/project/gnosis-glyph-engine/).
+Source: [Zer0pa/Glyph-Engine](https://github.com/Zer0pa/Glyph-Engine/).
+
+```bash
+python3.11 -m pip install gnosis-glyph-engine
+```
+
+Import smoke:
+
+```bash
+python3.11 - <<'PY'
+import importlib.metadata as md
+import gnosis_glyph_engine
+
+print("gnosis-glyph-engine", md.version("gnosis-glyph-engine"))
+PY
+```
+
+
+CLI smoke:
+
+```bash
+glyph-engine-ablation --help
+glyph-engine-robustness --help
+```
+
+Install success only proves package acquisition/import. Product scope, stale PyPI state, platform limits, and blockers remain in the front-door sections below.
+- Alpha package; package-boundary claims remain bounded by the front-door blockers below.
+<!-- INSTALL-DX:END -->
+
+#### Quick Start
+
+```bash
+git clone https://github.com/Zer0pa/Glyph-Engine.git
+cd Glyph-Engine
+python3.13 -m venv .venv && source .venv/bin/activate
+pip install -e .[dev]
+pytest -q                          # → 16 passed, 1 skipped
+python -m gnosis_glyph_engine.scripts.run_ablation
+python -m gnosis_glyph_engine.scripts.run_robustness
+```
+
+Console scripts (after install): `glyph-engine-ablation`,
+`glyph-engine-robustness`.
