@@ -19,6 +19,7 @@ For full install, smoke, source, and developer commands, [click here](#install-d
 <td width="100%" valign="top">
 <div><span><b>00 · GNOSIS-GLYPH-ENGINE</b> · ANCIENT SCRIPT GEOMETRY</span> <span>RESEARCH-READY · OWNED ARM UNTESTED</span></div>
       <h1>Mapping Symbols <span>Older Than Alphabets</span></h1>
+      <p><strong>Live experiment. Not a release. Ambition headlined. Claims bounded.</strong></p>
       <p>Shape-only descriptor research for ancient script &middot; Gnosis-Glyph-Engine &middot; gnosis-glyph-engine <em>v0.1.0a1</em> &middot; github.com/Zer0pa/Glyph-Engine</p>
       <p>Ancient inscriptions carry geometry that no one has counted at the level of a single mark. Glyph-Engine runs three off-the-shelf shape algorithms — <strong>ORB, Hu regionprops, and HOG</strong> — across a 12-glyph fixture, ten seeds deep, and reports how steady each one is. HOG is the steadiest at sigma 1.15. Re-running with the same seed gives the same numbers, bit for bit. The page does not claim to read or decipher the marks, and the in-house descriptor stays UNTESTED until two missing Indus source files are recovered.</p>
 </td>
